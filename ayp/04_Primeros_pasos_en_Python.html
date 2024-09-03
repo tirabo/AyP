@@ -182,8 +182,6 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">Dibujando con  una tortuga</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">Practicando con Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">Variables y funciones aplicadas a Turtle</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Primeros pasos con Python</a></li>
 
@@ -614,11 +612,12 @@ eleva un número a una potencia:</p>
 </div>
 <p>Sabemos que <span class="math notranslate nohighlight">\(a^n\)</span> es <span class="math notranslate nohighlight">\(a\)</span> multiplicado por si mismo <span class="math notranslate nohighlight">\(n\)</span>-veces. También conocemos, que <span class="math notranslate nohighlight">\((a^n)^m = a^{nm}\)</span>.</p>
 <p>Entonces, como sabemos que si <span class="math notranslate nohighlight">\(a&gt;0\)</span>, <span class="math notranslate nohighlight">\((\sqrt[n]{a})^n = a\)</span>, es “claro” que <span class="math notranslate nohighlight">\(\sqrt[n]{a} = a^{1/n}\)</span>, pues <span class="math notranslate nohighlight">\( (a^{1/n})^n = a^{\frac1n n} =a\)</span>.</p>
-<p>Luego
-$<span class="math notranslate nohighlight">\(
+<p>Luego</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \sqrt{10} = 10^{1/2} = 10^{0.5}.
-\)</span>$
-Por ejemplo,</p>
+\end{equation*}\]</div>
+<p>Por ejemplo,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">9</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># raíz cuadrada de 9 (= 3)</span>
@@ -755,10 +754,11 @@ Parecen números, pero están entre comillas como cadenas y, efectivamente son c
 </div>
 <p>y debemos ejecutarla si en las siguientes celdas de código queremos usar el módulo.</p>
 <p>La instrucción para obtener el logaritmo en base <span class="math notranslate nohighlight">\(e\)</span> es <code class="docutils literal notranslate"><span class="pre">math.log(t)</span></code>, donde <code class="docutils literal notranslate"><span class="pre">t</span></code> es un número real positivo.</p>
-<p>Recordemos que si <span class="math notranslate nohighlight">\(a, t &gt;0\)</span> ,
-$<span class="math notranslate nohighlight">\(
+<p>Recordemos que si <span class="math notranslate nohighlight">\(a, t &gt;0\)</span> ,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \operatorname{log}_a(t) = r \quad ⇔ \quad a^r = t
-\)</span>$</p>
+\end{equation*}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -849,18 +849,20 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p>La expresión resultante es</p>
-<div class="math notranslate nohighlight">
-\[-2.4492935982947064e-16\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+-2.4492935982947064e-16
+\end{equation*}\]</div>
 <p>que se lee</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 -2.4492935982947064 \times 10^{-16}.
-\]</div>
+\end{equation*}\]</div>
 <p>Es decir es</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 -0.00000000000000024492935982947064
-\]</div>
+\end{equation*}\]</div>
 <p>Nosotros esperaríamos que el resultado de ejecutar la línea de código anterior sea <code class="docutils literal notranslate"><span class="pre">0</span></code>, pero debido a que el valor de <span class="math notranslate nohighlight">\(\pi\)</span> es una aproximación y  que la función <code class="docutils literal notranslate"><span class="pre">sin()</span></code> también devuelve aproximaciones,  el resultado es número “cercano”  a <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <p>Para ver todas las funciones del módulo ejecutamos <code class="docutils literal notranslate"><span class="pre">dir(math)</span></code>:</p>
 <div class="cell docutils container">
@@ -980,14 +982,16 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p>Recordemos que <span class="math notranslate nohighlight">\(\log(x) = y\)</span> si y solo si <span class="math notranslate nohighlight">\(e^y = x\)</span>.</p>
-<p>En  general
-$<span class="math notranslate nohighlight">\(
+<p>En  general</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \log_a(x) = y \quad\Leftrightarrow \quad a^y = x  \quad \Leftrightarrow\quad  \log(a^y) = \log(x) \quad  \Leftrightarrow \quad \log(a) \cdot y = \log(x)\quad  \Leftrightarrow \quad  y = \log(x) / \log(a)
-\)</span>$</p>
-<p>Concluyendo:
-$<span class="math notranslate nohighlight">\(
+\end{equation*}\]</div>
+<p>Concluyendo:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \log_a(x) =  \log(x) / \log(a)
-\)</span>$</p>
+\end{equation*}\]</div>
 <p>Luego, si queremos calcular, el logaritmo en base 2 de <code class="docutils literal notranslate"><span class="pre">x</span></code>, debemos  hacer <code class="docutils literal notranslate"><span class="pre">math.log(x)</span> <span class="pre">/</span> <span class="pre">math.log(2)</span></code>. Por ejemplo,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
