@@ -182,6 +182,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">Dibujando con  una tortuga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">Practicando con Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">Variables y funciones aplicadas a Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_Primeros_pasos_en_Python.html">Primeros pasos con Python</a></li>
 
@@ -419,16 +421,17 @@ document.write(`
 <section id="algunos-ejemplos">
 <h2>1. Algunos ejemplos<a class="headerlink" href="#algunos-ejemplos" title="Link to this heading">#</a></h2>
 <p>En esta primera parte veremos algunos ejemplos sencillos de recursión y recursión sobre listas.</p>
-<p><strong>Ejemplo (función recursiva).</strong> Sea la función recursiva
-$<span class="math notranslate nohighlight">\(
+<p><strong>Ejemplo (función recursiva).</strong> Sea la función recursiva</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 f(n) = \left\{
     \begin{matrix}
-    1 \quad&amp;\text{si \)</span>n=0<span class="math notranslate nohighlight">\(},\\
-    2 \quad&amp;  \text{si \)</span>n=1<span class="math notranslate nohighlight">\(} \\
-    2f(n-1) -3f(n-2) &amp;  \text{si \)</span>n&gt;1<span class="math notranslate nohighlight">\(}
+    1 \quad&amp;\text{si $n=0$},\\
+    2 \quad&amp;  \text{si $n=1$} \\
+    2f(n-1) -3f(n-2) &amp;  \text{si $n&gt;1$}
     \end{matrix}
 \right.
-\)</span>$</p>
+\end{equation*}\]</div>
 <ol class="arabic simple">
 <li><p>Implementar la función en Python según su definición.</p></li>
 <li><p>Definir una función recursiva en Python que no utilice recursión doble y permita recuperar <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
@@ -504,7 +507,7 @@ f(25) = -327238
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(35) = 45299420
-Tiempo: 6.691556930541992
+Tiempo: 10.560484409332275
 </pre></div>
 </div>
 </div>
@@ -530,7 +533,7 @@ f(20) = 67717
 f(25) = -327238
 f(30) = -17109707
 f(35) = 45299420
-Tiempo: 0.000997781753540039
+Tiempo: 0.0009987354278564453
 </pre></div>
 </div>
 </div>
@@ -543,7 +546,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6706.433452807646
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10573.855812843161
 </pre></div>
 </div>
 </div>
@@ -944,7 +947,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[19, 18, 18, 20, 12, 40, 11, 33, 10, 29, 12, 32, 49, 39, 39, 22, 10, 26, 30, 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11, 40, 10, 8, 2, 37, 30, 8, 2, 50, 26, 27, 17, 36, 17, 43, 1, 40, 36, 21]
 </pre></div>
 </div>
 </div>
@@ -957,7 +960,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 10, 10, 11, 12, 12, 18, 18, 19, 20, 22, 26, 29, 30, 32, 33, 39, 39, 40, 49]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 2, 8, 8, 10, 11, 17, 17, 21, 26, 27, 30, 36, 36, 37, 40, 40, 43, 50]
 </pre></div>
 </div>
 </div>
@@ -1061,7 +1064,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[38, 24, 10, 1, 12, 39, 40, 1, 9, 36, 21, 14, 7, 1, 23, 7, 48, 10, 24, 11]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[38, 45, 26, 9, 12, 44, 46, 3, 5, 14, 2, 50, 15, 29, 17, 14, 46, 44, 19, 15]
 </pre></div>
 </div>
 </div>
@@ -1074,7 +1077,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 7, 7, 9, 10, 10, 11, 12, 14, 21, 23, 24, 24, 36, 38, 39, 40, 48]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 5, 9, 12, 14, 14, 15, 15, 17, 19, 26, 29, 38, 44, 44, 45, 46, 46, 50]
 </pre></div>
 </div>
 </div>
@@ -1089,7 +1092,10 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[963353, 273792, 693303, 706734, 188012, 963457, 223427, 824734, 264638, 889758, 783967, 613821, 811804, 282347, 699941, 158011, 520305, 32092, 143511, 250437, 926239, 163280, 645927, 335858, 448458, 685767, 462562, 11713, 767190, 762238, 657661, 22131, 38166, 275190, 345065, 17220, 491561, 667615, 98530, 674023, 855292, 707528, 652188, 738163, 884061, 988352, 759470, 843115, 701716, 60924, 570686, 471809, 965075, 876770, 847907, 621526, 431484, 152965, 569715, 948221, 987144, 416651, 679021, 236857, 721914, 637048, 896584, 46704, 332338, 91220, 4533, 588729, 782818, 15414, 229100, 170114, 253253, 539771, 632063, 748683, 478198, 298995, 425458, 938153, 107467, 489622, 276326, 263888, 801605, 468356, 858648, 736576, 203521, 999119, 561144, 767974, 266351, 218158, 119317, 688426]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[694170, 302725, 284116, 103821, 498021, 42853, 400491, 531999, 737056, 353445, 944727, 890448, 53098, 243205, 570900, 352988, 495735, 953818, 260917, 38588, 633019, 368586, 535133, 303195, 49300, 133912, 640382, 409756, 824632, 679944, 170167, 635785, 944883, 101804, 524918, 821793, 529606, 21334, 324440, 471329, 681379, 10355, 871166, 95250, 311112, 749857, 344404, 328496, 496251, 691970, 617140, 335406, 729264, 771791, 963230, 442594, 732875, 675501, 613097, 945766, 909479, 986454, 538331, 680715, 844389, 991272, 336319, 704978, 93743, 877945, 621912, 614317, 584708, 363976, 545625, 462980, 733491, 973535, 166681, 72605, 867666, 30475, 266814, 654039, 590424, 154960, 460765, 408967, 164605, 463255, 540252, 707624, 936216, 801235, 352565, 671822, 884071, 213561, 797466, 181061]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1108,7 @@ Tiempo: 0.000997781753540039
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9, 32, 56, 58, 101, 101, 111, 146, 169, 180, 222, 234, 244, 267, 275, 275, 294, 301, 319, 320, 337, 338, 341, 354, 356, 361, 365, 371, 390, 407, 411, 427, 428, 431, 432, 433, 435, 436, 474, 487, 525, 531, 549, 553, 560, 575, 592, 601, 602, 604, 605, 612, 615, 629, 644, 645, 676, 695, 700, 710, 712, 719, 730, 734, 753, 758, 759, 779, 780, 789, 791, 803, 813, 820, 843, 854, 877, 878, 892, 901, 902, 909, 914, 916, 938, 940, 950, 953, 955, 961, 963, 968, 973, 982, 984, 986, 995, 1002, 1006, 1008]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9, 44, 81, 82, 92, 94, 116, 123, 130, 130, 141, 145, 152, 161, 174, 189, 194, 218, 218, 229, 237, 240, 259, 267, 270, 285, 303, 344, 347, 355, 376, 381, 383, 395, 395, 399, 400, 401, 414, 450, 457, 497, 506, 513, 531, 537, 553, 559, 559, 567, 589, 599, 609, 636, 648, 665, 666, 670, 689, 690, 700, 726, 728, 742, 746, 771, 779, 788, 796, 799, 812, 817, 818, 819, 825, 829, 840, 844, 853, 867, 872, 881, 882, 906, 909, 909, 910, 916, 921, 934, 936, 938, 942, 958, 960, 961, 963, 1008, 1037, 1046]
 </pre></div>
 </div>
 </div>

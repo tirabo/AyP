@@ -467,7 +467,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;turtle._Screen at 0x1e62c0cdee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;turtle._Screen at 0x1f5f21926d0&gt;
 </pre></div>
 </div>
 </div>
@@ -497,13 +497,13 @@ document.write(`
     <span class="n">left</span><span class="p">(</span><span class="mi">170</span><span class="p">)</span>
 <span class="n">end_fill</span><span class="p">()</span>
 <span class="n">hideturtle</span><span class="p">()</span>
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>El ejemplo ilustra algunas pocas funciones definidas en este módulo.</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reset()</span></code> : vuelve la ventana al estado original.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">color()</span></code> : el primer parámetro nos da el color del lápiz y el segundo parámetro el color de relleno.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">penup()</span></code> : “levanta” el lápiz para no dibujar cuando se mueve.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">goto(x,</span> <span class="pre">y)</span></code> : envía la tortuga  a la coordenada <span class="math notranslate nohighlight">\((x, y)\)</span>.</p></li>
@@ -514,7 +514,6 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">left(g)</span></code> : girar a la izquierda <span class="math notranslate nohighlight">\(g\)</span> grados.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">end_fill()</span></code> : rellenar y terminar el rellenado.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hideturtle()</span></code> : esconder la tortuga.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">exitonclick()</span></code> : cuando se hace click sobre la ventana, se cierra.</p></li>
 </ul>
 <p>Hagamos una lista de algunas instrucciones de la biblioteca Turtle que utilizaremos en esta clase y la próxima.</p>
 <ul class="simple">
@@ -541,32 +540,30 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>En  general conviene poner al final la instrucción <code class="docutils literal notranslate"><span class="pre">exitonclick()</span></code> pues nos permite cerrar la ventana de dibujo al cliquearla.</p>
 <p>En la celda de arriba utilizamos una instrucción nueva <code class="docutils literal notranslate"><span class="pre">width()</span></code> que nos permite definir el grosor del lápiz.</p>
 <p>Si deseamos siempre iniciar la pantalla con un lápiz de grosor <code class="docutils literal notranslate"><span class="pre">5</span></code> deberemos poner siempre las dos líneas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Screen</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Ahora hagamos de nuevo el dibujo y vamos a resaltar la observación anterior dejando una línea en blanco entre esos dos fragmentos del programa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Screen</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -575,14 +572,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># dibuja la L</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">exitonclick</span><span class="p">()</span> <span class="c1"># cierra la ventana al hacer click</span>
 </pre></div>
 </div>
 </div>
@@ -595,7 +591,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">bgcolor(&#39;green&#39;)</span>
 <span class="sd">color(&#39;red&#39;)</span>
@@ -644,25 +640,24 @@ document.write(`
 </pre></div>
 </div>
 <p>El parámetro <code class="docutils literal notranslate"><span class="pre">n</span></code> es un entero positivo. Esta instrucción se “lee”: <em>hacer n veces las siguientes instrucciones</em>.</p>
+<p>Comencemos la pizarra de dibujo:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pantalla inicial</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>(por alguna razón a veces debemos ejecutar dos veces la celda anterior)</p>
+<p>Ahora dibujemos el cuadrado:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cuadrado 100 x 100</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -674,9 +669,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
 
 <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">left</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
@@ -692,16 +688,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># triángulo equilátero</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -722,13 +716,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;yellow&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Ahora podemos resolver el ejercicio:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 
@@ -737,8 +736,6 @@ document.write(`
     <span class="n">color</span><span class="p">(</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">]))</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -752,8 +749,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 
@@ -764,8 +761,6 @@ document.write(`
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -779,8 +774,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># nuevo dibujo</span>
@@ -791,8 +786,6 @@ document.write(`
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -801,8 +794,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># nuevo dibujo, versión 2</span>
@@ -814,8 +807,6 @@ document.write(`
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>   
 </pre></div>
 </div>
 </div>
@@ -829,8 +820,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># anteojos verdes</span>
@@ -841,9 +832,7 @@ document.write(`
 <span class="n">forward</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>   
+    <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -858,8 +847,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial</span>
-<span class="kn">from</span> <span class="nn">turtle</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">Screen</span><span class="p">()</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># el asterisco</span>
@@ -868,9 +857,7 @@ document.write(`
     <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">backward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">hideturtle</span><span class="p">()</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>   
+<span class="n">hideturtle</span><span class="p">()</span>   
 </pre></div>
 </div>
 </div>
@@ -880,9 +867,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pizarra_vacia</span><span class="p">():</span>
-    <span class="c1"># Define una pizarra vacía, con fondo blanco, y el lápiz dibujando con grosor 5</span>
-    <span class="n">Screen</span><span class="p">()</span>
-    <span class="n">setup</span> <span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+    <span class="c1"># pre: debe existir una pizarra activa.</span>
+    <span class="c1"># post: deja la pizarra vacía, con fondo blanco, y el lápiz dibujando con grosor 5.</span>
+    <span class="n">reset</span><span class="p">()</span>
+    <span class="n">bgcolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
     <span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -903,12 +891,10 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuración pizarra inicial (usamos la función pizarra_vacia() que acabamos de definir)</span>
 <span class="n">pizarra_vacia</span><span class="p">()</span>
 
-<span class="c1"># Cículo aproximado por un polígono regular de 360 lados</span>
+<span class="c1"># Círculo aproximado por un polígono regular de 360 lados</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">360</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>   
 </pre></div>
 </div>
 </div>
@@ -923,8 +909,6 @@ document.write(`
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="c1"># ángulo de rotación</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -951,8 +935,6 @@ document.write(`
         <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># después de cada triángulo giramos 90°</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -973,8 +955,6 @@ document.write(`
         <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -994,8 +974,6 @@ document.write(`
         <span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="n">right</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1011,8 +989,6 @@ document.write(`
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1033,8 +1009,6 @@ document.write(`
         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
         <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
     <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1058,8 +1032,6 @@ document.write(`
             <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1082,8 +1054,6 @@ document.write(`
             <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1106,8 +1076,68 @@ document.write(`
             <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 
-<span class="n">exitonclick</span><span class="p">()</span>
+<span class="nn">File &lt;string&gt;:8,</span> in <span class="ni">forward</span><span class="nt">(distance)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\turtle.py:1638,</span> in <span class="ni">TNavigator.forward</span><span class="nt">(self, distance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span> <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1618</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Move the turtle forward by the specified distance.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1620</span><span class="sd">     Aliases: forward | fd</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1636</span><span class="sd">     (-50.00,0.00)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1637</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1638</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_go</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\turtle.py:1606,</span> in <span class="ni">TNavigator._go</span><span class="nt">(self, distance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1604</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;move turtle forward by specified distance&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1605</span> <span class="n">ende</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orient</span> <span class="o">*</span> <span class="n">distance</span>
+<span class="ne">-&gt; </span><span class="mi">1606</span> <span class="bp">self</span><span class="o">.</span><span class="n">_goto</span><span class="p">(</span><span class="n">ende</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\turtle.py:3196,</span> in <span class="ni">RawTurtle._goto</span><span class="nt">(self, end)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3193</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currentLine</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">42</span><span class="p">:</span> <span class="c1"># 42! answer to the ultimate question</span>
+<span class="g g-Whitespace">   </span><span class="mi">3194</span>                                <span class="c1"># of life, the universe and everything</span>
+<span class="g g-Whitespace">   </span><span class="mi">3195</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_newLine</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">3196</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\turtle.py:2664,</span> in <span class="ni">RawTurtle._update</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2662</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_drawturtle</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2663</span>     <span class="n">screen</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>                  <span class="c1"># TurtleScreenBase</span>
+<span class="ne">-&gt; </span><span class="mi">2664</span>     <span class="n">screen</span><span class="o">.</span><span class="n">_delay</span><span class="p">(</span><span class="n">screen</span><span class="o">.</span><span class="n">_delayvalue</span><span class="p">)</span> <span class="c1"># TurtleScreenBase</span>
+<span class="g g-Whitespace">   </span><span class="mi">2665</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2666</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_update_data</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\turtle.py:565,</span> in <span class="ni">TurtleScreenBase._delay</span><span class="nt">(self, delay)</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="k">def</span> <span class="nf">_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">564</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Delay subsequent canvas actions for delay ms.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">565</span>     <span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py:809,</span> in <span class="ni">Misc.after</span><span class="nt">(self, ms, func, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">801</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Call function once after given time.</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">803</span><span class="sd"> MS specifies the time in milliseconds. FUNC gives the</span>
+<span class="g g-Whitespace">    </span><span class="mi">804</span><span class="sd"> function which shall be called. Additional parameters</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span><span class="sd"> are given as parameters to the function call.  Return</span>
+<span class="g g-Whitespace">    </span><span class="mi">806</span><span class="sd"> identifier to cancel scheduling with after_cancel.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">func</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>     <span class="c1"># I&#39;d rather use time.sleep(ms*0.001)</span>
+<span class="ne">--&gt; </span><span class="mi">809</span>     <span class="bp">self</span><span class="o">.</span><span class="n">tk</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s1">&#39;after&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">811</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1130,8 +1160,14 @@ document.write(`
             <span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
         <span class="n">forward</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">right</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-
-<span class="n">exitonclick</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si queremos cerrar la ventana o cerramos directamente el cuaderno o ponemos la siguiente instrucción:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bye</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

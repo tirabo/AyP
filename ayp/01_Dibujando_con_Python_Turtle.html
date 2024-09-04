@@ -443,7 +443,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;turtle._Screen at 0x15a07c12e80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;turtle._Screen at 0x1f88911cf40&gt;
 </pre></div>
 </div>
 </div>
@@ -502,35 +502,22 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Finalmente,  si queremos cerrar la ventana de dibujo ejecutamos</p>
+<p>Si  queremos que la ventana se limpie y vuelva a su situación original utilizamos el comando <code class="docutils literal notranslate"><span class="pre">reset()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exitonclick</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>y luego  hacemos click en la ventana.</p>
 <p><strong>Ejercicio 1.</strong> Dibujar una escalera como la siguiente:</p>
 <p><img alt="image.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOMAAADVCAYAAAClrUf8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK+SURBVHhe7dYxbsMwFAVB/dz/zooMsEwRWLa8hmYavprgApz9sAEf97NO4MPECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGOGEmVnrPDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFi9sPacNrMrHUfr0pIjLzUI0ZP6jm+qRAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiJj9sDZvMDNr3Ycn9RwxvtkjRlfMf/imQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEixAgRYoQIMUKEGCFCjBAhRogQI0SIESLECBFihAgxQoQYIUKMECFGiBAjRIgRIsQIEWKECDFChBghYvbD2peYmbXu4+Ir5ktdHiPwN99UiBAjRIgRIsQIEWKECDFChBghQowQIUaIECNEiBEStu0XkYUsi42/f8EAAAAASUVORK5CYII=" /></p>
 <p>Como la consigna no es precisa (matemáticamente hablando) hay cierto grado de libertad en la  ubicación y tamaño de la escalera.</p>
-<p>Primero creemos la pizarra:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Screen</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;turtle._Screen at 0x1c7de641270&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Ahora dibujemos la escalera</p>
+<p>Dibujemos la escalera</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dibujar zigzag (un símbolo # al comienzo de una linea es un comentario, no se ejecuta)</span>
+<span class="n">reset</span><span class="p">()</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
@@ -828,7 +815,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>768
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>683
 </pre></div>
 </div>
 </div>
@@ -840,7 +827,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>648
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>576
 </pre></div>
 </div>
 </div>
@@ -873,7 +860,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>

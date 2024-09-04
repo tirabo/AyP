@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['reset()', "color('red', 'yellow')", 'penup()', 'goto(-100, 0)', 'pendown()']
+['pizarra_vacia()', '', 'speed(10)', 'left(90)', 'for _ in range(9):']
 ...
-['    forward(200)', '    left(170)', 'end_fill()', 'hideturtle()', 'exitonclick()']
+['        for _ in range(4):', '            forward(20)', '            right(90)', '        forward(20)', '    right(80)']
 -------------------
 

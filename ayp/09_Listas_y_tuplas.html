@@ -182,6 +182,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">Dibujando con  una tortuga</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">Practicando con Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">Variables y funciones aplicadas a Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_Primeros_pasos_en_Python.html">Primeros pasos con Python</a></li>
 
@@ -404,7 +406,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-lista-es-mutable">3. Una lista es mutable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arreglos-multidimensionales">4. Arreglos multidimensionales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recorriendo-una-lista">5. Recorriendo una lista</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-en-listas">6. Métodos en listas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-en-listas">6. Métodos en listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-leer-mas-adelante"><strong>Para leer más adelante.</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listas-como-argumentos-de-funciones">7. Listas como argumentos de funciones</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas">8. Tuplas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdad-de-listas-y-tuplas">9. Igualdad de listas y tuplas</a></li>
@@ -1090,11 +1095,12 @@ c
 </div>
 </div>
 <p>El  método <code class="docutils literal notranslate"><span class="pre">remove()</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>###<strong>Para leer más adelante.</strong></p>
-<p>Como un ejemplo de lo engañoso que pueden ser las referencias en listas veamos lo siguiente. Supongamos que   queremos crear un arreglo bidimensional de <span class="math notranslate nohighlight">\(3 \times 5\)</span> donde cada elemento es <code class="docutils literal notranslate"><span class="pre">0</span></code>. Estaríamos tentados de hacerlo de la siguiente forma:</p>
+<section id="para-leer-mas-adelante">
+<h3><strong>Para leer más adelante.</strong><a class="headerlink" href="#para-leer-mas-adelante" title="Link to this heading">#</a></h3>
+<p>Como un ejemplo de lo engañoso que pueden ser las referencias en listas veamos lo siguiente. Supongamos que   queremos crear un arreglo bidimensional de <span class="math notranslate nohighlight">\(3 \times 5\)</span> donde cada elemento es <span class="math notranslate nohighlight">\(0\)</span>. Estaríamos tentados de hacerlo de la siguiente forma:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lista</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span> <span class="c1"># 3 filas, 5 columnas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lista</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="c1"># 3 filas, 5 columnas</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1155,6 +1161,7 @@ c
 </div>
 </div>
 <p>En  la clase que viene veremos una forma mejor de hacerlo,  con listas por comprensión.</p>
+</section>
 </section>
 <section id="listas-como-argumentos-de-funciones">
 <h2>7. Listas como argumentos de funciones<a class="headerlink" href="#listas-como-argumentos-de-funciones" title="Link to this heading">#</a></h2>
@@ -1238,8 +1245,6 @@ None
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eliminar_encabezado_malo</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
     <span class="n">lista</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="c1"># ¡INCORRECTO! (lista en el cuerpo de  la función es una copia del lo que ha</span>
-    <span class="c1"># sido ingresado como parámetro)</span>
 
 <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
@@ -1255,7 +1260,7 @@ None
 </div>
 </div>
 </div>
-<p>El operador slice crea una nueva lista y la asignación hace que <code class="docutils literal notranslate"><span class="pre">lista</span></code> se refiera a esta nueva lista, pero eso no afecta a la lista que ingresó como parámetro. En  este caso, la función está creando una variable local llamada <code class="docutils literal notranslate"><span class="pre">lista</span></code>, pero esa variable local ya no es la misma referencia que la variable original <code class="docutils literal notranslate"><span class="pre">lista</span></code>.</p>
+<p>¿Qué es lo que pasa? <code class="docutils literal notranslate"><span class="pre">lista[1:]</span></code> crea una nueva lista y la asignación hace que <code class="docutils literal notranslate"><span class="pre">lista</span></code> se refiera a esta nueva lista, pero eso no afecta a la lista que ingresó como parámetro. En  este caso, la función está creando una variable local llamada <code class="docutils literal notranslate"><span class="pre">lista</span></code>, pero esa variable local ya no es la misma referencia que la variable original <code class="docutils literal notranslate"><span class="pre">lista</span></code>.</p>
 <p>Una alternativa para obtener lo que queremos sin modificar la lista original es escribir una función que cree y devuelva una nueva lista. Por ejemplo, <code class="docutils literal notranslate"><span class="pre">cola</span></code> devuelve todo menos el primer elemento de una lista:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1751,7 +1756,10 @@ True
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-lista-es-mutable">3. Una lista es mutable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arreglos-multidimensionales">4. Arreglos multidimensionales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recorriendo-una-lista">5. Recorriendo una lista</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-en-listas">6. Métodos en listas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-en-listas">6. Métodos en listas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-leer-mas-adelante"><strong>Para leer más adelante.</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listas-como-argumentos-de-funciones">7. Listas como argumentos de funciones</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuplas">8. Tuplas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdad-de-listas-y-tuplas">9. Igualdad de listas y tuplas</a></li>
