@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '15_Clases_y_objetos_ejemplos';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Input y output" href="16_Input_y_output.html" />
+    <link rel="prev" title="Clases y objetos" href="14_Clases_y_objetos.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">Dibujando con  una tortuga</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">Practicando con Turtle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">Variables y funciones aplicadas a Turtle</a></li>
@@ -199,6 +199,7 @@
 <li class="toctree-l1"><a class="reference internal" href="13_Recursion_%28continuacion%29.html">Recursión (2° parte)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="13.1_Numeros_notables.html">Los números notables (optativa)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_Clases_y_objetos.html">Clases y objetos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Clases y objetos: ejemplos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16_Input_y_output.html">Input y output</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="17_Archivos_CSV_XML_JSON_APIs.html">Interacción con archivos CSV, XML y JSON</a></li>
@@ -402,7 +403,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangulos">1. Rectángulos.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personas">2. Personas.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-tipo-abstracto-pila-y-su-implementacion">3. El tipo abstracto pila y  su implementación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-tipo-abstracto-pila-y-su-implementacion">3. El tipo abstracto pila y  su implementación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-comprobar-simbolos-balanceados">Aplicación: comprobar símbolos balanceados</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fracciones">4. Fracciones</a></li>
 </ul>
             </nav>
@@ -534,6 +538,7 @@ True
 </div>
 </div>
 </div>
+<p>Probemos un poco la clase con algunas instancias de ejemplos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pedro</span> <span class="o">=</span> <span class="n">Persona</span><span class="p">(</span><span class="s1">&#39;38678543&#39;</span><span class="p">)</span>
@@ -545,6 +550,14 @@ True
 <span class="nb">print</span><span class="p">(</span><span class="n">pedro</span><span class="o">.</span><span class="n">nombre_completo</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pedro</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pedro</span><span class="o">.</span><span class="n">nacimiento</span><span class="p">())</span>
+
+<span class="n">juan</span> <span class="o">=</span> <span class="n">Persona</span><span class="p">(</span><span class="s1">&#39;1234567&#39;</span><span class="p">)</span>
+<span class="n">juan</span><span class="o">.</span><span class="n">set_nombres</span><span class="p">(</span><span class="s1">&#39;Juan&#39;</span><span class="p">)</span>
+<span class="n">juan</span><span class="o">.</span><span class="n">set_apellidos</span><span class="p">(</span><span class="s1">&#39;Perez&#39;</span><span class="p">)</span>
+<span class="n">juan</span><span class="o">.</span><span class="n">set_fecha_de_nacimiento</span><span class="p">(</span><span class="s1">&#39;20-03-1996&#39;</span><span class="p">)</span>
+<span class="n">juan</span><span class="o">.</span><span class="n">set_celular</span><span class="p">(</span><span class="s1">&#39;3513321456&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Usuario:&#39;</span><span class="p">,</span><span class="n">juan</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Celular:&#39;</span><span class="p">,</span><span class="n">juan</span><span class="o">.</span><span class="n">celular</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -554,6 +567,9 @@ Pedro Luis
 Pedro Luis Ramirez
 Pedro Luis Ramirez (DNI: 38678543)
 23-03-1989
+
+Usuario: Juan Perez (DNI: 1234567)
+Celular: 3513321456
 </pre></div>
 </div>
 </div>
@@ -642,6 +658,7 @@ Pedro Luis Ramirez (DNI: 38678543)
 </div>
 </div>
 </div>
+<p>Lo  anterior no imprimió nada, lo que significa que la pila está vacía.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pila</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -655,6 +672,7 @@ Pedro Luis Ramirez (DNI: 38678543)
 </div>
 </div>
 </div>
+<p>Ahora la pila tiene un <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pila</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -673,7 +691,6 @@ Pedro Luis Ramirez (DNI: 38678543)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pila</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pila</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pila</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -681,12 +698,25 @@ Pedro Luis Ramirez (DNI: 38678543)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|5|
 |3|
 |1|
-
-False
 </pre></div>
 </div>
 </div>
 </div>
+<p>Fuimos agregando  números  y la pila ahora es de tres elementos. En la parte superior está el <code class="docutils literal notranslate"><span class="pre">5</span></code>, luego siguen el <code class="docutils literal notranslate"><span class="pre">3</span></code> y el <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Obviamente la pila no está vacía:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pila</span><span class="o">.</span><span class="n">is_empty</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora creemos una nueva pila, agreguemos <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code> y <code class="docutils literal notranslate"><span class="pre">5</span></code>,  en ese orden. Imprimamos la pila, luego saquemos el elemento superior e imprimamos de nuevo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pila</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
@@ -712,6 +742,7 @@ False
 </div>
 </div>
 </div>
+<p>Finalmente,  saquemos los dos elementos que quedan y veamos que efectivamente la pila queda vacía.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pila</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -728,7 +759,9 @@ False
 </div>
 </div>
 </div>
-<p>Daremos un ejemplo de la utilidad del TAD pila. Podemos preguntarnos si en una expresión matemática los paréntesis, corchetes y llaves están balanceados y si la expresión es correcta. El problema se resuelve con una pila.</p>
+<section id="aplicacion-comprobar-simbolos-balanceados">
+<h3>Aplicación: comprobar símbolos balanceados<a class="headerlink" href="#aplicacion-comprobar-simbolos-balanceados" title="Link to this heading">#</a></h3>
+<p>Daremos un ejemplo de la utilidad del TAD pila. Podemos preguntarnos si en una expresión matemática los paréntesis, corchetes y llaves están balanceados y de esa forma comprobar que la fórmula es correcta. El problema se resuelve con una pila.</p>
 <p>Observar que los paréntesis corchetes y llaves no pueden ser ubicados arbitrariamente: cada símbolo que abre  debe cerrarse y no se pueden intercalar un símbolo de un tipo antes que cierre uno de otro tipo. Por ejemplo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="n">c</span> <span class="o">*</span> <span class="p">(</span> <span class="n">d</span> <span class="o">-</span> <span class="n">e</span><span class="p">)]</span>
 </pre></div>
@@ -795,13 +828,13 @@ False
     <span class="k">for</span> <span class="n">caracter</span> <span class="ow">in</span> <span class="n">cadena</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span> <span class="ow">or</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span> <span class="ow">or</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span>
             <span class="n">pila</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">caracter</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">pila</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Se agrega&#39;</span><span class="p">,</span> <span class="n">caracter</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pila</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span> <span class="ow">or</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;}&#39;</span> <span class="ow">or</span> <span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">pila</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
                 <span class="k">return</span> <span class="kc">False</span>
             <span class="k">elif</span> <span class="p">(</span><span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span> <span class="ow">and</span> <span class="n">pila</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;}&#39;</span> <span class="ow">and</span> <span class="n">pila</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">caracter</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span> <span class="ow">and</span> <span class="n">pila</span><span class="o">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">):</span>
-                <span class="n">pila</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">pila</span><span class="p">)</span>
+                <span class="n">crt</span> <span class="o">=</span> <span class="n">pila</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Se quita&#39;</span><span class="p">,</span> <span class="n">crt</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pila</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">pila</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
@@ -811,6 +844,7 @@ False
 </div>
 </div>
 </div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">balanceados()</span></code> imprime la pila cada vez que se agrega o se quita un símbolo. Veamos algunos ejemplos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tests</span>
@@ -819,15 +853,23 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|(|
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega ( 
+ |(|
 
+Se quita ( 
+ 
+Se agrega [ 
+ |[|
 
+Se agrega ( 
+ |(|
 |[|
 
-|(|
-|[|
+Se quita ( 
+ |[|
 
-|[|
+Se quita [ 
+ 
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -842,9 +884,11 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|(|
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega ( 
+ |(|
 
-|[|
+Se agrega [ 
+ |[|
 |(|
 
 False
@@ -859,10 +903,13 @@ False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|(|
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega ( 
+ |(|
 
-
-|(|
+Se quita ( 
+ 
+Se agrega ( 
+ |(|
 
 False
 </pre></div>
@@ -872,50 +919,83 @@ False
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">balanceados</span><span class="p">(</span><span class="s1">&#39;x * ((a + b) * c)&#39;</span><span class="p">))</span> <span class="c1"># True</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">balanceados</span><span class="p">(</span><span class="s1">&#39;x * ((a + b)))&#39;</span><span class="p">))</span> <span class="c1"># False</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">balanceados</span><span class="p">(</span><span class="s1">&#39;x * [[[a + b]] * y&#39;</span><span class="p">))</span> <span class="c1"># False</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|(|
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega ( 
+ |(|
 
+Se agrega ( 
+ |(|
 |(|
-|(|
 
-|(|
+Se quita ( 
+ |(|
 
-
+Se quita ( 
+ 
 True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">balanceados</span><span class="p">(</span><span class="s1">&#39;x * ((a + b)))&#39;</span><span class="p">))</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega ( 
+ |(|
+
+Se agrega ( 
+ |(|
 |(|
 
-|(|
-|(|
+Se quita ( 
+ |(|
 
-|(|
-
-
+Se quita ( 
+ 
 False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">balanceados</span><span class="p">(</span><span class="s1">&#39;x * [[[a + b]] * y&#39;</span><span class="p">))</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Se agrega [ 
+ |[|
+
+Se agrega [ 
+ |[|
 |[|
 
+Se agrega [ 
+ |[|
 |[|
 |[|
 
-|[|
-|[|
-|[|
-
-|[|
+Se quita [ 
+ |[|
 |[|
 
-|[|
+Se quita [ 
+ |[|
 
 False
 </pre></div>
 </div>
 </div>
 </div>
-<p>El algorimo anterior tiene el inconveniente de que no se detiene hasta que no termina de recorrer toda la cadena, pese a que se puede detener antes cuando encuentra una pila vacía sin haber terminado el recorrido, o cuando el caracter de cierre no coincide con el de apertura en la cima de la pila. Esto se puede arreglar de dos formas. La primera es agregando <code class="docutils literal notranslate"><span class="pre">return</span></code> en esas ocaciones:</p>
+<p>El algorimo anterior tiene el inconveniente de que no se detiene hasta que no termina de recorrer toda la cadena, pese a que se puede detener antes cuando encuentra una pila vacía y debe sacar un símbolo, o cuando el carácter de cierre no coincide con el de apertura en la cima de la pila. Esto se puede arreglar de dos formas. La primera es agregando <code class="docutils literal notranslate"><span class="pre">return</span></code> en esas ocasiones:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">balanceados</span><span class="p">(</span><span class="n">cadena</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -995,6 +1075,7 @@ False
 </div>
 </div>
 </section>
+</section>
 <section id="fracciones">
 <h2>4. Fracciones<a class="headerlink" href="#fracciones" title="Link to this heading">#</a></h2>
 <p>Otro  ejemplo interesante de definición de clases es el de las fracciones, que llamamos <code class="docutils literal notranslate"><span class="pre">Racional</span></code> por su correspondencia con los números racionales</p>
@@ -1039,6 +1120,7 @@ False
 </div>
 </div>
 </div>
+<p>Ejemplifiquemos el uso de la clase:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span> <span class="o">=</span> <span class="n">Racional</span><span class="p">()</span>
@@ -1219,6 +1301,24 @@ True
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="14_Clases_y_objetos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Clases y objetos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="16_Input_y_output.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Input y output</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1237,7 +1337,10 @@ True
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangulos">1. Rectángulos.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personas">2. Personas.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-tipo-abstracto-pila-y-su-implementacion">3. El tipo abstracto pila y  su implementación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-tipo-abstracto-pila-y-su-implementacion">3. El tipo abstracto pila y  su implementación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-comprobar-simbolos-balanceados">Aplicación: comprobar símbolos balanceados</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fracciones">4. Fracciones</a></li>
 </ul>
   </nav></div>
