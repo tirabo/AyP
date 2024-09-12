@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>5. Recursión &#8212; Algoritmos y Programación</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '20.5_Recursion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Tipos abstractos de datos (clases)" href="20.6_Clases_objetos.html" />
+    <link rel="prev" title="4. Cadenas, listas, diccionarios y conjuntos" href="20.4_Cadenas_listas_diccionarios_conjuntos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Algoritmos y Programación - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Algoritmos y Programación - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Algoritmos y Programación: introducción
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dibujando con Turtle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">1. Dibujando con Python turtle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">2. Practicando con Turtle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">3. Variables y funciones aplicadas a Turtle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendiendo lo básico</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04_Primeros_pasos_en_Python.html">4. Primeros pasos con Python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="05_Funciones.html">5. Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Condicionales.html">6. Condicionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Ciclos.html">7. Ciclos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Cadenas.html">8. Cadenas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Listas_y_tuplas.html">9. Listas y tuplas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Diccionarios_y_conjuntos.html">10. Dicionarios y conjuntos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Invariantes_Desarrollos_en_base_b.html">11. Invariantes</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recursión</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="12_Recursion.html">12. Recursión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Recursion_%28continuacion%29.html">13. Recursión (2° parte)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13.1_Numeros_notables.html">13.1 Los números notables (optativa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clases y objetos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="14_Clases_y_objetos.html">14. Clases y objetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_Clases_y_objetos_ejemplos.html">15. Clases y objetos: ejemplos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Input y output</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="16_Input_y_output.html">16. Input y output</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="17_Archivos_CSV_XML_JSON_APIs.html">17. Interacción con archivos CSV, XML y JSON</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numpy y Pyplot</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="18_NumPy.html">18. Introducción a NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_PyPlot.html">19. Introducción a Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19.1_Ejemplo_recorridos_GPX.html">19. 1 Análisis y graficación de recorridos GPX (optativa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="20.0_Ejercicios_resueltos.html">Ejercicios resueltos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="20.1_Python_turtle.html">1. Dibujando con la tortuga</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.2_Expresiones_funciones_condicionales.html">2. Expresiones, funciones y condicionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.3_Ciclos_fechas.html">3. Ciclos, tratamiento de fechas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.4_Cadenas_listas_diccionarios_conjuntos.html">4. Cadenas, listas, diccionarios y conjuntos</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5. Recursión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.6_Clases_objetos.html">6. Tipos abstractos de datos (clases)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.7_Entrada_y_salida.html">7. Lectura y escritura de archivos</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F20.5_Recursion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/20.5_Recursion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>5. Recursión</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="recursion">
+<h1>5. Recursión<a class="headerlink" href="#recursion" title="Permalink to this heading">#</a></h1>
+<p>Después de hacer esta práctica te recomiendo que visites la página</p>
+<p><a class="reference external" href="https://inventwithpython.com/blog/2021/10/04/22-examples-of-recursive-functions-in-python/">https://inventwithpython.com/blog/2021/10/04/22-examples-of-recursive-functions-in-python/</a></p>
+<p>donde hay 22 ejemplos de recursión muy interesantes desde búsqueda binaria y números combinatorios, pasando por la Torres de Hanoi, y el problema de las 8 reinas, también hay ejemplos de algoritmos recursivos para dibujar fractales.</p>
+<p><strong>Ejercicio 1.</strong> Implementar las siguientes funciones con dominio en <span class="math notranslate nohighlight">\(\mathbb N\)</span>, en forma recursiva:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+f(n) = \left\{
+\begin{matrix}
+1 &amp;\quad\text{si $n=1$,} \\
+2f(n-1) + n^2&amp;\quad\text{si $n&gt;1$.}
+\end{matrix}    
+\right.
+\qquad
+g(n) = \left\{
+\begin{matrix}
+-1 &amp;\quad\text{si $n=1$,} \\
+g(n-1)^2 + 2n-3&amp;\quad\text{si $n&gt;1$.}
+\end{matrix}    
+\right.
+\end{equation*}\]</div>
+<p><strong>Ejercicio 2.</strong></p>
+<ol class="arabic simple">
+<li><p>Implementar las siguientes funciones en forma recursiva:</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+f(n) &amp;= \left\{
+\begin{matrix}
+1 &amp;\quad\text{si $n=0$,} \\
+-2&amp;\quad\text{si $n=1$,} \\
+2f(n-1) + f(n-2)^2+ n^2&amp;\quad\text{si $n$ entero y $n&gt;1$.}
+\end{matrix}    
+\right.
+\\
+\\
+g(n) &amp;= \left\{
+\begin{matrix}
+-1 &amp;\quad\text{si $n=2$,} \\
+5 &amp;\quad\text{si $n=3$,} \\
+g(n-1)^2 + 2g(n-2) + 2n-3&amp;\quad\text{si $n&gt;3$, entero.}
+\end{matrix}    
+\right.
+\end{align*}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Calcular <span class="math notranslate nohighlight">\(f(10)\)</span> y <span class="math notranslate nohighlight">\(g(10)\)</span>.</p></li>
+</ol>
+<p><strong>Ejerccio 3.</strong> Programe una función recursiva para verificar si una palabra es un palíndromo, es decir una palabra que se lee igual de izquierda a derecha  que de derecha a izquierda.</p>
+<p>Ejemplos.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo('ab')</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo('anana')</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo(aabbaa)</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo(aabaa)</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo('neuquen')</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">palindromo('Neuquen')</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ol>
+<p><strong>Ejercicio 4.</strong> Implemente las siguientes funciones recursivas.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+h(n) = \left\{
+    \begin{matrix}
+    1 &amp;\quad \text{si $n=0$,}\\
+    h(n-1)h(n-1) &amp; \text{si $n&gt;0$.}
+    \end{matrix}
+    \right.
+\end{equation*}\]</div>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+g(x, y) = \left\{
+    \begin{matrix}
+    0 &amp;\quad \text{si $x=0$,}\\
+    0 &amp;\quad \text{si $y=0$,}\\
+    1 + g(x-1,y-1) &amp; \text{si $x&gt;0$ e $y &gt;0$.}
+    \end{matrix}
+    \right.
+\end{equation*}\]</div>
+<p>Observar que esta función tiene un dominio muy particular. Especificar el  dominio  y hacer un <code class="docutils literal notranslate"><span class="pre">assert</span></code> para verificar que los parámetros <code class="docutils literal notranslate"><span class="pre">x</span></code> e <code class="docutils literal notranslate"><span class="pre">y</span></code> sean correctos.</p>
+<ol class="arabic simple" start="3">
+<li></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+f(i) = \left\{
+    \begin{matrix}
+    i &amp;\quad \text{si $i=0$,}\\
+    i + f(i-1) &amp;\quad \text{si $$ es par,}\\
+    f(i-1) &amp; \text{si $i$ es impar.}
+    \end{matrix}
+    \right.
+\end{equation*}\]</div>
+<ol class="arabic simple" start="4">
+<li></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+t(i) = \left\{
+    \begin{matrix}
+    1 &amp;\quad \text{si $i=0$,}\\
+    i + \operatorname{min}(2t(\lfloor {i/2}\rfloor), 3t(\lfloor i/3 \rfloor) &amp; \text{si $i&gt;0$.}
+    \end{matrix}
+    \right.
+\end{equation*}\]</div>
+<p>Donde si <span class="math notranslate nohighlight">\(x \in \mathbb R\)</span>, el símbolo <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> denota el <em>piso</em> de <span class="math notranslate nohighlight">\(x\)</span>,  es decir el mayor entero menor o igual a <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><strong>Ejercicio 5.</strong> <span class="math notranslate nohighlight">\(x^n\)</span>: elevar un número <span class="math notranslate nohighlight">\(x\)</span> a una potencia entera no negativa se puede resolver con un ciclo <code class="docutils literal notranslate"><span class="pre">for</span></code> que devuelva <span class="math notranslate nohighlight">\(x \cdot x \cdots\ x\cdot  x\)</span>, <span class="math notranslate nohighlight">\(n\)</span> veces, pero en este ejercicio se pide resolverlo definiendo una función que utiliza “recursión en <span class="math notranslate nohighlight">\(n\)</span>”, considerando <span class="math notranslate nohighlight">\(2\)</span> casos: cuando <span class="math notranslate nohighlight">\(n\)</span> es <span class="math notranslate nohighlight">\(0\)</span> y cuando <span class="math notranslate nohighlight">\(n\)</span> es mayor que <span class="math notranslate nohighlight">\(0\)</span>. Luego de resolverlo, resulta interesante pensar en la precondición de esta función: ¿qué debería satisfacer <span class="math notranslate nohighlight">\(n\)</span>? ¿qué debería satisfacer <span class="math notranslate nohighlight">\(x\)</span>? ¿qué ocurre si ambos son <span class="math notranslate nohighlight">\(0\)</span>?</p>
+<p><strong>Ejercicio 6.</strong> Dados <span class="math notranslate nohighlight">\(n\)</span> y <span class="math notranslate nohighlight">\(m\)</span>  enteros no negativos y <span class="math notranslate nohighlight">\(m\)</span> no nulo, dar una función recursiva que divida <span class="math notranslate nohighlight">\(n\)</span> por <span class="math notranslate nohighlight">\(m\)</span> y devuelva su cociente (sin usar <code class="docutils literal notranslate"><span class="pre">//</span></code>, ni <code class="docutils literal notranslate"><span class="pre">/</span></code>). Los dos casos a considerar son <span class="math notranslate nohighlight">\(n &lt; m\)</span> (este sería el caso base) y <span class="math notranslate nohighlight">\(n \ge m\)</span>. Nuevamente es interesante pensar en la precondición.
+<em>Observación.</em> La división es  una “resta generalizada”, por ejemplo <span class="math notranslate nohighlight">\(23\)</span> dividido <span class="math notranslate nohighlight">\(5\)</span> es <span class="math notranslate nohighlight">\(4\)</span>, pues <span class="math notranslate nohighlight">\(5\)</span> “cabe” cuatro veces en  <span class="math notranslate nohighlight">\(23\)</span> o dicho de otra forma: puedo restar <span class="math notranslate nohighlight">\(4\)</span> veces el <span class="math notranslate nohighlight">\(5\)</span> a <span class="math notranslate nohighlight">\(23\)</span> y lo que me queda (que es el resto) es positivo. Si resto una vez más el <span class="math notranslate nohighlight">\(5\)</span> obtengo un número negativo.</p>
+<p>Más formalmente, si <span class="math notranslate nohighlight">\(n \ge m\)</span>, vale la siguiente fórmula:
+$<span class="math notranslate nohighlight">\(
+n / m = (n - m) / m \;+ \;1,
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>/$ denota la división entera.</p>
+<p><strong>Ejercicio 7.</strong> Ahora una definición que devuelva  cociente y resto de una división entera. Para ello podés utilizar <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">a,</span> <span class="pre">b</span></code> para devolver dos valores. En la llamada recursiva podés escribir <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">div(n,</span> <span class="pre">m)</span></code> para que guarde el primer valor que devuelve en <code class="docutils literal notranslate"><span class="pre">x</span></code>, el segundo en <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>El  ejercicio es un poco engañoso respecto a como usar recursión para obtener el resto, pues el resto permanece invariante en todo el cálculo.  Es decir, el resto de <span class="math notranslate nohighlight">\(n/m\)</span> es igual al resto de <span class="math notranslate nohighlight">\((n-m)/m\)</span> (división entera).</p>
+<p><strong>Ejercicio 8</strong>. Definir una función recursiva que calcula el divisor común mayor entre dos números enteros no negativos. Hay varias formas de analizar los casos, una posibilidad sencilla es considerar 3 casos.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mcd(n,</span> <span class="pre">0)</span> <span class="pre">=</span> <span class="pre">mcd(0,</span> <span class="pre">n)</span> <span class="pre">=</span> <span class="pre">n</span></code>     si <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> (caso base),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">mcd(n-m,m)</span></code> si <code class="docutils literal notranslate"><span class="pre">n&gt;=</span> <span class="pre">m</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">mcd(n,m-n)</span></code> si <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;</span> <span class="pre">m</span></code>.</p></li>
+</ul>
+<p>¿Cuál es la precondición?</p>
+<p><strong>Ejercicio 9.</strong> El divisor común mayor <code class="docutils literal notranslate"><span class="pre">d</span></code> entre dos números enteros <code class="docutils literal notranslate"><span class="pre">n</span></code> y <code class="docutils literal notranslate"><span class="pre">m</span></code> satisface que existen <code class="docutils literal notranslate"><span class="pre">a</span></code> y <code class="docutils literal notranslate"><span class="pre">b</span></code> enteros tales que <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">m</span></code>. Definí <code class="docutils literal notranslate"><span class="pre">mcd2()</span></code> que devuelva una terna (acordate que podés escribir <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">i,</span> <span class="pre">j,</span> <span class="pre">k</span></code> y <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">mcd2(n,m)</span></code>). La idea es que si <code class="docutils literal notranslate"><span class="pre">d</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> es el resultado de <code class="docutils literal notranslate"><span class="pre">mcd2(n,m)</span></code> entonces <code class="docutils literal notranslate"><span class="pre">d</span></code> es el divisor común mayor y <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">m</span></code>.</p>
+<p>Observar que los casos base son cuando <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">0</span></code>, en ese caso el máximo común divisor es <code class="docutils literal notranslate"><span class="pre">m</span></code> y <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">m</span></code> (en realidad lo que multiplica a <code class="docutils literal notranslate"><span class="pre">n</span></code> podría ser cualquier número). Análogamente, cuando <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">==</span> <span class="pre">0</span></code>, el máximo común divisor es <code class="docutils literal notranslate"><span class="pre">n</span></code> y <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">0</span> <span class="pre">*</span> <span class="pre">m</span></code>.</p>
+<p>Para el caso recursivo tener en cuenta</p>
+<ul class="simple">
+<li><p>si <code class="docutils literal notranslate"><span class="pre">n&gt;=</span> <span class="pre">m</span></code>, entonces  <code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">mcd(n-m,m)</span></code> y si <code class="docutils literal notranslate"><span class="pre">mcd(n-m,m)</span> <span class="pre">=</span> <span class="pre">a0</span> <span class="pre">*</span> <span class="pre">(n</span> <span class="pre">-</span> <span class="pre">m)</span> <span class="pre">+</span> <span class="pre">b0</span> <span class="pre">*</span> <span class="pre">m</span></code>, entonces <code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">a0</span> <span class="pre">*</span> <span class="pre">n</span>&#160; <span class="pre">+</span> <span class="pre">(b0</span> <span class="pre">-</span> <span class="pre">a0)</span> <span class="pre">*</span> <span class="pre">m</span></code>.</p></li>
+<li><p>Análogamente, si <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&lt;</span> <span class="pre">m</span></code>, entonces <code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">mcd(n,m-n)</span></code> y si <code class="docutils literal notranslate"><span class="pre">mcd(n,m-n)</span> <span class="pre">=</span> <span class="pre">a0</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">b0</span> <span class="pre">*</span> <span class="pre">(m</span> <span class="pre">-</span> <span class="pre">n)</span></code>, entonces <code class="docutils literal notranslate"><span class="pre">mcd(n,m)</span> <span class="pre">=</span> <span class="pre">(a0</span> <span class="pre">-b0)</span> <span class="pre">*</span> <span class="pre">n</span>&#160; <span class="pre">+</span> <span class="pre">b0</span> <span class="pre">*</span> <span class="pre">m</span></code>.</p></li>
+</ul>
+<p><strong>Ejercicio 10.</strong> Para <span class="math notranslate nohighlight">\(n\)</span> entero no negativo y <span class="math notranslate nohighlight">\(m\)</span> entero entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(n\)</span> se define el número combinatorio <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{m}\)</span> o coeficiente binomial, que es de gran importancia en matemática.</p>
+<p>Aparece en el desarrollo de la potencia del binomio:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+(a+b)^n = \sum_{k=0}^n  \binom{n}{k} a^{n-k}b^{k},
+\end{equation*}\]</div>
+<p>de donde surge el nombre <em>coeficiente binomial</em>. También se utiliza extensivamente en el cálculo de probabilidades puesto que  <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{m}\)</span> mide el número de combinaciones (de allí <em>número combinatorio</em>) posibles de  <span class="math notranslate nohighlight">\(m\)</span> elementos eligiendo libremente de un conjunto donde hay <span class="math notranslate nohighlight">\(n\)</span> elementos.</p>
+<p>Un definición que podemos encontrar en la literatura del número combinatorio es la siguiente:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\binom{n}{m} = \frac{n!}{(n-m)!m!}.
+\end{equation*}\]</div>
+<p>El teorema de Pascal dice que ese número también se puede calcular de manera recursiva. Por la fórmula anterior <span class="math notranslate nohighlight">\(\displaystyle\binom{n}{0} = \binom{n}{n} = 1\)</span>. Si <span class="math notranslate nohighlight">\(m&gt;0\)</span>, entonces <span class="math notranslate nohighlight">\(n\)</span> también debe serlo pues <span class="math notranslate nohighlight">\(n \ge m\)</span>. En tal caso el teorema dice que</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\binom{n}{m} = \binom{n-1}{m-1} + \binom{n-1}{m}.
+\end{equation*}\]</div>
+<p>Utilizar este teorema para dar una definición recursiva del número combinatorio . ¿Cuál es la precondición?</p>
+<p>##Recursión sobre listas</p>
+<p><strong>Ejercicio 11.</strong> Dar una versión recursiva de la definición de mínimo de una lista de enteros. Si la lista es vacía devuelve <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><strong>Ejercicio 12.</strong> Dar una versión recursiva de la definición de la función <code class="docutils literal notranslate"><span class="pre">son_todos_primos()</span></code> de una lista. Debe hacerse una función auxiliar  <code class="docutils literal notranslate"><span class="pre">es_primo()</span></code> (que puede ser recursiva o no) que indique si un número es primo.</p>
+<p><strong>Ejercicio 13.</strong> En una versión de la búsqueda lineal de un elemento en una lista se compara el elemento buscado  secuencialmente con cada elemento de la lista y se continúa hasta que se lo encuentra, en ese caso se devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code>. Si no se encuentra ninguna coincidencia se devuelve <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Una implementación iterativa de búsqueda lineal es la siguiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">busqueda_lineal</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Implementar búqueda lineal de manera recursiva.</p>
+<p><strong>Ejercicio 14.</strong> Una versión más avanzada de búsqueda lineal devuelve un entero: si la primera vez que aparece el elemento en la lista se encuentra en la posición <code class="docutils literal notranslate"><span class="pre">k</span></code>, devuelve <code class="docutils literal notranslate"><span class="pre">k</span></code>. Si el elemento no se encuentra en la lista entonces devuelve  <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>Implementar este algoritmo. Debe tenerse en cuenta que se debe implementar una función  <code class="docutils literal notranslate"><span class="pre">busqueda_lineal_rec2(elem,</span> <span class="pre">lista:</span> <span class="pre">list,</span> <span class="pre">indice:</span> <span class="pre">int)</span></code> que recibe tres parámetros, la lista no cambia a lo largo de la recursión y si <code class="docutils literal notranslate"><span class="pre">indice</span> <span class="pre">&lt;</span> <span class="pre">len(lista)</span></code> devuelve la posición de la primera ocurrencia de <code class="docutils literal notranslate"><span class="pre">elem</span></code> desde <code class="docutils literal notranslate"><span class="pre">lista[indice]</span></code> hasta el final.</p>
+<p><strong>Ejercicio 15.</strong></p>
+<p>La búsqueda binaria es el otro método de búsqueda habitual para una lista de valores ordenada. La búsqueda binaria devuelve la posición en la lista del elemento buscado y en caso de que el elemento no se encuentre devuelve -1. Si el elemento se encuentra en varias posiciones, devuelve alguna de ellas. La búsqueda binaria es mucho más rápida que la búsqueda lineal, pero para que funcione los elementos de la lista deben estar ya ordenados.</p>
+<p>Supongamos que la lista está en orden ascendente. Una búsqueda binaria compara primero el elemento buscado con el elemento situado en el centro de la lista. Considere los tres casos siguientes:</p>
+<ul class="simple">
+<li><p>Si la clave es menor que el elemento de la mitad de la lista, hay que seguir buscando la clave sólo en la primera mitad de la lista.</p></li>
+<li><p>Si la clave es igual al elemento central de la lista, la búsqueda termina con una coincidencia.</p></li>
+<li><p>Si la clave es mayor que el elemento central de la lista, hay que seguir buscando la clave sólo en la segunda mitad de la lista.</p></li>
+</ul>
+<p>Dar una versión recursiva de la búsqueda binaria: debe llevar dos parámetros adicionales que indican entre cuáles posiciones de la lista se está buscando. Es decir la signatura de la función debe ser algo así:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">busqueda_binaria</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="n">izq</span><span class="p">,</span> <span class="n">der</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>y para obtener el resultado deseado debemos ejecutar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">busqueda_binaria</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><em>Ejemplos.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve <code class="docutils literal notranslate"><span class="pre">7</span></code>. Observar que <code class="docutils literal notranslate"><span class="pre">7</span></code> es la posición de la segunda ocurrencia de <code class="docutils literal notranslate"><span class="pre">19</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>devuelve <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p><strong>Otros ejemplos</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">busqueda_binaria(19,</span> <span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">11,</span> <span class="pre">13,</span> <span class="pre">16,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">21],</span> <span class="pre">0,</span> <span class="pre">6)</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">6</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">busqueda_binaria(13,</span> <span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">11,</span> <span class="pre">13,</span> <span class="pre">16,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">21],</span> <span class="pre">2,</span> <span class="pre">6)</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">busqueda_binaria(13,</span> <span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">11,</span> <span class="pre">13,</span> <span class="pre">16,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">19,</span> <span class="pre">21],</span> <span class="pre">5,</span> <span class="pre">8)</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">busqueda_binaria</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="n">izq</span><span class="p">,</span> <span class="n">der</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: elem es entero, lista  es una lista ordenada ascendente de enteros, 0 &lt;= izq &lt;= der &lt; len(lista). len(lista) &gt; 0.</span>
+<span class="sd">    post: devuelve la coordenada donde está elem entre izq y der. Si elem  no está,  devuelve -1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">izq</span> <span class="o">==</span> <span class="n">der</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="n">lista</span><span class="p">[</span><span class="n">izq</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">izq</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">medio</span> <span class="o">=</span> <span class="p">(</span><span class="n">izq</span> <span class="o">+</span> <span class="n">der</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="n">lista</span><span class="p">[</span><span class="n">medio</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">medio</span>
+        <span class="k">elif</span> <span class="n">elem</span> <span class="o">&gt;</span> <span class="n">lista</span><span class="p">[</span><span class="n">medio</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">busqueda_binaria</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="n">medio</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">der</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">busqueda_binaria</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">lista</span><span class="p">,</span> <span class="n">izq</span><span class="p">,</span> <span class="n">medio</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># devuelve 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># devuelve 1.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># devuelve 4.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">busqueda_binaria</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="c1"># devuelve -1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+1
+4
+-1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="20.4_Cadenas_listas_diccionarios_conjuntos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4. Cadenas, listas, diccionarios y conjuntos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20.6_Clases_objetos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6. Tipos abstractos de datos (clases)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Tiraboschi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

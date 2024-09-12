@@ -1,0 +1,1580 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>3. Ciclos, tratamiento de fechas &#8212; Algoritmos y Programación</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '20.3_Ciclos_fechas';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Cadenas, listas, diccionarios y conjuntos" href="20.4_Cadenas_listas_diccionarios_conjuntos.html" />
+    <link rel="prev" title="2. Expresiones, funciones y condicionales" href="20.2_Expresiones_funciones_condicionales.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Algoritmos y Programación - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Algoritmos y Programación - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Algoritmos y Programación: introducción
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Dibujando con Turtle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Dibujando_con_Python_Turtle.html">1. Dibujando con Python turtle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Mas_dibujos_con_Turtle.html">2. Practicando con Turtle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Variables_Funciones_en_Turtle.html">3. Variables y funciones aplicadas a Turtle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendiendo lo básico</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04_Primeros_pasos_en_Python.html">4. Primeros pasos con Python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="05_Funciones.html">5. Funciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Condicionales.html">6. Condicionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Ciclos.html">7. Ciclos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Cadenas.html">8. Cadenas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Listas_y_tuplas.html">9. Listas y tuplas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Diccionarios_y_conjuntos.html">10. Dicionarios y conjuntos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Invariantes_Desarrollos_en_base_b.html">11. Invariantes</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recursión</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="12_Recursion.html">12. Recursión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Recursion_%28continuacion%29.html">13. Recursión (2° parte)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13.1_Numeros_notables.html">13.1 Los números notables (optativa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clases y objetos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="14_Clases_y_objetos.html">14. Clases y objetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_Clases_y_objetos_ejemplos.html">15. Clases y objetos: ejemplos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Input y output</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="16_Input_y_output.html">16. Input y output</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="17_Archivos_CSV_XML_JSON_APIs.html">17. Interacción con archivos CSV, XML y JSON</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numpy y Pyplot</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="18_NumPy.html">18. Introducción a NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19_PyPlot.html">19. Introducción a Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19.1_Ejemplo_recorridos_GPX.html">19. 1 Análisis y graficación de recorridos GPX (optativa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="20.0_Ejercicios_resueltos.html">Ejercicios resueltos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="20.1_Python_turtle.html">1. Dibujando con la tortuga</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.2_Expresiones_funciones_condicionales.html">2. Expresiones, funciones y condicionales</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3. Ciclos, tratamiento de fechas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.4_Cadenas_listas_diccionarios_conjuntos.html">4. Cadenas, listas, diccionarios y conjuntos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.5_Recursion.html">5. Recursión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.6_Clases_objetos.html">6. Tipos abstractos de datos (clases)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.7_Entrada_y_salida.html">7. Lectura y escritura de archivos</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F20.3_Ciclos_fechas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/20.3_Ciclos_fechas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Ciclos, tratamiento de fechas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-ciclos-while">1° Parte. Ciclos <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-tratamiento-de-fechas">2° Parte. Tratamiento de fechas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ciclos-tratamiento-de-fechas">
+<h1>3. Ciclos, tratamiento de fechas<a class="headerlink" href="#ciclos-tratamiento-de-fechas" title="Permalink to this heading">#</a></h1>
+<section id="parte-ciclos-while">
+<h2>1° Parte. Ciclos <code class="docutils literal notranslate"><span class="pre">while</span></code><a class="headerlink" href="#parte-ciclos-while" title="Permalink to this heading">#</a></h2>
+<p><strong>Ejercicio 1.</strong> Si se ingresa <span class="math notranslate nohighlight">\(7\)</span> como dividendo y <span class="math notranslate nohighlight">\(3\)</span> como divisor ¿cuántas veces se repite la ejecución del cuerpo del <code class="docutils literal notranslate"><span class="pre">while</span></code> en el programa siguiente? ¿Y si los números fueran <span class="math notranslate nohighlight">\(48\)</span> y <span class="math notranslate nohighlight">\(9\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cociente</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">div</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: num &gt;= 0 and div &gt;= 1</span>
+<span class="sd">    post: devuelve el cociente de la división de num por div</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coc</span><span class="p">,</span> <span class="n">resto</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">num</span>
+    <span class="k">while</span> <span class="n">div</span> <span class="o">&lt;=</span> <span class="n">resto</span><span class="p">:</span>
+        <span class="n">coc</span><span class="p">,</span> <span class="n">resto</span> <span class="o">=</span> <span class="n">coc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">resto</span> <span class="o">-</span> <span class="n">div</span>
+    <span class="k">return</span> <span class="n">coc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Respuesta:</strong> para <span class="math notranslate nohighlight">\(7\)</span> y <span class="math notranslate nohighlight">\(3\)</span>, dos veces, para <span class="math notranslate nohighlight">\(48\)</span> y <span class="math notranslate nohighlight">\(9\)</span> son <span class="math notranslate nohighlight">\(5\)</span> veces.</p>
+<p><strong>Ejercicio 2.</strong> ¿Qué ocurre con la función <code class="docutils literal notranslate"><span class="pre">cociente()</span></code> del ejercicio 1 si <code class="docutils literal notranslate"><span class="pre">num</span></code> es negativo y <code class="docutils literal notranslate"><span class="pre">div</span></code> positivo? ¿Y si <code class="docutils literal notranslate"><span class="pre">num</span></code> es positivo y <code class="docutils literal notranslate"><span class="pre">div</span></code> negativo? ¿Y si ambos son negativos?</p>
+<p><strong>Respuesta:</strong> en el caso que <code class="docutils literal notranslate"><span class="pre">num</span></code> es negativo y <code class="docutils literal notranslate"><span class="pre">div</span></code> positivo, la condición del ciclo no se cumple nunca y por lo tanto se devuelve <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">num</span></code> es positivo y <code class="docutils literal notranslate"><span class="pre">div</span></code> negativo, se cumple en la primera iteración que <code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">&lt;=</span> <span class="pre">num</span></code> y luego  romo se hace <code class="docutils literal notranslate"><span class="pre">resto</span> <span class="pre">=</span> <span class="pre">resto</span> <span class="pre">-</span> <span class="pre">div</span></code>,  el nuevo resto es más grande cada vez y por lo tanto el ciclo no termina.</p>
+<p>Si ambos son negativos y <code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">&lt;=</span> <span class="pre">resto</span></code> el ciclo no termina porque <code class="docutils literal notranslate"><span class="pre">resto</span></code> va aumentando. Si <code class="docutils literal notranslate"><span class="pre">div</span> <span class="pre">&gt;</span> <span class="pre">resto</span></code>,  devuelve  <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p><strong>Ejercicio 3.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">es_primo()</span></code> que determina si un número entero dado es primo o no.</p>
+<p><strong>Resouesta:</strong> una forma de  comprobar que un número <span class="math notranslate nohighlight">\(n\)</span> es primo es ver que para todo <span class="math notranslate nohighlight">\(d\)</span> tal que <span class="math notranslate nohighlight">\(1 &lt; d &lt; n\)</span>, se cumple que <span class="math notranslate nohighlight">\(d\)</span> no divide a <span class="math notranslate nohighlight">\(n\)</span>. La siguiente función implementa esta verificación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">es_primo</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: type(n) == int y n &gt; 0.</span>
+<span class="sd">    pos: Devuelve True si n es primo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;n debe ser un entero positivo&#39;</span>
+    <span class="n">primo</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">primo</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">primo</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">primo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">23</span><span class="p">))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">es_primo</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+False
+True
+True
+False
+True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<p>El programa anterior es correcto, pero en computación es importante también la complejidad del programa,  es decir, esencialmente, el tiempo que tarda. En este aspecto el programa se puede mejorar haciendo dos cambios:</p>
+<ol class="arabic simple">
+<li><p>Si un número <span class="math notranslate nohighlight">\(n\)</span> no es primo,  entonces hay un divisor <span class="math notranslate nohighlight">\(d\)</span> tal que <span class="math notranslate nohighlight">\(1 &lt; d \le \sqrt{n}\)</span>. Luego el <code class="docutils literal notranslate"><span class="pre">while</span></code> debería comprobar hasta  <code class="docutils literal notranslate"><span class="pre">n**0.5</span></code>.</p></li>
+<li><p>Si descubrimos dentro  del <code class="docutils literal notranslate"><span class="pre">while</span></code> un divisor de <code class="docutils literal notranslate"><span class="pre">n</span></code>,  entonces podemos cortar el ciclo.</p></li>
+</ol>
+<p>Teniendo esto en cuenta reescribimos el código.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">es_primo</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: type(n) == int y n &gt; 0.</span>
+<span class="sd">    pos: Devuelve True si n es primo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;n debe ser un entero positivo&#39;</span>
+    <span class="n">primo</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">primo</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">**</span><span class="mf">0.5</span> <span class="ow">and</span> <span class="n">primo</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">primo</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">primo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 4.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">factor_pequeno()</span></code> que dado un número entero mayor igual que <span class="math notranslate nohighlight">\(2\)</span> devuelve su factor primo más pequeño.</p>
+<p><strong>Respuesta:</strong> dado <span class="math notranslate nohighlight">\(n \ge 2\)</span>,  el divisor más pequeño  mayor que <span class="math notranslate nohighlight">\(1\)</span> es primo. Por lo tanto, la función solo encontrará el divisor más pequeño (que será primo).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución </span>
+<span class="k">def</span> <span class="nf">factor_pequeno</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre:  n entero, n &gt;= 2</span>
+<span class="sd">    post: devuelve d &gt; 1 tal que d | n y  si d&#39; &gt; 1 y d&#39; | n,  entonces d &lt;= d&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser un entero &gt;= 2&#39;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span>  <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">factor_pequeno</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factor_pequeno</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factor_pequeno</span><span class="p">(</span><span class="mi">161</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factor_pequeno</span><span class="p">(</span><span class="mi">100911</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+2
+7
+3
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 5.</strong> Escribir en la siguiente celda de código una función que dado un número entero imprime todos sus factores primos en orden creciente.</p>
+<p><strong>Respuesta:</strong> podemos usar la función del ejercicio anterior</p>
+<ol class="arabic simple">
+<li><p>Dado <span class="math notranslate nohighlight">\(n\)</span> encontramos <span class="math notranslate nohighlight">\(p\)</span> el factor primo más pequeño de <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Ahora,  el factor más pequeño de <span class="math notranslate nohighlight">\(n/p\)</span> es el siguiente factor más pequeño (y por lo tanto primo) de <span class="math notranslate nohighlight">\(n\)</span>,</p></li>
+<li><p>Repetimos el esquema del paso 2.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">factores_primos</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: n entero,  n &gt;= 2</span>
+<span class="sd">    pos: imprime todos los factores primos de n, con multiplicidad</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser un entero &gt;= 2&#39;</span>
+    <span class="n">cociente</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">cociente</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">factor_pequeno</span><span class="p">(</span><span class="n">cociente</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">cociente</span> <span class="o">=</span> <span class="n">cociente</span> <span class="o">//</span> <span class="n">d</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factores_primos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">factores_primos</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">factores_primos</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">factores_primos</span><span class="p">(</span><span class="mi">37</span><span class="p">)</span>
+<span class="n">factores_primos</span><span class="p">(</span><span class="mi">100911</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 
+2 2 2 
+2 3 5 
+37 
+3 33637 
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 6.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">max_div_propio()</span></code> que dado un número entero positivo devuelve su máximo divisor propio (<em>propio</em>  = que no sea el mismo número).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">max_div_propio</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">divisor</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">divisor</span> <span class="o">=</span> <span class="n">d</span>
+        <span class="n">d</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span>  <span class="n">divisor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">27</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">100911</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+6
+9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33637
+</pre></div>
+</div>
+</div>
+</div>
+<p>También se podría hacer el programa en base a la siguiente observación: dado <span class="math notranslate nohighlight">\(n\)</span>, si <span class="math notranslate nohighlight">\(d &gt; 1\)</span> es el divisor más pequeño de <span class="math notranslate nohighlight">\(n\)</span>, entonces <span class="math notranslate nohighlight">\(n/d\)</span>  es el divisor propio más grande  de <span class="math notranslate nohighlight">\(n\)</span>. Por lo tanto,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max_div_propio</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">//</span> <span class="n">factor_pequeno</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">27</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_div_propio</span><span class="p">(</span><span class="mi">100911</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+6
+9
+33637
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 7.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">raiz_cuadrada_entera()</span></code> que dado un número <span class="math notranslate nohighlight">\(n\)</span>  devuelve la raíz cuadrada entera de  <span class="math notranslate nohighlight">\(n\)</span>. La raíz cuadrada entera de <span class="math notranslate nohighlight">\(n\)</span>, es el número entero <span class="math notranslate nohighlight">\(k\)</span> tal que <span class="math notranslate nohighlight">\(k^2 \le n &lt; (k+1)^2\)</span>. En la solución no se debe utilizar la función <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> ni potencias fraccionarias.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">raiz_cuadrada_entera</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: n entero &gt;= 0</span>
+<span class="sd">    pos: devuelve k tal que k**2 &lt;= n &lt; (k+1)**2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser un entero no negativo&#39;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">k</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raiz_cuadrada_entera</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raiz_cuadrada_entera</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raiz_cuadrada_entera</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span> <span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raiz_cuadrada_entera</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="c1"># 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raiz_cuadrada_entera</span><span class="p">(</span><span class="mi">100911</span><span class="p">))</span> <span class="c1"># 317</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+2
+4
+5
+317
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 8.</strong> Escribir en la siguiente celda de código una función que calcula el máximo común divisor de dos números naturales positivos dados.</p>
+<p><strong>Respuesta:</strong> la forma más directa de  calcular el  máximo común divisor de dos números es recorriendo todos los números no mayores a ambos y ver cual es el mayor que divide a ambos,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">mcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: a, b enteros no negativos, alguno de los dos != 0</span>
+<span class="sd">    pos: devuelve mcd(a,b)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;los parámetro deben ser enteros no negativos&#39;</span>
+    <span class="k">assert</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;uno de los parámetros debe ser positivo&#39;</span>
+    <span class="n">max_com_div</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">cota</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">cota</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">%</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">max_com_div</span> <span class="o">=</span> <span class="n">d</span>
+        <span class="n">d</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span>  <span class="n">max_com_div</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">17</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">28458</span><span class="p">,</span> <span class="mi">100911</span><span class="p">))</span>
+<span class="c1"># print(mcd(195654654656356356, 17563563563563677865465635)) # correr esta linea tarda mucho</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+8
+6
+1
+3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este es un programa correcto pero muy malo a nivel de eficiencia. Debemos utilizar un poco de teoría de la divisibilidad para mejorar, notablemente la eficiencia. El  resultado que utilizaremos es el siguiente: sean <span class="math notranslate nohighlight">\(a, b\)</span> no negativos y supongamos que <span class="math notranslate nohighlight">\(b&gt;0\)</span>, entonces si</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+a = bq + r,
+\end{equation*}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(0\le r &lt;b\)</span> (algoritmo de división),  vale lo siguiente</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\operatorname{mcd}(a,b) = \operatorname{mcd}(b, r).
+\end{equation*}\]</div>
+<p>Aplicando repetidas veces este  razonamiento reducimos el cálculo del <span class="math notranslate nohighlight">\(\operatorname{mcd}\)</span> a números cada vez más pequeños. Más aún,  en algún momento llegaremos a que el resto de dividir es <span class="math notranslate nohighlight">\(0\)</span> y  ahí usaremos la propiedad de que si <span class="math notranslate nohighlight">\(a &gt;0\)</span>,  entonces <span class="math notranslate nohighlight">\(
+\operatorname{mcd}(a, 0) = a\)</span>.</p>
+<p>Implementemos el algoritmo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: a, b enteros no negativos, alguno de los dos != 0</span>
+<span class="sd">    pos: devuelve mcd(a,b)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;los parámetro deben ser enteros no negativos&#39;</span>
+    <span class="k">assert</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;uno de los parámetros debe ser positivo&#39;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este algoritmo es llamado el <em>algoritmo de Euclides.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">17</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">28458</span><span class="p">,</span> <span class="mi">100911</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd</span><span class="p">(</span><span class="mi">195654654656356356</span><span class="p">,</span> <span class="mi">17563563563563677865465635</span><span class="p">))</span>  <span class="c1"># correr esta linea es casi instantaneo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+8
+6
+1
+3
+3
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 9.</strong> Escribir en la siguiente celda de código una función que  solicita el ingreso de una respuesta <code class="docutils literal notranslate"><span class="pre">s</span></code> o <code class="docutils literal notranslate"><span class="pre">n</span></code> (por “sí” o “no”? y que ante una respuesta diferente reporta un error y vuelve a solicitar se ingrese  <code class="docutils literal notranslate"><span class="pre">s</span></code> o <code class="docutils literal notranslate"><span class="pre">n</span></code> y sigue de esta manera hasta que finalmente se ha ingresado  <code class="docutils literal notranslate"><span class="pre">s</span></code> o <code class="docutils literal notranslate"><span class="pre">n</span></code>. La función devuelve lo último ingresado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">si_o_no</span><span class="p">():</span>
+    <span class="n">respuesta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ingrese &#39;s&#39; o &#39;n&#39;: &quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">respuesta</span> <span class="o">!=</span> <span class="s1">&#39;s&#39;</span> <span class="ow">and</span> <span class="n">respuesta</span> <span class="o">!=</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span>
+        <span class="n">respuesta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;ingrese &#39;s&#39; o &#39;n&#39;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">respuesta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># si_o_no() # descomentar estalínea para probar la función</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 10.</strong>  Escribir en la siguiente celda de código una función que devuelve los valores de la siguiente función:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+f(0) = 1,  \qquad f(n) = 2\cdot f(n-1) + n^2\quad \text{si $n\ge 1$}
+\end{equation*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>  <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span><span class="mi">0</span>
+    <span class="n">devuelve</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span>  <span class="n">devuelve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 29</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span> <span class="c1"># 7516191742</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+10
+29
+7516191742
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 11.</strong>  Escribir en la siguiente celda de código una función que devuelve los valores de la siguiente función:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+g(0) = 5,  \qquad g(n) = \frac12\cdot g(n-1)^2 + 2n\quad \text{si $n\ge 1$}
+\end{equation*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>  <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span><span class="mi">0</span>
+    <span class="n">devuelve</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span>  <span class="n">devuelve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="s1">&#39;) =&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Debe imprimir</span>
+<span class="sd">g( 0 ) = 5</span>
+<span class="sd">g( 1 ) = 14.5</span>
+<span class="sd">g( 2 ) = 109.125</span>
+<span class="sd">g( 3 ) = 5960.1328125</span>
+<span class="sd">g( 4 ) = 17761599.57131958</span>
+<span class="sd">g( 5 ) = 157737209665959.94</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g( 0 ) = 5
+g( 1 ) = 14.5
+g( 2 ) = 109.125
+g( 3 ) = 5960.1328125
+g( 4 ) = 17761599.57131958
+g( 5 ) = 157737209665959.94
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nDebe imprimir\ng( 0 ) = 5\ng( 1 ) = 14.5\ng( 2 ) = 109.125\ng( 3 ) = 5960.1328125\ng( 4 ) = 17761599.57131958\ng( 5 ) = 157737209665959.94\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 12.</strong>  Escribir en la siguiente celda de código una función que devuelve los valores de la siguiente función:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+ h(n) = \sum_{i=1}^{n} 2\cdot \operatorname{log}(i) + n\quad \text{si $n\ge 1$}
+\end{equation*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log10</span>
+
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pos: h(n)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser entero  &gt;= 0&#39;</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">suma</span>  <span class="o">=</span> <span class="n">suma</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">log10</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">suma</span> <span class="o">+</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 2.6020599913279625</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 4.556302500767288</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 6.760422483423212</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># 9.15836249209525</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+2.6020599913279625
+4.556302500767288
+6.760422483423212
+9.15836249209525
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 13.</strong>  Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">t()</span></code> que devuelve los valores de la siguiente función:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+ \sum_{k=0}^n k^2 a^k  \quad \text{si $n\ge 0, a \in \mathbb R$.}
+\end{equation*}\]</div>
+<p>En  este caso la función debe depender de dos parámetros: <span class="math notranslate nohighlight">\(n\)</span> de tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> y <span class="math notranslate nohighlight">\(a\)</span> de tipo <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">t</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: n entero no negativo, a float</span>
+<span class="sd">    pos: devuelve \sum_{k=0}^n k**2 * a**k</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;el primer parámetro debe ser entero no negativo y el segundo parámetro debe ser float&#39;</span>
+    <span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">suma</span>  <span class="o">=</span> <span class="n">suma</span> <span class="o">+</span> <span class="n">k</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="o">**</span><span class="n">k</span>
+    <span class="k">return</span> <span class="n">suma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">6</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># 1146</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">))</span> <span class="c1"># 1081.3828125</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+1146
+1081.3828125
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 14.</strong> Sea <span class="math notranslate nohighlight">\(\{a_n\}_{n\in\mathbb N_0}\)</span> la sucesión definida recursivamente por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+a_0=1, \\a_1=2, \\a_{n} = \operatorname{log}(3n)a_{n-1}+(n-1)(n-3)a_{n-2}, \text{ para $n\geq 2$}.
+\end{cases}\end{split}\]</div>
+<p>Escribir en la siguiente celda de código una función <code class="docutils literal notranslate"><span class="pre">f</span></code> que implemente la sucesión (es decir <code class="docutils literal notranslate"><span class="pre">f(n)</span></code> <span class="math notranslate nohighlight">\(= a_n\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">from</span>  <span class="nn">math</span> <span class="kn">import</span> <span class="n">log10</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: n entero y n &gt;= 0</span>
+<span class="sd">    post: devuelve a_n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39; el parámetro debe ser un entero &gt;= 0&#39;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># a_n = log10(3*n)*a_(n-1) + (n-1)*(n-3)*a_(n-2)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="c1"># x == a_0, y == a_1</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># x es el anterior del anterior de a_k</span>
+            <span class="c1"># y es el anterior de a_k</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">log10</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">x</span>
+            <span class="c1"># x es el anterior del anterior de a_(k+1)</span>
+            <span class="c1"># y es el anterior de a_(k+1)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 0.5563025007672873</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+0.5563025007672873
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 15.</strong> Sea <span class="math notranslate nohighlight">\(\{a_n\}_{n\in\mathbb N_0}\)</span> la sucesión definida recursivamente por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+   a_0=0, \\a_1=7, \\a_{n} = 5a_{n-1}+(1/2)^na_{n-2}, \text{ para $n\geq 2$}.
+  \end{cases}\end{split}\]</div>
+<p>Escribir en la siguiente celda de código una función <code class="docutils literal notranslate"><span class="pre">f</span></code> que implemente la sucesión (es decir <code class="docutils literal notranslate"><span class="pre">f(n)</span></code> <span class="math notranslate nohighlight">\(= a_n\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: n entero y n &gt;= 0</span>
+<span class="sd">    post: devuelve a_n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39; el parámetro debe ser un entero &gt;= 0&#39;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># a_n = 5*a_(n-1) + ((1/2)**n * a_(n-2)</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="c1"># x == a_0, y == a_1</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># x es el anterior del anterior de a_k</span>
+            <span class="c1"># y es el anterior de a_k</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span>  <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">k</span> <span class="o">*</span> <span class="n">x</span>
+            <span class="c1"># x es el anterior del anterior de a_(k+1)</span>
+            <span class="c1"># y es el anterior de a_(k+1)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 10.25</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># 51.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="c1"># 258.140625</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+7
+10.25
+51.5
+258.140625
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parte-tratamiento-de-fechas">
+<h2>2° Parte. Tratamiento de fechas<a class="headerlink" href="#parte-tratamiento-de-fechas" title="Permalink to this heading">#</a></h2>
+<p><strong>Ejercicio 16.</strong>  Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">numero_dias()</span></code> que  reciba una fecha (tres parámetros: día, mes y año) y devuelva el número de días a de la era moderna hasta ese día. Es decir, si le paso como fecha 1/1/1 me devuelve 1. Si le paso como fecha 31/12/1 devuelve 365. Si le paso 1/1/2 devuelve 366. Si le paso como fecha 4/7/1995, devuelve 728478. Si le paso 15/4/2020 devuelve 737530.</p>
+<p><strong>Respuesta:</strong> vamos a necesitar saber que años son bisiestos. Un  posible función para averiguarlo es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Un  año es bisiesto si es divisible por 4, salvo que seamúltiplo de 100  y  no de 400</span>
+<span class="k">def</span> <span class="nf">es_bisiesto</span><span class="p">(</span><span class="n">año</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">año</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">año</span> <span class="o">&gt;=</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser un entero positivo&#39;</span>
+    <span class="n">bis</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">año</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">año</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">bis</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">año</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">bis</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">bis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>También hay una forma más corta de definir la función:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">es_bisiesto</span><span class="p">(</span><span class="n">año</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">año</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">año</span> <span class="o">&gt;=</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser un entero positivo&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">año</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span>  <span class="ow">and</span> <span class="n">año</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">año</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por otro lado, debemos comprobar que la fecha ingresada es correcta. Es decir la función para averiguar el número de días recibirá 3 parámetros <code class="docutils literal notranslate"><span class="pre">dd</span></code>, <code class="docutils literal notranslate"><span class="pre">mm</span></code>, <code class="docutils literal notranslate"><span class="pre">aaaa</span></code> y debemos comprobar si ese día existe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fecha_correcta</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">):</span>
+    <span class="n">dias_meses</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">devuelve</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">aaaa</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="p">(</span><span class="n">mm</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">mm</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dd</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># ahora 1 &lt;= aaa, 1 &lt;= mm &lt;= 12 y dd &gt;=1</span>
+        <span class="k">if</span> <span class="n">mm</span> <span class="o">!=</span><span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">dd</span> <span class="o">&gt;</span> <span class="n">dias_meses</span><span class="p">[</span><span class="n">mm</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">devuelve</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">es_bisiesto</span><span class="p">(</span><span class="n">aaaa</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dd</span> <span class="o">&gt;</span> <span class="mi">29</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">aaaa</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dd</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">):</span>
+                <span class="n">devuelve</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">devuelve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O una versión más corta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fecha_correcta</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">):</span>
+    <span class="n">dias_meses</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">devuelve</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">aaaa</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">mm</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dd</span> <span class="o">&lt;=</span> <span class="n">dias_meses</span><span class="p">[</span><span class="n">mm</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">mm</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">aaaa</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dd</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">:</span>
+        <span class="n">devuelve</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">devuelve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finalmente, escribimos la función solicitada:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numero_dias</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">fecha_correcta</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">),</span> <span class="s1">&#39;fecha incorrecta&#39;</span>
+    <span class="n">dias_meses</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">devolver</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">año</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">año</span><span class="p">):</span>
+            <span class="n">devolver</span> <span class="o">=</span> <span class="n">devolver</span> <span class="o">+</span> <span class="mi">366</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">devolver</span> <span class="o">=</span> <span class="n">devolver</span> <span class="o">+</span> <span class="mi">365</span>
+    <span class="k">for</span> <span class="n">mes</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mm</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mes</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">devolver</span> <span class="o">=</span> <span class="n">devolver</span> <span class="o">+</span> <span class="n">dias_meses</span><span class="p">[</span><span class="n">mes</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">mes</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">aaaa</span><span class="p">):</span>
+            <span class="n">devolver</span> <span class="o">=</span> <span class="n">devolver</span> <span class="o">+</span> <span class="mi">28</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">devolver</span> <span class="o">=</span> <span class="n">devolver</span> <span class="o">+</span> <span class="mi">29</span>
+
+    <span class="k">return</span>  <span class="n">devolver</span> <span class="o">+</span> <span class="n">dd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># 365</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># 366</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1995</span><span class="p">))</span> <span class="c1"># 728478</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2020</span><span class="p">))</span> <span class="c1"># 737530</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+365
+366
+728478
+737530
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 17.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">dia_semana()</span></code> que reciba una fecha (tres parámetros) y devuelve una cadena de caracteres: <code class="docutils literal notranslate"><span class="pre">lunes</span></code> o <code class="docutils literal notranslate"><span class="pre">martes</span></code> o <code class="docutils literal notranslate"><span class="pre">miércoles</span></code> o … o <code class="docutils literal notranslate"><span class="pre">domingo</span></code>,  que es el día de la semana correspondiente.</p>
+<p>Para hacer la función debe considerarse que el 1 de enero del año 1 fue lunes y luego utilizar la función <code class="docutils literal notranslate"><span class="pre">numero_dias()</span></code> definida anteriormente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">dia_semana</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">):</span>
+    <span class="c1"># pre:</span>
+    <span class="c1"># post:</span>
+    <span class="c1"># assert ...</span>
+    <span class="c1"># Hoy es martes 16/04/2024</span>
+    <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">n_dias</span> <span class="o">=</span> <span class="n">numero_dias</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">aaaa</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;martes&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;miércoles&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;jueves&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;viernes&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;sábado&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;domingo&#39;</span>
+    <span class="k">elif</span> <span class="n">n_dias</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">dia</span> <span class="o">=</span> <span class="s1">&#39;lunes&#39;</span>
+    <span class="k">return</span> <span class="n">dia</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dia_semana</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2024</span><span class="p">))</span> <span class="c1"># martes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dia_semana</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2024</span><span class="p">))</span> <span class="c1"># viernes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dia_semana</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># lunes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dia_semana</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2004</span><span class="p">))</span> <span class="c1"># miércoles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>martes
+viernes
+lunes
+miércoles
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 18.</strong> Escribir en la siguiente celda de código un programa que solicita que se ingrese la fecha e imprima el día de la semana utilizando la función del ejercicio anterior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="c1"># Descomentar lo que sigue para probar el código</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">dia = int(input(&#39;dia=&#39;))</span>
+<span class="sd">mes = int(input(&#39;mes=&#39;))</span>
+<span class="sd">año = int(input(&#39;año=&#39;))</span>
+<span class="sd">print(dia_semana(dia, mes, año))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\ndia = int(input(&#39;dia=&#39;))\nmes = int(input(&#39;mes=&#39;))\naño = int(input(&#39;año=&#39;))\nprint(dia_semana(dia, mes, año))\n&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 19.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">fecha_x_numero_dias()</span></code> que dado un número de días a contar a partir del 31/12/añocero devuelve una terna dia/mes/año. Por ejemplo, si lo llamo con 728478 devuelve 4/7/1995. Si le paso 737530 me devuelve 15/4/2020.</p>
+<p><strong>Rspuesta:</strong> este es un programa más complicado que los anteriores. Supongamos que todos lo años tengan 365 días y todos los meses tengan 30  días. La idea es ir descontando a los días que se ingresan como input, los años x 365 hasta que queden menos de 365 días y eso determina el año. Con los meses algo parecido, ir descontando 30  días por mes hasta que queden menos de 30  días, lo cual determinará el mes. Los días que quedan determinan el día correspondiente a la fecha. El algoritmo se complica un poco debido a los años bisiestos y a que los meses tienen duración varibale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fecha_x_numero_dias</span><span class="p">(</span><span class="n">n_dias</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="c1"># pre: n_dias &gt;= 1</span>
+    <span class="c1"># post: devuelve la fecha</span>
+    <span class="n">año</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">numero_dias</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">numero_dias</span> <span class="o">&lt;</span> <span class="n">n_dias</span><span class="p">:</span>
+        <span class="n">numero_dias_anterior</span> <span class="o">=</span> <span class="n">numero_dias</span>
+        <span class="k">if</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">año</span><span class="p">):</span>
+            <span class="n">numero_dias</span> <span class="o">+=</span> <span class="mi">366</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">numero_dias</span> <span class="o">+=</span> <span class="mi">365</span>
+        <span class="n">año</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">año</span> <span class="o">=</span> <span class="n">año</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">numero_dias</span> <span class="o">=</span> <span class="n">numero_dias_anterior</span>
+    <span class="n">dias_meses</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+    <span class="n">meses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ene&#39;</span><span class="p">,</span> <span class="s1">&#39;feb&#39;</span><span class="p">,</span> <span class="s1">&#39;mar&#39;</span><span class="p">,</span> <span class="s1">&#39;abr&#39;</span><span class="p">,</span> <span class="s1">&#39;may&#39;</span><span class="p">,</span> <span class="s1">&#39;jun&#39;</span><span class="p">,</span> <span class="s1">&#39;jul&#39;</span><span class="p">,</span> <span class="s1">&#39;ago&#39;</span><span class="p">,</span> <span class="s1">&#39;sep&#39;</span><span class="p">,</span> <span class="s1">&#39;oct&#39;</span><span class="p">,</span> <span class="s1">&#39;nov&#39;</span><span class="p">,</span> <span class="s1">&#39;dic&#39;</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">mes</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">numero_dias</span> <span class="o">&lt;</span> <span class="n">n_dias</span><span class="p">:</span>
+        <span class="n">numero_dias_anterior</span> <span class="o">=</span> <span class="n">numero_dias</span>
+        <span class="k">if</span> <span class="n">mes</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">es_bisiesto</span><span class="p">(</span><span class="n">año</span><span class="p">):</span>
+                <span class="n">numero_dias</span> <span class="o">+=</span> <span class="mi">29</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">numero_dias</span> <span class="o">+=</span> <span class="mi">28</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">numero_dias</span> <span class="o">+=</span> <span class="n">dias_meses</span><span class="p">[</span><span class="n">mes</span><span class="p">]</span>
+        <span class="n">mes</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">numero_dias</span> <span class="o">=</span> <span class="n">numero_dias_anterior</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">dia</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dia</span> <span class="o">=</span> <span class="n">n_dias</span> <span class="o">-</span> <span class="n">numero_dias</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dia</span><span class="p">,</span>  <span class="n">mes</span><span class="p">,</span>  <span class="n">año</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 1/1/1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">365</span><span class="p">))</span> <span class="c1"># 31/12/1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">365</span><span class="p">))</span> <span class="c1"># 1/1/2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="p">))</span> <span class="c1"># 1/1/3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="p">))</span> <span class="c1"># 1/1/4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="p">))</span> <span class="c1"># 31/12/4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">365</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># 1/1/5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">728478</span><span class="p">))</span> <span class="c1"># 4/7/1995</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="mi">737530</span><span class="p">))</span> <span class="c1"># 15/4/2020</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1, 1)
+(31, 12, 1)
+(1, 1, 2)
+(1, 1, 3)
+(1, 1, 4)
+(31, 12, 4)
+(1, 1, 5)
+(4, 7, 1995)
+(15, 4, 2020)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 20.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">fecha_dif_dias()</span></code> que dada una fecha <code class="docutils literal notranslate"><span class="pre">dia</span></code>, <code class="docutils literal notranslate"><span class="pre">mes</span></code>, <code class="docutils literal notranslate"><span class="pre">año</span></code> y un número positivo <code class="docutils literal notranslate"><span class="pre">n</span></code> de días, devuelve la fecha que se obtiene <code class="docutils literal notranslate"><span class="pre">n</span></code> días después de la fecha dada. Por ejemplo, si le paso <code class="docutils literal notranslate"><span class="pre">15</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">2020</span></code> y <code class="docutils literal notranslate"><span class="pre">1</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">16</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">2020</span></code>. Si le paso <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">7</span></code>, <code class="docutils literal notranslate"><span class="pre">1995</span></code> y <code class="docutils literal notranslate"><span class="pre">9052</span></code>devuelve <code class="docutils literal notranslate"><span class="pre">15</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">2020</span></code>.</p>
+<p><strong>Respuesta:</strong> este ejercicio lo podemos hacer utilizando las funciones anteriores. Primero con <code class="docutils literal notranslate"><span class="pre">numero_dias()</span></code> calculamos el número de días hasta la fecha actual y le sumamos <code class="docutils literal notranslate"><span class="pre">n</span></code>. Esto nos resultará en el número de días de la fecha que buscamos. Con la función <code class="docutils literal notranslate"><span class="pre">fecha_x_numero_dias()</span></code> recuperamos la fecha de ese día.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">fecha_dif_dias</span><span class="p">(</span><span class="n">dia</span><span class="p">,</span> <span class="n">mes</span> <span class="p">,</span> <span class="n">año</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">nro_dias_fecha</span> <span class="o">=</span> <span class="n">numero_dias</span><span class="p">(</span><span class="n">dia</span><span class="p">,</span> <span class="n">mes</span> <span class="p">,</span><span class="n">año</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fecha_x_numero_dias</span><span class="p">(</span><span class="n">nro_dias_fecha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_dif_dias</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1"># (16, 4, 2020)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fecha_dif_dias</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">9052</span><span class="p">))</span> <span class="c1"># (15, 4, 2020)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16, 4, 2020)
+(15, 4, 2020)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 21.</strong> Escribir en la siguiente celda de código la función <code class="docutils literal notranslate"><span class="pre">dif_dias_fechas()</span></code> que dadas dos fechas devuelve la cantidad de días que las separa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">dif_dias_fechas</span><span class="p">(</span><span class="n">dia0</span><span class="p">,</span> <span class="n">mes0</span> <span class="p">,</span><span class="n">año0</span><span class="p">,</span> <span class="n">dia1</span><span class="p">,</span> <span class="n">mes1</span> <span class="p">,</span><span class="n">año1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numero_dias</span><span class="p">(</span><span class="n">dia1</span><span class="p">,</span> <span class="n">mes1</span> <span class="p">,</span><span class="n">año1</span><span class="p">)</span> <span class="o">-</span>  <span class="n">numero_dias</span><span class="p">(</span><span class="n">dia0</span><span class="p">,</span> <span class="n">mes0</span> <span class="p">,</span><span class="n">año0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dif_dias_fechas</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2020</span><span class="p">))</span> <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dif_dias_fechas</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1995</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2020</span><span class="p">))</span> <span class="c1"># 90952</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+9052
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="20.2_Expresiones_funciones_condicionales.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Expresiones, funciones y condicionales</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20.4_Cadenas_listas_diccionarios_conjuntos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4. Cadenas, listas, diccionarios y conjuntos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-ciclos-while">1° Parte. Ciclos <code class="docutils literal notranslate"><span class="pre">while</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-tratamiento-de-fechas">2° Parte. Tratamiento de fechas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alejandro Tiraboschi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
