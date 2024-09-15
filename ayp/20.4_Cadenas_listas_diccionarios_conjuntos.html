@@ -744,13 +744,13 @@ aaabbbccc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La lista &#39;ls&#39; es: [13, 29, -29, -21, 4, -36, -45, 5, 30, 19]
-Reemplazamos el valor de la última coordenada por 5: [13, 29, -29, -21, 4, -36, -45, 5, 30, 5]
-La suma de los dos primeros elementos de la lista es: 42
-La suma de los primeros 5 elementos de la lista es: -4
-El mínimo valor de la lista es: -45
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La lista &#39;ls&#39; es: [-31, 1, -8, 38, 37, -31, -4, 45, 38, 7]
+Reemplazamos el valor de la última coordenada por 5: [-31, 1, -8, 38, 37, -31, -4, 45, 38, 5]
+La suma de los dos primeros elementos de la lista es: -30
+La suma de los primeros 5 elementos de la lista es: 37
+El mínimo valor de la lista es: -31
 El índice aleatorio es: 7
-El valor en la posición aleatoria es: 5
+El valor en la posición aleatoria es: 45
 </pre></div>
 </div>
 </div>
@@ -1418,38 +1418,142 @@ River, Huracán,
 <p>Las claves del diccionario de cada ciudad deberían ser algo así como
 <code class="docutils literal notranslate"><span class="pre">país</span></code>, <code class="docutils literal notranslate"><span class="pre">población</span></code> y <code class="docutils literal notranslate"><span class="pre">hecho</span></code>.</p>
 <p>Imprimí  el nombre de cada ciudad y toda la información información que ha almacenado sobre ella.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="n">ciudades</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">ciudades</span><span class="p">[</span><span class="s2">&quot;Córdoba&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pais&quot;</span> <span class="p">:</span> <span class="s2">&quot;Argentina&quot;</span><span class="p">,</span> <span class="s2">&quot;poblacion&quot;</span><span class="p">:</span> <span class="mi">1_600_000</span><span class="p">,</span> <span class="s2">&quot;superficie&quot;</span><span class="p">:</span> <span class="mi">576</span><span class="p">}</span>
+<span class="n">ciudades</span><span class="p">[</span><span class="s2">&quot;Santa Fe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pais&quot;</span> <span class="p">:</span> <span class="s2">&quot;Argentina&quot;</span><span class="p">,</span> <span class="s2">&quot;poblacion&quot;</span><span class="p">:</span> <span class="mi">500_000</span><span class="p">,</span> <span class="s2">&quot;superficie&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span>
+<span class="n">ciudades</span><span class="p">[</span><span class="s2">&quot;Montevideo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pais&quot;</span> <span class="p">:</span> <span class="s2">&quot;Uruguay&quot;</span><span class="p">,</span> <span class="s2">&quot;poblacion&quot;</span><span class="p">:</span> <span class="mi">1_300_000</span><span class="p">,</span> <span class="s2">&quot;superficie&quot;</span><span class="p">:</span> <span class="mi">530</span><span class="p">}</span>
+<span class="n">ciudades</span><span class="p">[</span><span class="s2">&quot;Asunción&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pais&quot;</span> <span class="p">:</span> <span class="s2">&quot;Paraguay&quot;</span><span class="p">,</span> <span class="s2">&quot;poblacion&quot;</span><span class="p">:</span> <span class="mi">1_000_000</span><span class="p">,</span> <span class="s2">&quot;superficie&quot;</span><span class="p">:</span> <span class="mi">117</span><span class="p">}</span>
+
+<span class="k">for</span> <span class="n">ciudad</span><span class="p">,</span> <span class="n">datos</span> <span class="ow">in</span> <span class="n">ciudades</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ciudad</span><span class="p">,</span> <span class="s1">&#39;es una ciudad de&#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;pais&#39;</span><span class="p">],</span> <span class="s1">&#39;con una población de&#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;poblacion&#39;</span><span class="p">],</span> <span class="s1">&#39;habitantes y una superficie de&#39;</span><span class="p">,</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;superficie&#39;</span><span class="p">],</span> <span class="s1">&#39;km2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Córdoba es una ciudad de Argentina con una población de 1600000 habitantes y una superficie de 576 km2
+Santa Fe es una ciudad de Argentina con una población de 500000 habitantes y una superficie de 300 km2
+Montevideo es una ciudad de Uruguay con una población de 1300000 habitantes y una superficie de 530 km2
+Asunción es una ciudad de Paraguay con una población de 1000000 habitantes y una superficie de 117 km2
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Ejercicio 10.</strong></p>
 <ol type="a">
   <li>Escribir una función que tome dos conjuntos como parámetros y devuelva su unión.</li>
   <li>Escribir una función que tome dos conjuntos como parámetros y devuelva su intersección.</li>
   <li>Escribir una función que tome un conjunto y un elemento como parámetros, y agregue ese elemento al conjunto.</li>
   <li>Escribir una función que tome una lista de conjuntos como parámetro y devuelva la intersección de todos ellos.</li>
-</ol><p><strong>Ejercicio 11.</strong></p>
+</ol><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="c1">#a.</span>
+<span class="k">def</span> <span class="nf">union_conjuntos</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">,</span> <span class="n">conjunto2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: conjunto1 y conjunto2 son conjuntos</span>
+<span class="sd">    post: devuelve la unión de conjunto1 y conjunto2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">,</span> <span class="s1">&#39;los parámetros deben ser conjuntos&#39;</span>
+    <span class="k">return</span> <span class="n">conjunto1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span>
+
+<span class="c1"># b. </span>
+<span class="k">def</span> <span class="nf">interseccion_conjuntos</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">,</span> <span class="n">conjunto2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: conjunto1 y conjunto2 son conjuntos</span>
+<span class="sd">    post: devuelve la intersección de conjunto1 y conjunto2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">,</span> <span class="s1">&#39;los parámetros deben ser conjuntos&#39;</span>
+    <span class="k">return</span> <span class="n">conjunto1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span>
+
+<span class="c1"># c.</span>
+<span class="k">def</span> <span class="nf">diferencia_conjuntos</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">,</span> <span class="n">conjunto2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: conjunto1 y conjunto2 son conjuntos</span>
+<span class="sd">    post: devuelve la diferencia de conjunto1 y conjunto2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">,</span> <span class="s1">&#39;los parámetros deben ser conjuntos&#39;</span>
+    <span class="k">return</span> <span class="n">conjunto1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">conjunto2</span><span class="p">)</span>
+
+<span class="c1"># d. </span>
+<span class="k">def</span> <span class="nf">interseccion</span><span class="p">(</span><span class="n">lista_conjuntos</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista_conjuntos es una lista de conjuntos</span>
+<span class="sd">    post: devuelve la intersección de todos los conjuntos de la lista</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">conjunto</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span> <span class="k">for</span> <span class="n">conjunto</span> <span class="ow">in</span> <span class="n">lista_conjuntos</span><span class="p">),</span> <span class="s1">&#39;los elementos de la lista deben ser conjuntos&#39;</span>
+    <span class="n">inter</span> <span class="o">=</span> <span class="n">lista_conjuntos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista_conjuntos</span><span class="p">)):</span>
+        <span class="n">inter</span> <span class="o">=</span> <span class="n">inter</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">lista_conjuntos</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">inter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 11.</strong></p>
 <ol type="a">
-  <li>Escribir una función que tome una lista y un conjunto como parámetros, y verifique si todos los elementos de la lista están presentes en el conjunto.</li>
-  <li>Escribir una función que tome una lista como parámetro y devuelva una nueva lista sin elementos duplicados, utilizando conjuntos.</li>
+  <li>Escribir la función `sub()` que toma una lista y un conjunto como parámetros, y verifique si todos los elementos de la lista están presentes en el conjunto.</li>
+  <li>Escribir la función `lista_unicos()` que toma una lista como parámetro y, utilizando conjuntos, devuelve una nueva lista sin elementos duplicados.</li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">conjunto</span><span class="p">:</span> <span class="nb">set</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="c1"># a. </span>
+<span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">conjunto</span><span class="p">:</span> <span class="nb">set</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista es una lista de elementos, conjunto es un conjunto</span>
+<span class="sd">    post: devuelve True si todos los elementos de lista están en conjunto, False en caso contrario</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">conjunto</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">,</span> <span class="s1">&#39;los parámetros deben ser una lista y un conjunto&#39;</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">elem</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conjunto</span><span class="p">:</span>
             <span class="n">ret</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="n">ret</span>
 
-<span class="n">sub</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">})</span>
+<span class="c1"># b. </span>
+<span class="k">def</span> <span class="nf">lista_unicos</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista es una lista de elementos</span>
+<span class="sd">    post: devuelve una lista con los elementos de lista original sin repetidos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser una lista&#39;</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">}))</span> <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">}))</span> <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">}))</span> <span class="c1"># True</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_unicos</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_unicos</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_unicos</span><span class="p">([]))</span> <span class="c1"># []</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista_unicos</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># [1]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+True
+[1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+[]
+[1]
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Ejercicio 12.</strong> El número que tiene la mayor frecuencia en una serie se conoce como la <em>moda</em> de la serie. La moda es el valor que aparece con mayor frecuencia o repetición en un conjunto de datos. En otras palabras, es el número que se repite más veces en la serie.</p>
-<p>Por ejemplo, en la serie <span class="math notranslate nohighlight">\(\{2, 4, 4, 6, 6, 6, 8\}\)</span>, el número <span class="math notranslate nohighlight">\(6\)</span> es la moda, ya que se repite más veces que cualquier otro número en la serie.</p>
+<p>Por ejemplo, en la serie <span class="math notranslate nohighlight">\(2, 4, 4, 6, 6, 6, 8\)</span>, el número <span class="math notranslate nohighlight">\(6\)</span> es la moda, ya que se repite más veces que cualquier otro número en la serie.</p>
 <p>Es importante tener en cuenta que una serie puede tener múltiples modas si varios números tienen la misma frecuencia máxima. En tal caso, se dice que la serie tiene <em>múltiples modas.</em></p>
 <p>Escribir la función <code class="docutils literal notranslate"><span class="pre">moda()</span></code> que devuelva la moda de una lista de números enteros. Si hay múltiples módas devuelve alguna de ellas.</p>
 <p>Solo se permite,  a nivel de operaciónes, métodos o funciones en listas, acceder para leer o modificar los elementos de una lista por el índice. En el caso de diccionarios acceder para leer o modificar a elementos por su clave. No está permitido utilizar  <code class="docutils literal notranslate"><span class="pre">max()</span></code>, <code class="docutils literal notranslate"><span class="pre">sorted()</span></code> o métodos similares.</p>
@@ -1458,148 +1562,305 @@ River, Huracán,
 <li><p>Hacer un diccionario donde las claves son los elementos de la lista y los valores son la cantidad de repeticiones de cada elemento en la lista.</p></li>
 <li><p>Encontrar y devolver una de las claves del diccionario cuyo valor sea máximo.</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">moda</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista es una lista de números enteros</span>
+<span class="sd">    post: devuelve uno de los elementos que más veces se repiten en la lista</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser una lista&#39;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">),</span> <span class="s1">&#39;los elementos de la lista deben ser números enteros&#39;</span>
+    <span class="n">repeticiones</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span>  <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">repeticiones</span><span class="p">:</span>
+            <span class="n">repeticiones</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">repeticiones</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">maximo</span> <span class="o">=</span> <span class="n">repeticiones</span><span class="p">[</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">moda</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">repeticiones</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">maximo</span><span class="p">:</span>
+            <span class="n">maximo</span> <span class="o">=</span> <span class="n">valor</span>
+            <span class="n">moda</span> <span class="o">=</span> <span class="n">clave</span>
+    <span class="k">return</span> <span class="n">moda</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># cualquier valor se repite dos veces</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># cualquier valor se encuentra una vez</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># 3 o 5 (cada uno aparece 2 veces)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]))</span> <span class="c1"># 8</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+1
+3
+8
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 13.</strong> Redefinir la función <code class="docutils literal notranslate"><span class="pre">moda()</span></code> del ejercicio anterior para, dada una lista,  devuelva el conjunto de todos los números que son moda de la lista original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="k">def</span> <span class="nf">moda</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista es una lista de números enteros</span>
+<span class="sd">    post: devuelve uno de los elementos que más veces se repiten en la lista</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;el parámetro debe ser una lista&#39;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">),</span> <span class="s1">&#39;los elementos de la lista deben ser números enteros&#39;</span>
+    <span class="n">repeticiones</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span>  <span class="n">elem</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">repeticiones</span><span class="p">:</span>
+            <span class="n">repeticiones</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">repeticiones</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">maximo</span> <span class="o">=</span> <span class="n">repeticiones</span><span class="p">[</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">repeticiones</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">maximo</span><span class="p">:</span>
+            <span class="n">maximo</span> <span class="o">=</span> <span class="n">valor</span>
+    <span class="n">moda</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">repeticiones</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">==</span> <span class="n">maximo</span><span class="p">:</span>
+            <span class="n">moda</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">moda</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># {1, 2, 3, 4, 5}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># {1, 2, 3, 4, 5}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># {1}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span> <span class="c1"># {3, 5}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">moda</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]))</span> <span class="c1"># {8}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5}
+{1, 2, 3, 4, 5}
+{1}
+{3, 5}
+{8}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="parte-definiciones-por-comprension">
 <h2>4° Parte. Definiciones por comprensión<a class="headerlink" href="#parte-definiciones-por-comprension" title="Permalink to this heading">#</a></h2>
-<p><strong>Ejercicio 1.</strong>  Crear una lista con los números impares entre 50 y 100.</p>
+<p><strong>Ejercicio 1.</strong> Para realizar los siguientes ejercicios utilizar listas por comprensión.</p>
+<ol class="arabic simple">
+<li><p>Crear la  lista <code class="docutils literal notranslate"><span class="pre">impares</span></code> con los números impares entre <span class="math notranslate nohighlight">\(50\)</span> y <span class="math notranslate nohighlight">\(100\)</span>.</p></li>
+</ol>
+<p>Sean  <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span>&#160; <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5]</span></code> y <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8]</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>Crear una lista con los elementos que están en <code class="docutils literal notranslate"><span class="pre">a</span></code> y <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p>Crear una lista  con los elementos que están en <code class="docutils literal notranslate"><span class="pre">a</span></code> pero no en <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p>Sean <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">'hola'</span></code> y <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">'mundo'</span></code>. Crear una lista con las letras que se encuentran en <code class="docutils literal notranslate"><span class="pre">c</span></code> y <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p></li>
+<li><p>Dada la lista <code class="docutils literal notranslate"><span class="pre">numeros</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10]</span></code> crear la lista <code class="docutils literal notranslate"><span class="pre">multiplos_de_tres</span></code> con todos los elementos de <code class="docutils literal notranslate"><span class="pre">numeros</span></code> que son múltiplos de  <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> !=0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="c1"># 1.</span>
+<span class="n">impares</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 2.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">interseccion</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">b</span><span class="p">]</span>
+
+<span class="c1"># 3. </span>
+<span class="n">diferencia</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b</span><span class="p">]</span>
+
+<span class="c1"># 4.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;hola&quot;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;mundo&quot;</span>
+<span class="n">letras_comunes</span> <span class="o">=</span> <span class="p">[</span><span class="n">letra</span> <span class="k">for</span> <span class="n">letra</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">if</span> <span class="n">letra</span> <span class="ow">in</span> <span class="n">b</span><span class="p">]</span>
+
+<span class="c1"># 5.</span>
+<span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">multiplos_de_tres</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Ejercicio 2.</strong>  Dada la lista <code class="docutils literal notranslate"><span class="pre">nombres</span> <span class="pre">=</span> <span class="pre">[&quot;Juan&quot;,</span> <span class="pre">&quot;María&quot;,</span> <span class="pre">&quot;Pedro&quot;,</span> <span class="pre">&quot;Ana&quot;,</span> <span class="pre">&quot;Pablo&quot;,</span> <span class="pre">&quot;Gabriel&quot;]</span></code>,  crear una lista de los nombres de las personas en una lista que tienen más de 4 caracteres.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;María&quot;</span><span class="p">,</span> <span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Pablo&quot;</span><span class="p">,</span> <span class="s2">&quot;Gabriel&quot;</span><span class="p">]</span>
+<span class="n">nombres_largos</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">nombres</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">nombres_largos</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[51,
- 53,
- 55,
- 57,
- 59,
- 61,
- 63,
- 65,
- 67,
- 69,
- 71,
- 73,
- 75,
- 77,
- 79,
- 81,
- 83,
- 85,
- 87,
- 89,
- 91,
- 93,
- 95,
- 97,
- 99]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;María&#39;, &#39;Pedro&#39;, &#39;Pablo&#39;, &#39;Gabriel&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 2.</strong>  Crear una lista de los nombres de las personas en una lista dada que tienen más de 4 caracteres.</p>
+<p><strong>Ejercicio 3.</strong> Dada la cadena</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hola mundo, esto es una cadena de prueba&quot;</span>
+</pre></div>
+</div>
+<p>hacer lista de las palabras que tienen más de 3 letras.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;María&quot;</span><span class="p">,</span> <span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Pablo&quot;</span><span class="p">,</span> <span class="s2">&quot;Gabriel&quot;</span><span class="p">]</span>
-<span class="n">nombres_largos</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">nombres</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">]</span> <span class="c1"># reemplazar [] por una lista por comprensión</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nombres_largos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;María&#39;, &#39;Pedro&#39;, &#39;Pablo&#39;, &#39;Gabriel&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Ejercicio 3.</strong> Crear una lista de las palabras en una cadena dada que tienen más de 3 letras.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cadena</span> <span class="o">=</span> <span class="s2">&quot;Hola mundo, esto es una cadena de prueba&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="n">cadena</span> <span class="o">=</span> <span class="s2">&quot;Hola mundo, esto es una cadena de prueba&quot;</span>
 <span class="n">palabras</span> <span class="o">=</span> <span class="n">cadena</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># crea una lista con cada una de las palabras</span>
-<span class="n">palabras_largas</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reemplazar [] por una lista por comprensión</span>
+<span class="n">palabras_largas</span> <span class="o">=</span> <span class="p">[</span><span class="n">palabra</span> <span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">palabras</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">palabras_largas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hola&#39;, &#39;mundo,&#39;, &#39;esto&#39;, &#39;cadena&#39;, &#39;prueba&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 4.</strong>  Crear un diccionario a partir de una lista de tuplas, donde la clave es el primer elemento de la tupla y el valor es el segundo elemento.</p>
+<p><strong>Ejercicio 4.</strong>  Crear un diccionario a partir de la lista de tuplas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;uno&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;dos&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;tres&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>donde la clave es el primer elemento de la tupla y el valor es el segundo elemento.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lista_tuplas</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;uno&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;dos&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;tres&quot;</span><span class="p">)]</span>
-<span class="n">diccionario</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># reemplazar {} por un diccionario por comprensión</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="n">lista_tuplas</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;uno&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;dos&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;tres&quot;</span><span class="p">)]</span>
+<span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lista_tuplas</span><span class="p">}</span> <span class="c1"># reemplazar {} por un diccionario por comprensión</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diccionario</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: &#39;uno&#39;, 2: &#39;dos&#39;, 3: &#39;tres&#39;}
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 5.</strong> Crear un diccionario a partir de dos listas de igual longitud, donde la clave es el elemento de la primera lista y el valor es el elemento correspondiente de la segunda lista.</p>
+<p><strong>Ejercicio 5.</strong> Definir una función que recibe dos listas de igual longitud y  devuelve un diccionario donde cada clave es un elemento de la primera lista y el valor es el elemento correspondiente de la segunda lista. Hacerlo por comprensión.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;edad&quot;</span><span class="p">,</span> <span class="s2">&quot;ciudad&quot;</span><span class="p">]</span>
-<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Madrid&quot;</span><span class="p">]</span>
-<span class="n">diccionario</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># reemplazar {} por un diccionario por comprensión</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">listas_a_diccionario</span><span class="p">(</span><span class="n">lista1</span><span class="p">,</span> <span class="n">lista2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pre: lista1 y lista2 son listas de igual longitud</span>
+<span class="sd">    post: devuelve un diccionario donde las claves son los elementos de lista1 y los valores los elementos de lista2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista2</span><span class="p">),</span> <span class="s1">&#39;las listas deben tener igual longitud&#39;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">lista1</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">lista2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lista1</span><span class="p">))}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 6.</strong> Crear una lista de los números pares y los números impares de 1 a 10, donde los números pares son multiplicados por 2 y los impares son multiplicados por 3.</p>
-<p><strong>Ejercicio 7.</strong> Crear una lista de los nombres de una lista dada donde los nombres que comienzan por <code class="docutils literal notranslate"><span class="pre">A</span></code> son reemplazados por <code class="docutils literal notranslate"><span class="pre">Nombre</span> <span class="pre">empieza</span> <span class="pre">por</span> <span class="pre">A</span></code> y los demás nombres por <code class="docutils literal notranslate"><span class="pre">Nombre</span> <span class="pre">no</span> <span class="pre">empieza</span> <span class="pre">por</span> <span class="pre">A</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">claves</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;edad&quot;</span><span class="p">,</span> <span class="s2">&quot;ciudad&quot;</span><span class="p">]</span>
+<span class="n">valores</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Madrid&quot;</span><span class="p">]</span>
+<span class="n">diccionario</span> <span class="o">=</span> <span class="n">listas_a_diccionario</span><span class="p">(</span><span class="n">claves</span><span class="p">,</span> <span class="n">valores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">diccionario</span><span class="p">)</span> <span class="c1"># {&#39;nombre&#39;: &#39;Juan&#39;, &#39;edad&#39;: 25, &#39;ciudad&#39;: &#39;Madrid&#39;}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;nombre&#39;: &#39;Juan&#39;, &#39;edad&#39;: 25, &#39;ciudad&#39;: &#39;Madrid&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 6.</strong> Crear por comprensión una lista de los primeros 10 números naturales donde los números pares son multiplicados por 2 y los impares son multiplicados por 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="n">numeros_transformados</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numeros_transformados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 4, 9, 8, 15, 12, 21, 16, 27, 20]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 7.</strong> Dada una lista <code class="docutils literal notranslate"><span class="pre">nombres</span></code> con nombres de personas, crear una lista  donde los nombres que comienzan por <code class="docutils literal notranslate"><span class="pre">A</span></code> son reemplazados por <code class="docutils literal notranslate"><span class="pre">Nombre</span> <span class="pre">empieza</span> <span class="pre">por</span> <span class="pre">A</span></code> y los demás nombres por <code class="docutils literal notranslate"><span class="pre">Nombre</span> <span class="pre">no</span> <span class="pre">empieza</span> <span class="pre">por</span> <span class="pre">A</span></code>. Aplicar el resultado a la lista <code class="docutils literal notranslate"><span class="pre">[&quot;Ana&quot;,</span> <span class="pre">&quot;Pedro&quot;,</span> <span class="pre">&quot;Luis&quot;,</span> <span class="pre">&quot;Alberto&quot;]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;Luis&quot;</span><span class="p">,</span> <span class="s2">&quot;Alberto&quot;</span><span class="p">]</span>
-<span class="n">resultado</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reemplazar [] por una lista por comprensión</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Nombre empieza por A&#39;</span> <span class="k">if</span> <span class="n">nombre</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span> <span class="k">else</span> <span class="s1">&#39;Nombre no empieza por A&#39;</span><span class="k">for</span> <span class="n">nombre</span> <span class="ow">in</span> <span class="n">nombres</span> <span class="p">]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Nombre empieza por A&#39;, &#39;Nombre no empieza por A&#39;, &#39;Nombre no empieza por A&#39;, &#39;Nombre empieza por A&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 8 (pivotear).</strong> Dada una lista de números (enteros o punto flotante)  y un número <code class="docutils literal notranslate"><span class="pre">x</span></code> de la lista,  <em>pivotear la lista por <code class="docutils literal notranslate"><span class="pre">x</span></code></em> es reorganizar los elementos de la lista de manera que todos los elementos menores o iguales a <code class="docutils literal notranslate"><span class="pre">x</span></code> estén a la izquierda de <code class="docutils literal notranslate"><span class="pre">x</span></code> y todos los elementos mayores a <code class="docutils literal notranslate"><span class="pre">x</span></code> estén a la derecha de <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<p><strong>Ejercicio 8 (pivotear).</strong> Dada una lista de números (enteros o punto flotante)  y un número <code class="docutils literal notranslate"><span class="pre">x</span></code> de la lista,  <em>pivotear la lista por <code class="docutils literal notranslate"><span class="pre">x</span></code></em> es reorganizar los elementos de la lista de manera que todos los elementos menores a <code class="docutils literal notranslate"><span class="pre">x</span></code> estén a la izquierda de <code class="docutils literal notranslate"><span class="pre">x</span></code>, todos los elementos mayores a <code class="docutils literal notranslate"><span class="pre">x</span></code> estén a la derecha de <code class="docutils literal notranslate"><span class="pre">x</span></code> y todos los elementos iguales a <code class="docutils literal notranslate"><span class="pre">x</span></code> estén al lado de <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>Por  ejemplo, dada la lista</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[6, 3, 5, 4, 8, 7, 6, 5, 2, 3]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[6, 3, 5, 4, 8, 7, 6, 5, 4, 2, 3]
 </pre></div>
 </div>
 <p>La lista pivoteada por <code class="docutils literal notranslate"><span class="pre">4</span></code> resultaría</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[2, 3, 3, 4, 5, 6, 8, 7, 6, 5]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[2, 3, 3, 4, 4, 5, 6, 8, 7, 6, 5]
 </pre></div>
 </div>
-<p>Obviamente, puede haber más de una forma de pivotear la lista.</p>
+<p>o  algo similar. Obviamente, puede haber más de una forma de pivotear la lista.</p>
 <p>Dada la lista <code class="docutils literal notranslate"><span class="pre">lista_num</span></code>, usando listas por comprensión construya una lista que es la original pivoteada por el primer elemento. Va a ser necesario hacer más de una lista por comprensión.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esta celda nos prermite hacer tests</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esta celda nos peermitira hacer tests</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span> <span class="c1"># lista de 10 números enteros al azar de 1 a 20</span>
+<span class="n">lista_num</span> <span class="o">=</span> <span class="p">[</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span> <span class="c1"># lista de 10 números enteros al azar de 1 a 20</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lista_num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16, 12, 18, 10, 14, 4, 15, 19, 7, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 7, 5, 15, 6, 13, 11, 9, 10, 13, 9, 12, 18, 11, 2]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoteada</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_num</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_num</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">11</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="n">primero</span> <span class="o">=</span> <span class="n">lista_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pivoteamos por:&#39;</span><span class="p">,</span> <span class="n">primero</span><span class="p">)</span>
+<span class="n">pivoteada</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_num</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">primero</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_num</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">primero</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_num</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">primero</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pivoteada</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 4, 7, 1, 11, 16, 12, 18, 14, 15, 19]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pivoteamos por: 1
+[1, 7, 5, 15, 6, 13, 11, 9, 10, 13, 9, 12, 18, 11, 2]
 </pre></div>
 </div>
 </div>
