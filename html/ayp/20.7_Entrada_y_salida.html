@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '20.7_Entrada_y_salida';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. NumPy y PyPlot" href="20.8_Numpy_y_pyplot.html" />
     <link rel="prev" title="6. Tipos abstractos de datos (clases)" href="20.6_Clases_objetos.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -230,6 +231,7 @@
 <li class="toctree-l2"><a class="reference internal" href="20.5_Recursion.html">5. Recursión</a></li>
 <li class="toctree-l2"><a class="reference internal" href="20.6_Clases_objetos.html">6. Tipos abstractos de datos (clases)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7. Lectura y escritura de archivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20.8_Numpy_y_pyplot.html">8. NumPy y PyPlot</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
@@ -431,10 +433,10 @@ document.write(`
                   
   <section id="lectura-y-escritura-de-archivos">
 <h1>7. Lectura y escritura de archivos<a class="headerlink" href="#lectura-y-escritura-de-archivos" title="Permalink to this heading">#</a></h1>
-<p><strong>Ejercicio 1.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">head()</span></code> que reciba el nombre de un archivo y un número <code class="docutils literal notranslate"><span class="pre">n</span></code> e imprima las primeras n líneas del archivo.</p>
+<p><strong>Ejercicio 1.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">head()</span></code> que reciba el nombre de un archivo y un número <span class="math notranslate nohighlight">\(n\)</span> e imprima las primeras <span class="math notranslate nohighlight">\(n\)</span> líneas del archivo.</p>
 <p><strong>Ejercicio 2.</strong> Escribir una función que cuente el número de caracteres, palabras y filas de un archivo de texto.</p>
 <p><strong>Ejercicio 3.</strong> Escribir un programa que solicite al usuario su nombre y apellido. Cuando el usuario responda, imprimir “ Bienvenido Sr/a + ‘nombre y apellido’ “.  Escribir su nombre y apellido en un archivo llamado invitados.txt.</p>
-<p><strong>Ejercicio 4.</strong> Escribir una función, que reciba el nombre de un archivo de texto de origen y uno de destino, de modo que para cada línea del archivo origen, se guarde una línea cifrada en el archivo destino. El algoritmo de cifrado a utilizar será muy sencillo: a cada caracter comprendido entre la <code class="docutils literal notranslate"><span class="pre">a</span></code> y la <code class="docutils literal notranslate"><span class="pre">z</span></code> en la posicón <code class="docutils literal notranslate"><span class="pre">k</span></code>, se lo cambia por el carcter en la posición <code class="docutils literal notranslate"><span class="pre">k+3</span></code> módulo <span class="math notranslate nohighlight">\(26\)</span>, para obtener un nuevo caracter.</p>
+<p><strong>Ejercicio 4.</strong> Escribir una función, que reciba el nombre de un archivo de texto de origen y uno de destino, de modo que para cada línea del archivo origen, se guarde una línea cifrada en el archivo destino. El algoritmo de cifrado a utilizar será muy sencillo: a cada carácter comprendido entre la <code class="docutils literal notranslate"><span class="pre">a</span></code> y la <code class="docutils literal notranslate"><span class="pre">z</span></code> en la posición <span class="math notranslate nohighlight">\(k\)</span>, se lo cambia por el carácter en la posición <span class="math notranslate nohighlight">\(k+3\)</span> módulo <span class="math notranslate nohighlight">\(26\)</span>, para obtener un nuevo carácter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">codigo_cesar</span><span class="p">(</span><span class="n">texto_plano</span><span class="p">):</span>
@@ -850,6 +852,15 @@ resultados = respuesta[&#39;results&#39;]
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">6. Tipos abstractos de datos (clases)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="20.8_Numpy_y_pyplot.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8. NumPy y PyPlot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
