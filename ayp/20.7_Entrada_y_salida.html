@@ -433,100 +433,810 @@ document.write(`
                   
   <section id="lectura-y-escritura-de-archivos">
 <h1>7. Lectura y escritura de archivos<a class="headerlink" href="#lectura-y-escritura-de-archivos" title="Permalink to this heading">#</a></h1>
-<p><strong>Ejercicio 1.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">head()</span></code> que reciba el nombre de un archivo y un número <span class="math notranslate nohighlight">\(n\)</span> e imprima las primeras <span class="math notranslate nohighlight">\(n\)</span> líneas del archivo.</p>
-<p><strong>Ejercicio 2.</strong> Escribir una función que cuente el número de caracteres, palabras y filas de un archivo de texto.</p>
-<p><strong>Ejercicio 3.</strong> Escribir un programa que solicite al usuario su nombre y apellido. Cuando el usuario responda, imprimir “ Bienvenido Sr/a + ‘nombre y apellido’ “.  Escribir su nombre y apellido en un archivo llamado invitados.txt.</p>
-<p><strong>Ejercicio 4.</strong> Escribir una función, que reciba el nombre de un archivo de texto de origen y uno de destino, de modo que para cada línea del archivo origen, se guarde una línea cifrada en el archivo destino. El algoritmo de cifrado a utilizar será muy sencillo: a cada carácter comprendido entre la <code class="docutils literal notranslate"><span class="pre">a</span></code> y la <code class="docutils literal notranslate"><span class="pre">z</span></code> en la posición <span class="math notranslate nohighlight">\(k\)</span>, se lo cambia por el carácter en la posición <span class="math notranslate nohighlight">\(k+3\)</span> módulo <span class="math notranslate nohighlight">\(26\)</span>, para obtener un nuevo carácter.</p>
+<p><strong>Ejercicio 1.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">head()</span></code> que reciba el nombre de un archivo y un número <span class="math notranslate nohighlight">\(n\)</span> e imprima las primeras <span class="math notranslate nohighlight">\(n\)</span> líneas del archivo. Para probar la función utilice un archivo de texto de su computadora.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">codigo_cesar</span><span class="p">(</span><span class="n">texto_plano</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Imprime las primeras n líneas del archivo file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 2.</strong> Escribir la función <code class="docutils literal notranslate"><span class="pre">contar()</span></code> que cuenta el número de líneas, palabras y caracteres de un archivo de texto. La función debe devolver los 3 valores. Pruebe la función con archivos de su computadora.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="c1"># 1º forma</span>
+<span class="k">def</span> <span class="nf">contar</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cuenta las líneas, palabras y caracteres del archivo file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">texto</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">lineas</span> <span class="o">=</span> <span class="n">texto</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">palabras</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">texto</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">caracteres</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lineas</span><span class="p">,</span> <span class="n">palabras</span><span class="p">,</span> <span class="n">caracteres</span>
+
+<span class="c1"># 2º forma (leyendo  línea a línea)</span>
+<span class="k">def</span> <span class="nf">contar</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cuenta las líneas, palabras y caracteres del archivo file.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lineas</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">palabras</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">caracteres</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">linea</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">lineas</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">palabras</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">linea</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+            <span class="n">caracteres</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">linea</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lineas</span><span class="p">,</span> <span class="n">palabras</span><span class="p">,</span> <span class="n">caracteres</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 3.</strong> Escribir la función <code class="docutils literal notranslate"><span class="pre">main()</span></code> que solicite al usuario su nombre y apellido. Cuando el usuario responda, imprimir “ Bienvenido Sr/a + ‘nombre y apellido’ “.  Escribir su nombre y apellido en un archivo llamado invitados.txt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">nom_ap</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese su nombre y apellido: &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bienvenido Sr/a&quot;</span><span class="p">,</span> <span class="n">nom_ap</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;invitados.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nom_ap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para probar la función descomente la siguiente línea y  ejecute la celda de código.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># main()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 4.</strong> Escribir la función <code class="docutils literal notranslate"><span class="pre">codigo_cesar()</span></code>, que recibe una cadena de caracteres y devuelve una cadena que es lo original encriptada. El algoritmo de cifrado a utilizar será muy sencillo: a cada carácter comprendido entre la <code class="docutils literal notranslate"><span class="pre">a</span></code> y la <code class="docutils literal notranslate"><span class="pre">z</span></code> en la posición <span class="math notranslate nohighlight">\(k\)</span>, se lo cambia por el carácter en la posición <span class="math notranslate nohighlight">\(k+3\)</span> módulo <span class="math notranslate nohighlight">\(26\)</span>, para obtener un nuevo carácter. La lista de caracteres tiene <span class="math notranslate nohighlight">\(26\)</span> letras (no está la <code class="docutils literal notranslate"><span class="pre">ñ</span></code>).</p>
+<p>Escribir una función <code class="docutils literal notranslate"><span class="pre">codigo_cesar_io()</span></code> que reciba el nombre de un archivo de texto de origen y uno de destino, de modo que para cada línea del archivo origen, se guarde una línea cifrada en el archivo destino aon el algoritmo anterior</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="c1"># 1º forma </span>
+<span class="k">def</span> <span class="nf">codigo_cesar</span><span class="p">(</span><span class="n">texto_plano</span><span class="p">):</span>
     <span class="n">texto_cifrado</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">alfabeto</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span>
     <span class="n">letra_pos</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alfabeto</span><span class="p">)):</span>
         <span class="n">letra_pos</span><span class="p">[</span><span class="n">alfabeto</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="c1"># letra_pos[x] = la posición del carácter x. Por ejemplo, letra_pos[&#39;a&#39;] = 0</span>
 
     <span class="k">for</span> <span class="n">caracter</span> <span class="ow">in</span> <span class="n">texto_plano</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">caracter</span> <span class="ow">in</span> <span class="n">alfabeto</span><span class="p">:</span>
-            <span class="n">nueva_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">letra_pos</span><span class="p">[</span><span class="n">caracter</span><span class="p">]</span> <span class="o">+</span> <span class="mi">13</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
+            <span class="n">nueva_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">letra_pos</span><span class="p">[</span><span class="n">caracter</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
             <span class="n">texto_cifrado</span> <span class="o">=</span> <span class="n">texto_cifrado</span> <span class="o">+</span> <span class="n">alfabeto</span><span class="p">[</span><span class="n">nueva_pos</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">texto_cifrado</span> <span class="o">=</span> <span class="n">texto_cifrado</span> <span class="o">+</span> <span class="n">caracter</span>
-
-
     <span class="k">return</span> <span class="n">texto_cifrado</span>
+
+<span class="c1"># 2º forma (más compacta,  más difícil de leer)</span>
+<span class="k">def</span> <span class="nf">codigo_cesar</span><span class="p">(</span><span class="n">texto_plano</span><span class="p">):</span>
+    <span class="n">alfabeto</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span>
+    <span class="n">lista_cifrada</span> <span class="o">=</span> <span class="p">[</span><span class="n">alfabeto</span><span class="p">[(</span><span class="n">alfabeto</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">letra</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span><span class="p">]</span> <span class="k">if</span> <span class="n">letra</span> <span class="ow">in</span> <span class="n">alfabeto</span> <span class="k">else</span> <span class="n">letra</span> <span class="k">for</span> <span class="n">letra</span> <span class="ow">in</span> <span class="n">texto_plano</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lista_cifrada</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cifrado</span> <span class="o">=</span> <span class="n">codigo_cesar</span><span class="p">(</span><span class="s1">&#39;¡hola! ¿que tal?&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">cifrado</span> <span class="o">=</span> <span class="n">codigo_cesar</span><span class="p">(</span><span class="s1">&#39;¡hola! ¿que tal?&#39;</span><span class="p">)</span> <span class="c1"># &#39;¡krod! ¿txh wdo?&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cifrado</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¡ubyn! ¿dhr gny?
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>¡krod! ¿txh wdo?
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 5.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">cp()</span></code>, que copie todo el contenido de un archivo (sea de texto o binario) a otro, de modo que quede exactamente igual. Nota: utilizar <code class="docutils literal notranslate"><span class="pre">archivo.read(bytes)</span></code> para leer como máximo una cantidad de bytes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cp</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">nombre_copia</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">codigo_cesar_io</span><span class="p">(</span><span class="n">archivo_in</span><span class="p">,</span> <span class="n">archivo_out</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archivo_in</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">texto</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">texto_cifrado</span> <span class="o">=</span> <span class="n">codigo_cesar</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archivo_out</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">texto_cifrado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 5.</strong> Crear el archivo <code class="docutils literal notranslate"><span class="pre">texto_plano.txt</span></code>que consiste de 1000 líneas, cada una con 100 caracteres alfabéticos elegidos al azar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">from</span>  <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="n">alfabeto</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texto_plano.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">choice</span><span class="p">(</span><span class="n">alfabeto</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 6.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">cp()</span></code>, que copie todo el contenido de un archivo (sea de texto o binario) a otro, de modo que quede exactamente igual.</p>
+<p><em>Nota:</em> Si el archivo es muy grande se puede utilizar <code class="docutils literal notranslate"><span class="pre">archivo.read(bytes)</span></code> para leer como máximo una cantidad de bytes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución simple</span>
+
+<span class="k">def</span> <span class="nf">cp</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">nombre_copia</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
         <span class="n">contenido</span> <span class="o">=</span> <span class="n">archivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_copia</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
         <span class="n">archivo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">contenido</span><span class="p">)</span>
-
-<span class="n">archivo</span> <span class="o">=</span> <span class="s1">&#39;./sample_data/README.md&#39;</span>
-<span class="n">copia</span> <span class="o">=</span> <span class="s1">&#39;./copia.md&#39;</span>
-
-<span class="n">cp</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">copia</span><span class="o">+</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución con manejo de errores y read(byte)</span>
+<span class="k">def</span> <span class="nf">cp</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">nombre_copia</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_copia</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">copia</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">contenido</span> <span class="o">=</span> <span class="n">archivo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">contenido</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="n">copia</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">contenido</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El archivo &quot;&#39;</span><span class="o">+</span><span class="n">nombre_archivo</span><span class="o">+</span><span class="s1">&#39;&quot; no existe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizamos el archivo <code class="docutils literal notranslate"><span class="pre">texto_plano.txt</span></code> del ejercicio anterior para hacer pruebas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">cp</span><span class="p">(</span><span class="s1">&#39;texto_plano.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;copia_texto.txt&#39;</span><span class="p">)</span>
+<span class="n">cp</span><span class="p">(</span><span class="s1">&#39;archivo_no_existe.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;copia_texto.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">archivo</span> <span class="o">=</span> <span class="s1">&#39;./sample_data/README.md&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">copia</span> <span class="o">=</span> <span class="s1">&#39;./copia.md&#39;</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">cp</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">copia</span><span class="o">+</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
-
-<span class="nn">Cell In[3], line 2,</span> in <span class="ni">cp</span><span class="nt">(nombre_archivo, nombre_copia)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">cp</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">nombre_copia</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">contenido</span> <span class="o">=</span> <span class="n">archivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_copia</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Roaming\Python\Python310\site-packages\IPython\core\interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./sample_data/README.md&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El archivo &quot;archivo_no_existe.txt&quot; no existe
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 6.</strong> Escribir una función que reciba una cadena de caracteres y el nombre de un archivo e imprima las líneas del archivo que contienen la expresión recibida.</p>
-<p><strong>Ejercicio 7.</strong> Escribir una función <code class="docutils literal notranslate"><span class="pre">cargar_datos()</span></code> que reciba un nombre de archivo, cuyo contenido en cada línea tiene el formato clave, valor y devuelva un diccionario con el primer campo como clave y el segundo como valor de cada línea.</p>
-<p><strong>Ejercicio 8.</strong> Escribir una función <code class="docutils literal notranslate"><span class="pre">guardar_datos()</span></code> que reciba un diccionario y un nombre de archivo, y guarde el contenido del diccionario en el archivo, con el formato clave, valor en cada línea.</p>
-<p><strong>Ejercicio 9.</strong> En  un sitio web un archivo llamado robots.txt indica a qué partes querés que accedan los rastreadores de los motores de búsqueda (como el rastreador de Google). También indica a qué partes <em>no</em>  querés que accedan.</p>
-<p>El ejercicio consiste en escibir un programa Python para descargar y mostrar el contenido de robot.txt de es.wikipedia.org.</p>
-<p><strong>Ejercicio 10.</strong> Uso de la biblioteca <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p>
-<p>Si bien podemos  analizar y extraer información de la web  bajando y  analizando páginas web directamente con Python, algunos sitios nos ofrecen la posibilidad de acceder a la información ya estructurada como json (<em>Java Script Object Notation</em>),  como csv (<em>comma-separated values</em>) o como xml (<em>Extensible Markup Language</em>). Esto  nos permite importar directamente la información a diccionarios o listas y  de esa forma trabajar en forma más cómoda y consistente.</p>
-<p>En este ejercicio practicaremos con archivos en formato json. Para ello debemos primero importar la biblioteca json.</p>
-<p>Hay dos métodos,  que nos permiten importar archivos json y exportar a archivos json.</p>
-<p><code class="docutils literal notranslate"><span class="pre">json.loads('cadena</span> <span class="pre">json')</span></code>: convierte una cadena de caracteres en formato json  a un diccionario o lista según corresponda. Esto es llamado <em>deserializar</em> una cadena.</p>
+<p><strong>Ejercicio 7.</strong> Escribir una función que reciba una cadena de caracteres y el nombre de un archivo e imprima las líneas del archivo que contienen la expresión recibida.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="k">def</span> <span class="nf">encontrar_cadena</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="n">cadena</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">linea</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cadena</span> <span class="ow">in</span> <span class="n">linea</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">linea</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 8.</strong></p>
+<ol class="arabic simple">
+<li><p>Escribir un programa que cree un archivo llamado <code class="docutils literal notranslate"><span class="pre">archivo_datos.txt</span></code> cuyo contenido son 1000 lineas  y cada línea tiene el formato <code class="docutils literal notranslate"><span class="pre">clave</span> <span class="pre">:</span> <span class="pre">valor</span></code>, donde la clave es una cadena de 5 letras y el valor es un número de 10 dígitos,  ambos generados al azar.</p></li>
+<li><p>Escribir una función <code class="docutils literal notranslate"><span class="pre">cargar_datos()</span></code> que reciba un nombre de archivo, cuyo contenido en cada línea tiene el formato <code class="docutils literal notranslate"><span class="pre">clave</span> <span class="pre">:</span> <span class="pre">valor</span></code> y devuelva un diccionario con el primer campo como clave y el segundo como valor de cada línea. Aplicar la función al archivo creado en el item anterior.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="c1"># 1.</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="n">letras</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>
+<span class="n">digitos</span> <span class="o">=</span> <span class="s1">&#39;0123456789&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;archivo_datos.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">clave</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">choice</span><span class="p">(</span><span class="n">letras</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+        <span class="n">valor</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">choice</span><span class="p">(</span><span class="n">digitos</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">clave</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="n">valor</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2.</span>
+<span class="k">def</span> <span class="nf">cargar_datos</span><span class="p">(</span><span class="n">archivo</span><span class="p">):</span>
+    <span class="n">datos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">linea</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="o">=</span> <span class="n">linea</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; : &#39;</span><span class="p">)</span>
+                <span class="n">datos</span><span class="p">[</span><span class="n">clave</span><span class="p">]</span> <span class="o">=</span> <span class="n">valor</span>
+        <span class="k">return</span> <span class="n">datos</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;El archivo &quot;&#39;</span><span class="o">+</span><span class="n">archivo</span><span class="o">+</span><span class="s1">&#39;&quot; no existe&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">cargar_datos</span><span class="p">(</span><span class="s1">&#39;archivo_datos.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datos</span><span class="p">)[:</span><span class="mi">500</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;glaoe&#39;: &#39;8477115825&#39;, &#39;wkcnf&#39;: &#39;5514776252&#39;, &#39;dsdwa&#39;: &#39;7719507786&#39;, &#39;dpwob&#39;: &#39;0102753843&#39;, &#39;qxmga&#39;: &#39;6517393063&#39;, &#39;egplu&#39;: &#39;1781524687&#39;, &#39;bbsbv&#39;: &#39;6376053959&#39;, &#39;ityzh&#39;: &#39;3537154637&#39;, &#39;exqif&#39;: &#39;0994144159&#39;, &#39;acaal&#39;: &#39;5988037901&#39;, &#39;fngyn&#39;: &#39;0484507717&#39;, &#39;osaaq&#39;: &#39;4597467934&#39;, &#39;wpukr&#39;: &#39;6004827257&#39;, &#39;weoqa&#39;: &#39;5921950170&#39;, &#39;hqjhu&#39;: &#39;7842700844&#39;, &#39;rwmst&#39;: &#39;5200651551&#39;, &#39;luxio&#39;: &#39;0388753773&#39;, &#39;hsmva&#39;: &#39;9278588905&#39;, &#39;fjzww&#39;: &#39;5275880607&#39;, &#39;pcfmt&#39;: &#39;4454270840&#39;, &#39;wtkvb&#39;: &#39;1991252877&#39;, &#39;efgmt&#39;: &#39;100795
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 9.</strong> Escribir una función <code class="docutils literal notranslate"><span class="pre">guardar_datos()</span></code> que reciba un diccionario y un nombre de archivo, y guarde el contenido del diccionario en el archivo, con el formato <code class="docutils literal notranslate"><span class="pre">clave</span> <span class="pre">:</span> <span class="pre">valor</span></code> en cada línea.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="k">def</span> <span class="nf">guardar_datos</span><span class="p">(</span><span class="n">datos</span> <span class="p">,</span> <span class="n">archivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    pre: Datos es un diccionario, archivo es el nombre del archivo donde se guardarán los datos.</span>
+<span class="sd">    post: Guarda los datos en el archivo en formato clave : valor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">archivo</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">datos</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">clave</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="n">valor</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;456&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;789&#39;</span><span class="p">}</span>
+<span class="n">guardar_datos</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="s1">&#39;archivo_datos.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 10.</strong> En algunos sitios web hay un archivo llamado <code class="docutils literal notranslate"><span class="pre">robots.txt</span></code> que indica a qué partes querés que accedan los rastreadores de los motores de búsqueda (como el rastreador de Google). También indica a qué partes <em>no</em>  querés que accedan.</p>
+<p>El ejercicio consiste en escribir un programa Python usando el módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code> para descargar y mostrar el contenido de <code class="docutils literal notranslate"><span class="pre">robot.txt</span></code> de <a class="reference external" href="https://es.wikipedia.org">https://es.wikipedia.org</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">def</span> <span class="nf">imprimir_archivo</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Descarga el archivo desde la url y lo imprime en pantalla.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error al descargar el archivo:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">imprimir_archivo</span><span class="p">(</span><span class="s1">&#39;https://es.wikipedia.org/robots.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># robots.txt for http://www.wikipedia.org/ and friends
+#
+# Please note: There are a lot of pages on this site, and there are
+# some misbehaved spiders out there that go _way_ too fast. If you&#39;re
+# irresponsible, your access to the site may be blocked.
+#
+
+# Observed spamming large amounts of https://en.wikipedia.org/?curid=NNNNNN
+# and ignoring 429 ratelimit responses, claims to respect robots:
+# http://mj12bot.com/
+User-agent: MJ12bot
+Disallow: /
+
+# advertising-related bots:
+User-agent: Mediapartners-Google*
+Disallow: /
+
+# Wikipedia work bots:
+User-agent: IsraBot
+Disallow:
+
+User-agent: Orthogaffe
+Disallow:
+
+# Crawlers that are kind enough to obey, but which we&#39;d rather not have
+# unless they&#39;re feeding search engines.
+User-agent: UbiCrawler
+Disallow: /
+
+User-agent: DOC
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+# Some bots are known to be trouble, particularly those designed to copy
+# entire sites. Please obey robots.txt.
+User-agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: Zealbot
+Disallow: /
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: Fetch
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: linko
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: Xenu
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+User-agent: ZyBORG
+Disallow: /
+
+User-agent: Download Ninja
+Disallow: /
+
+# Misbehaving: requests much too fast:
+User-agent: fast
+Disallow: /
+
+#
+# Sorry, wget in its recursive mode is a frequent problem.
+# Please read the man page and use it properly; there is a
+# --wait option you can use to set the delay between hits,
+# for instance.
+#
+User-agent: wget
+Disallow: /
+
+#
+# The &#39;grub&#39; distributed client has been *very* poorly behaved.
+#
+User-agent: grub-client
+Disallow: /
+
+#
+# Doesn&#39;t follow robots.txt anyway, but...
+#
+User-agent: k2spider
+Disallow: /
+
+#
+# Hits many times per second, not acceptable
+# http://www.nameprotect.com/botinfo.html
+User-agent: NPBot
+Disallow: /
+
+# A capture bot, downloads gazillions of pages with no public benefit
+# http://www.webreaper.net/
+User-agent: WebReaper
+Disallow: /
+
+
+#
+# Friendly, low-speed bots are welcome viewing article pages, but not
+# dynamically-generated pages please.
+#
+# Inktomi&#39;s &quot;Slurp&quot; can read a minimum delay between hits; if your
+# bot supports such a thing using the &#39;Crawl-delay&#39; or another
+# instruction, please let us know.
+#
+# There is a special exception for API mobileview to allow dynamic
+# mobile web &amp; app views to load section content.
+# These views aren&#39;t HTTP-cached but use parser cache aggressively
+# and don&#39;t expose special: pages etc.
+#
+# Another exception is for REST API documentation, located at
+# /api/rest_v1/?doc.
+#
+User-agent: *
+Allow: /w/api.php?action=mobileview&amp;
+Allow: /w/load.php?
+Allow: /api/rest_v1/?doc
+Disallow: /w/
+Disallow: /api/
+Disallow: /trap/
+Disallow: /wiki/Special:
+Disallow: /wiki/Spezial:
+Disallow: /wiki/Spesial:
+Disallow: /wiki/Special%3A
+Disallow: /wiki/Spezial%3A
+Disallow: /wiki/Spesial%3A
+#
+# ar:
+Disallow: /wiki/%D8%AE%D8%A7%D8%B5:Search
+Disallow: /wiki/%D8%AE%D8%A7%D8%B5%3ASearch
+#
+# dewiki:
+# T6937
+# sensible deletion and meta user discussion pages:
+Disallow: /wiki/Wikipedia:L%C3%B6schkandidaten/
+Disallow: /wiki/Wikipedia:Löschkandidaten/
+Disallow: /wiki/Wikipedia:Vandalensperrung/
+Disallow: /wiki/Wikipedia:Benutzersperrung/
+Disallow: /wiki/Wikipedia:Vermittlungsausschuss/
+Disallow: /wiki/Wikipedia:Administratoren/Probleme/
+Disallow: /wiki/Wikipedia:Adminkandidaturen/
+Disallow: /wiki/Wikipedia:Qualitätssicherung/
+Disallow: /wiki/Wikipedia:Qualit%C3%A4tssicherung/
+# 4937#5
+Disallow: /wiki/Wikipedia:Vandalismusmeldung/
+Disallow: /wiki/Wikipedia:Gesperrte_Lemmata/
+Disallow: /wiki/Wikipedia:Löschprüfung/
+Disallow: /wiki/Wikipedia:L%C3%B6schprüfung/
+Disallow: /wiki/Wikipedia:Administratoren/Notizen/
+Disallow: /wiki/Wikipedia:Schiedsgericht/Anfragen/
+Disallow: /wiki/Wikipedia:L%C3%B6schpr%C3%BCfung/
+# T14111
+Disallow: /wiki/Wikipedia:Checkuser/
+Disallow: /wiki/Wikipedia_Diskussion:Checkuser/
+Disallow: /wiki/Wikipedia_Diskussion:Adminkandidaturen/
+# T15961
+Disallow: /wiki/Wikipedia:Spam-Blacklist-Log
+Disallow: /wiki/Wikipedia%3ASpam-Blacklist-Log
+Disallow: /wiki/Wikipedia_Diskussion:Spam-Blacklist-Log
+Disallow: /wiki/Wikipedia_Diskussion%3ASpam-Blacklist-Log
+#
+# enwiki:
+# Folks get annoyed when VfD discussions end up the number 1 google hit for
+# their name. See T6776
+Disallow: /wiki/Wikipedia:Articles_for_deletion/
+Disallow: /wiki/Wikipedia%3AArticles_for_deletion/
+Disallow: /wiki/Wikipedia:Votes_for_deletion/
+Disallow: /wiki/Wikipedia%3AVotes_for_deletion/
+Disallow: /wiki/Wikipedia:Pages_for_deletion/
+Disallow: /wiki/Wikipedia%3APages_for_deletion/
+Disallow: /wiki/Wikipedia:Miscellany_for_deletion/
+Disallow: /wiki/Wikipedia%3AMiscellany_for_deletion/
+Disallow: /wiki/Wikipedia:Miscellaneous_deletion/
+Disallow: /wiki/Wikipedia%3AMiscellaneous_deletion/
+Disallow: /wiki/Wikipedia:Copyright_problems
+Disallow: /wiki/Wikipedia%3ACopyright_problems
+Disallow: /wiki/Wikipedia:Protected_titles/
+Disallow: /wiki/Wikipedia%3AProtected_titles/
+# T15398
+Disallow: /wiki/Wikipedia:WikiProject_Spam/
+Disallow: /wiki/Wikipedia%3AWikiProject_Spam/
+# T16075
+Disallow: /wiki/MediaWiki:Spam-blacklist
+Disallow: /wiki/MediaWiki%3ASpam-blacklist
+Disallow: /wiki/MediaWiki_talk:Spam-blacklist
+Disallow: /wiki/MediaWiki_talk%3ASpam-blacklist
+# T13261
+Disallow: /wiki/Wikipedia:Requests_for_arbitration/
+Disallow: /wiki/Wikipedia%3ARequests_for_arbitration/
+Disallow: /wiki/Wikipedia:Requests_for_comment/
+Disallow: /wiki/Wikipedia%3ARequests_for_comment/
+Disallow: /wiki/Wikipedia:Requests_for_adminship/
+Disallow: /wiki/Wikipedia%3ARequests_for_adminship/
+# T12288
+Disallow: /wiki/Wikipedia_talk:Articles_for_deletion/
+Disallow: /wiki/Wikipedia_talk%3AArticles_for_deletion/
+Disallow: /wiki/Wikipedia_talk:Votes_for_deletion/
+Disallow: /wiki/Wikipedia_talk%3AVotes_for_deletion/
+Disallow: /wiki/Wikipedia_talk:Pages_for_deletion/
+Disallow: /wiki/Wikipedia_talk%3APages_for_deletion/
+Disallow: /wiki/Wikipedia_talk:Miscellany_for_deletion/
+Disallow: /wiki/Wikipedia_talk%3AMiscellany_for_deletion/
+Disallow: /wiki/Wikipedia_talk:Miscellaneous_deletion/
+Disallow: /wiki/Wikipedia_talk%3AMiscellaneous_deletion/
+# T16793
+Disallow: /wiki/Wikipedia:Changing_username
+Disallow: /wiki/Wikipedia%3AChanging_username
+Disallow: /wiki/Wikipedia:Changing_username/
+Disallow: /wiki/Wikipedia%3AChanging_username/
+Disallow: /wiki/Wikipedia_talk:Changing_username
+Disallow: /wiki/Wikipedia_talk%3AChanging_username
+Disallow: /wiki/Wikipedia_talk:Changing_username/
+Disallow: /wiki/Wikipedia_talk%3AChanging_username/
+#
+# eswiki:
+# T8746
+Disallow: /wiki/Wikipedia:Consultas_de_borrado/
+Disallow: /wiki/Wikipedia%3AConsultas_de_borrado/
+#
+# fiwiki:
+# T10695
+Disallow: /wiki/Wikipedia:Poistettavat_sivut
+Disallow: /wiki/K%C3%A4ytt%C3%A4j%C3%A4:
+Disallow: /wiki/Käyttäjä:
+Disallow: /wiki/Keskustelu_k%C3%A4ytt%C3%A4j%C3%A4st%C3%A4:
+Disallow: /wiki/Keskustelu_käyttäjästä:
+Disallow: /wiki/Wikipedia:Yll%C3%A4pit%C3%A4j%C3%A4t/
+Disallow: /wiki/Wikipedia:Ylläpitäjät/
+#
+# hewiki:
+Disallow: /wiki/%D7%9E%D7%99%D7%95%D7%97%D7%93:Search
+Disallow: /wiki/%D7%9E%D7%99%D7%95%D7%97%D7%93%3ASearch
+#T11517
+Disallow: /wiki/ויקיפדיה:רשימת_מועמדים_למחיקה/
+Disallow: /wiki/ויקיפדיה%3Aרשימת_מועמדים_למחיקה/
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%A8%D7%A9%D7%99%D7%9E%D7%AA_%D7%9E%D7%95%D7%A2%D7%9E%D7%93%D7%99%D7%9D_%D7%9C%D7%9E%D7%97%D7%99%D7%A7%D7%94/
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%A8%D7%A9%D7%99%D7%9E%D7%AA_%D7%9E%D7%95%D7%A2%D7%9E%D7%93%D7%99%D7%9D_%D7%9C%D7%9E%D7%97%D7%99%D7%A7%D7%94/
+Disallow: /wiki/ויקיפדיה:ערכים_לא_קיימים_ומוגנים
+Disallow: /wiki/ויקיפדיה%3Aערכים_לא_קיימים_ומוגנים
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%A2%D7%A8%D7%9B%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%A2%D7%A8%D7%9B%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D
+Disallow: /wiki/ויקיפדיה:דפים_לא_קיימים_ומוגנים
+Disallow: /wiki/ויקיפדיה%3Aדפים_לא_קיימים_ומוגנים
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94:%D7%93%D7%A4%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D
+Disallow: /wiki/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%93%D7%99%D7%94%3A%D7%93%D7%A4%D7%99%D7%9D_%D7%9C%D7%90_%D7%A7%D7%99%D7%99%D7%9E%D7%99%D7%9D_%D7%95%D7%9E%D7%95%D7%92%D7%A0%D7%99%D7%9D
+#
+# huwiki:
+Disallow: /wiki/Speci%C3%A1lis:Search
+Disallow: /wiki/Speci%C3%A1lis%3ASearch
+#
+# itwiki:
+# T7545
+Disallow: /wiki/Wikipedia:Pagine_da_cancellare
+Disallow: /wiki/Wikipedia%3APagine_da_cancellare
+Disallow: /wiki/Wikipedia:Utenti_problematici
+Disallow: /wiki/Wikipedia%3AUtenti_problematici
+Disallow: /wiki/Wikipedia:Vandalismi_in_corso
+Disallow: /wiki/Wikipedia%3AVandalismi_in_corso
+Disallow: /wiki/Wikipedia:Amministratori
+Disallow: /wiki/Wikipedia%3AAmministratori
+Disallow: /wiki/Wikipedia:Proposte_di_cancellazione_semplificata
+Disallow: /wiki/Wikipedia%3AProposte_di_cancellazione_semplificata
+Disallow: /wiki/Categoria:Da_cancellare_subito
+Disallow: /wiki/Categoria%3ADa_cancellare_subito
+Disallow: /wiki/Wikipedia:Sospette_violazioni_di_copyright
+Disallow: /wiki/Wikipedia%3ASospette_violazioni_di_copyright
+Disallow: /wiki/Categoria:Da_controllare_per_copyright
+Disallow: /wiki/Categoria%3ADa_controllare_per_copyright
+Disallow: /wiki/Progetto:Rimozione_contributi_sospetti
+Disallow: /wiki/Progetto%3ARimozione_contributi_sospetti
+Disallow: /wiki/Categoria:Da_cancellare_subito_per_violazione_integrale_copyright
+Disallow: /wiki/Categoria%3ADa_cancellare_subito_per_violazione_integrale_copyright
+Disallow: /wiki/Progetto:Cococo
+Disallow: /wiki/Progetto%3ACococo
+Disallow: /wiki/Discussioni_progetto:Cococo
+Disallow: /wiki/Discussioni_progetto%3ACococo
+#
+# jawiki
+Disallow: /wiki/%E7%89%B9%E5%88%A5:Search
+Disallow: /wiki/%E7%89%B9%E5%88%A5%3ASearch
+# T7239
+Disallow: /wiki/Wikipedia:%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC/
+Disallow: /wiki/Wikipedia%3A%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC/
+Disallow: /wiki/Wikipedia:%E5%88%A9%E7%94%A8%E8%80%85%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC
+Disallow: /wiki/Wikipedia%3A%E5%88%A9%E7%94%A8%E8%80%85%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E5%89%8A%E9%99%A4%E4%BE%9D%E9%A0%BC
+# nowiki
+# T13432
+Disallow: /wiki/Bruker:
+Disallow: /wiki/Bruker%3A
+Disallow: /wiki/Brukerdiskusjon
+Disallow: /wiki/Wikipedia:Administratorer
+Disallow: /wiki/Wikipedia%3AAdministratorer
+Disallow: /wiki/Wikipedia-diskusjon:Administratorer
+Disallow: /wiki/Wikipedia-diskusjon%3AAdministratorer
+Disallow: /wiki/Wikipedia:Sletting
+Disallow: /wiki/Wikipedia%3ASletting
+Disallow: /wiki/Wikipedia-diskusjon:Sletting
+Disallow: /wiki/Wikipedia-diskusjon%3ASletting
+#
+# plwiki
+# T10067
+Disallow: /wiki/Wikipedia:Strony_do_usuni%C4%99cia
+Disallow: /wiki/Wikipedia%3AStrony_do_usuni%C4%99cia
+Disallow: /wiki/Wikipedia:Do_usuni%C4%99cia
+Disallow: /wiki/Wikipedia%3ADo_usuni%C4%99cia
+Disallow: /wiki/Wikipedia:SDU/
+Disallow: /wiki/Wikipedia%3ASDU/
+Disallow: /wiki/Wikipedia:Strony_podejrzane_o_naruszenie_praw_autorskich
+Disallow: /wiki/Wikipedia%3AStrony_podejrzane_o_naruszenie_praw_autorskich
+#
+# ptwiki:
+# T7394
+Disallow: /wiki/Wikipedia:Páginas_para_eliminar/
+Disallow: /wiki/Wikipedia:P%C3%A1ginas_para_eliminar/
+Disallow: /wiki/Wikipedia%3AP%C3%A1ginas_para_eliminar/
+Disallow: /wiki/Wikipedia_Discussão:Páginas_para_eliminar/
+Disallow: /wiki/Wikipedia_Discuss%C3%A3o:P%C3%A1ginas_para_eliminar/
+Disallow: /wiki/Wikipedia_Discuss%C3%A3o%3AP%C3%A1ginas_para_eliminar/
+#
+# rowiki:
+# T14546
+Disallow: /wiki/Wikipedia:Pagini_de_%C5%9Fters
+Disallow: /wiki/Wikipedia%3APagini_de_%C5%9Fters
+Disallow: /wiki/Discu%C5%A3ie_Wikipedia:Pagini_de_%C5%9Fters
+Disallow: /wiki/Discu%C5%A3ie_Wikipedia%3APagini_de_%C5%9Fters
+#
+# ruwiki:
+Disallow: /wiki/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5:Search
+Disallow: /wiki/%D0%A1%D0%BF%D0%B5%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%3ASearch
+#
+# svwiki:
+# T12229
+Disallow: /wiki/Wikipedia%3ASidor_f%C3%B6reslagna_f%C3%B6r_radering
+Disallow: /wiki/Wikipedia:Sidor_f%C3%B6reslagna_f%C3%B6r_radering
+Disallow: /wiki/Wikipedia:Sidor_föreslagna_för_radering
+Disallow: /wiki/Användare
+Disallow: /wiki/Anv%C3%A4ndare
+Disallow: /wiki/Användardiskussion
+Disallow: /wiki/Anv%C3%A4ndardiskussion
+Disallow: /wiki/Wikipedia:Skyddade_sidnamn
+Disallow: /wiki/Wikipedia%3ASkyddade_sidnamn
+# T13291
+Disallow: /wiki/Wikipedia:Sidor_som_bör_raderas
+Disallow: /wiki/Wikipedia:Sidor_som_b%C3%B6r_raderas
+Disallow: /wiki/Wikipedia%3ASidor_som_b%C3%B6r_raderas
+#
+# zhwiki:
+# T7104
+Disallow: /wiki/Wikipedia:删除投票/侵权
+Disallow: /wiki/Wikipedia:%E5%88%A0%E9%99%A4%E6%8A%95%E7%A5%A8/%E4%BE%B5%E6%9D%83
+Disallow: /wiki/Wikipedia:删除投票和请求
+Disallow: /wiki/Wikipedia:%E5%88%A0%E9%99%A4%E6%8A%95%E7%A5%A8%E5%92%8C%E8%AF%B7%E6%B1%82
+Disallow: /wiki/Category:快速删除候选
+Disallow: /wiki/Category:%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4%E5%80%99%E9%80%89
+Disallow: /wiki/Category:维基百科需要翻译的文章
+Disallow: /wiki/Category:%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%9C%80%E8%A6%81%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0
+#
+# sister projects
+#
+# enwikinews:
+# T7340
+Disallow: /wiki/Portal:Prepared_stories/
+Disallow: /wiki/Portal%3APrepared_stories/
+#
+# itwikinews
+# T11138
+Disallow: /wiki/Wikinotizie:Richieste_di_cancellazione
+Disallow: /wiki/Wikinotizie:Sospette_violazioni_di_copyright
+Disallow: /wiki/Categoria:Da_cancellare_subito
+Disallow: /wiki/Categoria:Da_cancellare_subito_per_violazione_integrale_copyright
+Disallow: /wiki/Wikinotizie:Storie_in_preparazione
+#
+# enwikiquote:
+# T17095
+Disallow: /wiki/Wikiquote:Votes_for_deletion/
+Disallow: /wiki/Wikiquote%3AVotes_for_deletion/
+Disallow: /wiki/Wikiquote_talk:Votes_for_deletion/
+Disallow: /wiki/Wikiquote_talk%3AVotes_for_deletion/
+Disallow: /wiki/Wikiquote:Votes_for_deletion_archive/
+Disallow: /wiki/Wikiquote%3AVotes_for_deletion_archive/
+Disallow: /wiki/Wikiquote_talk:Votes_for_deletion_archive/
+Disallow: /wiki/Wikiquote_talk%3AVotes_for_deletion_archive/
+#
+# enwikibooks
+Disallow: /wiki/Wikibooks:Votes_for_deletion
+#
+# working...
+Disallow: /wiki/Fundraising_2007/comments
+#
+#
+#
+#----------------------------------------------------------#
+#
+#
+#
+ # &lt;!-- Please do not remove the space at the start of this line, it breaks the rendering.  http://www.robotstxt.org/orig.html says spaces before comments are OK. --&gt;&lt;syntaxhighlight lang=&quot;text&quot;&gt;
+#
+# Localisable part of robots.txt for es.wikipedia.org
+#
+# Edit at http://es.wikipedia.org/w/index.php?title=MediaWiki:Robots.txt&amp;action=edit
+# Don&#39;t add newlines here. All rules set here are active for every user-agent.
+#
+# Please check any changes using a syntax validator such as http://tool.motoricerca.info/robots-checker.phtml
+# Enter http://es.wikipedia.org/robots.txt as the URL to check.
+#
+Disallow: /wiki/MediaWiki:Spam-blacklist
+Disallow: /wiki/MediaWiki%3ASpam-blacklist
+Disallow: /wiki/MediaWiki_discusión:Spam-blacklist
+Disallow: /wiki/MediaWiki_discusi%C3%B3n%3ASpam-blacklist
+Disallow: /wiki/Categoría:Wikipedia:Páginas_no_indexadas
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3AP%C3%A1ginas_no_indexadas
+Disallow: /wiki/Categoría:Wikipedia:Categorías_ocultas
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3ACategor%C3%ADas_ocultas
+#
+Disallow: /wiki/Wikipedia:Consultas_de_borrado/
+Disallow: /wiki/Wikipedia%3AConsultas_de_borrado/
+#
+Disallow: /wiki/Categoría:Wikipedia:Artículos_sospechosos_de_violar_los_derechos_de_autor
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3AArt%C3%ADculos_sospechosos_de_violar_los_derechos_de_autor
+Disallow: /wiki/Categoría:Wikipedia:Plagios_obvios
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3APlagios_obvios
+Disallow: /wiki/Categoría:Wikipedia:Borrar_(definitivo)
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3ABorrar_%28definitivo%29
+Disallow: /wiki/Categoría:Wikipedia:Artículos_propuestos_para_borrado
+Disallow: /wiki/Categor%C3%ADa%3AWikipedia%3AArt%C3%ADculos_propuestos_para_borrado
+Disallow: /wiki/Wikipedia:Asistente_para_la_creación_de_artículos/Solicitudes/
+Disallow: /wiki/Wikipedia%3AAsistente_para_la_creaci%C3%B3n_de_art%C3%ADculos/Solicitudes/
+#
+Disallow: /wiki/Wikipedia:Candidaturas_a_bibliotecario/
+Disallow: /wiki/Wikipedia%3ACandidaturas_a_bibliotecario/
+Disallow: /wiki/Wikipedia_discusión:Candidaturas_a_bibliotecario/
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3ACandidaturas_a_bibliotecario/
+Disallow: /wiki/Wikipedia:Checkusers/Candidaturas
+Disallow: /wiki/Wikipedia%3ACheckusers/Candidaturas
+Disallow: /wiki/Wikipedia:Checkusers/Candidaturas/
+Disallow: /wiki/Wikipedia%3ACheckusers/Candidaturas/
+Disallow: /wiki/Wikipedia_discusión:Checkusers/Candidaturas/
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3ACheckusers/Candidaturas/
+Disallow: /wiki/Wikipedia:Supresores/Candidaturas
+Disallow: /wiki/Wikipedia%3ASupresores/Candidaturas
+Disallow: /wiki/Wikipedia:Supresores/Candidaturas/
+Disallow: /wiki/Wikipedia%3ASupresores/Candidaturas/
+Disallow: /wiki/Wikipedia_discusión:Supresores/Candidaturas/
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3ASupresores/Candidaturas/
+Disallow: /wiki/Wikipedia:Administradores_de_candidaturas_a_artículo_destacado
+Disallow: /wiki/Wikipedia%3AAdministradores_de_candidaturas_a_art%C3%ADculo_destacado
+Disallow: /wiki/Wikipedia:Administradores_de_candidaturas_a_artículo_destacado/
+Disallow: /wiki/Wikipedia%3AAdministradores_de_candidaturas_a_art%C3%ADculo_destacado/
+Disallow: /wiki/Wikipedia_discusión:Administradores_de_candidaturas_a_artículo_destacado/
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3AAdministradores_de_candidaturas_a_art%C3%ADculo_destacado/
+Disallow: /wiki/Wikipedia:Tablón_de_anuncios_de_los_bibliotecarios
+Disallow: /wiki/Wikipedia%3ATabl%C3%B3n_de_anuncios_de_los_bibliotecarios
+Disallow: /wiki/Wikipedia:Tablón_de_anuncios_de_los_bibliotecarios/
+Disallow: /wiki/Wikipedia%3ATabl%C3%B3n_de_anuncios_de_los_bibliotecarios/
+#
+Disallow: /wiki/Wikipedia:Solicitudes_de_verificación_de_usuarios
+Disallow: /wiki/Wikipedia%3ASolicitudes_de_verificaci%C3%B3n_de_usuarios
+Disallow: /wiki/Wikipedia:Solicitudes_de_verificación_de_usuarios/
+Disallow: /wiki/Wikipedia%3ASolicitudes_de_verificaci%C3%B3n_de_usuarios/
+Disallow: /wiki/Wikipedia_discusión:Solicitudes_de_verificación_de_usuarios/
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3ASolicitudes_de_verificaci%C3%B3n_de_usuarios/
+Disallow: /wiki/Wikipedia:Cambiar_el_nombre_de_usuario
+Disallow: /wiki/Wikipedia%3ACambiar_el_nombre_de_usuario
+Disallow: /wiki/Wikipedia_discusión:Cambiar_el_nombre_de_usuario
+Disallow: /wiki/Wikipedia_discusi%C3%B3n%3ACambiar_el_nombre_de_usuario
+Disallow: /wiki/Wikipedia:Cambiar_el_nombre_de_usuario/
+Disallow: /wiki/Wikipedia%3ACambiar_el_nombre_de_usuario/
+# &lt;/syntaxhighlight&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 11.</strong> Uso de la biblioteca <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p>
+<p>Si bien podemos extraer información de la web  bajando y  analizando páginas web directamente con Python, algunos sitios nos ofrecen la posibilidad de acceder a la información ya estructurada como JSON (<em>Java Script Object Notation</em>),  como CSV (<em>comma-separated values</em>) o como XML (<em>Extensible Markup Language</em>). Esto  nos permite importar datos estructurados que luego  podemos pasar, por ejemplo, a diccionarios o listas y de esa forma trabajar en forma más cómoda y segura.</p>
+<p>En este ejercicio practicaremos con archivos en formato JSON. Para ello debemos primero importar la biblioteca <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p>
+<p>Hay dos métodos,  que nos permiten importar archivos JSON y exportar a archivos JSON.</p>
+<p><code class="docutils literal notranslate"><span class="pre">json.loads('cadena</span> <span class="pre">json')</span></code>: convierte una cadena de caracteres en formato JSON  a un diccionario o lista según corresponda. Esto es llamado <em>deserializar</em> una cadena.</p>
 <p><code class="docutils literal notranslate"><span class="pre">json.dumps(diccionario</span> <span class="pre">o</span> <span class="pre">lista)</span></code>: convierte un diccionario o lista a cadena de caracteres (que luego puede ser utilizada como input de <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code>). Esto es llamado <em>serializar</em> un objeto.</p>
 <p>En  la siguiente celda de código hay unos ejemplos muy sencillos del uso de estos dos métodos.</p>
 <div class="cell docutils container">
@@ -547,34 +1257,74 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt; {&quot;a&quot;: 1}
+&lt;class &#39;dict&#39;&gt; {&#39;a&#39;: 1}
+&lt;class &#39;str&#39;&gt; [{&quot;a&quot;: 1}]
+&lt;class &#39;list&#39;&gt; [{&#39;a&#39;: 1}]
+</pre></div>
 </div>
-<p>Para importar archivo json entonces se debe usar como siempre la función  <code class="docutils literal notranslate"><span class="pre">open()</span></code> y luego hacer <code class="docutils literal notranslate"><span class="pre">json.loads(archivo.read())</span></code>.</p>
-<p>Para guardar un archivo json se debe tener un diccionario o lista,  guardar como cadena con <code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> y después esa cadena guardarla en un archivo.</p>
+</div>
+</div>
+<p>Para importar archivo JSON entonces se debe usar como siempre la función <code class="docutils literal notranslate"><span class="pre">open()</span></code> y luego hacer <code class="docutils literal notranslate"><span class="pre">json.loads(archivo.read())</span></code>.</p>
+<p>Para guardar un archivo JSON se debe tener un diccionario o lista,  guardar como cadena con <code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> y después esa cadena guardarla en un archivo.</p>
 <p>Por ejemplo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lectura</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./sample_data/anscombe.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">cadena_json</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="c1"># print(type(x), type(cadena_json))</span>
-<span class="c1"># print(cadena_json)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">obj_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj_json</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj_json</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="c1"># Lectura de archivo json desde una url</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://tirabo.github.io/files_ayp/archivo_ejemplo.json&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">cadena_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+<span class="n">objeto_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-<span class="c1"># Agrandemos cada diccionario  con clave &#39;prom&#39; donde almacenamos el promedio de X e Y</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj_json</span><span class="p">)):</span>
-  <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">obj_json</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">obj_json</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>
-  <span class="n">prom</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-  <span class="n">obj_json</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;prom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prom</span>
+<span class="c1"># Escritura a archivo local</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;docu.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">cadena_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">objeto_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-<span class="c1"># Escritura</span>
-<span class="n">y</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./sample_data/docu.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-<span class="n">cadena_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj_json</span><span class="p">)</span> <span class="c1"># es una str</span>
-<span class="n">y</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
-<span class="n">y</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">detect_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="s1">&#39;surrogatepass&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="bp">cls</span> <span class="o">=</span> <span class="n">JSONDecoder</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">_w</span><span class="o">=</span><span class="n">WHITESPACE</span><span class="o">.</span><span class="n">match</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd">     containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span>     <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>     <span class="k">if</span> <span class="n">end</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_once</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
 </pre></div>
 </div>
 </div>
@@ -615,9 +1365,9 @@ document.write(`
 <li><p>Importá el archivo,  transformá el contenido en un diccionario y cambiá  la segunda persona poniendo tus datos personales.</p></li>
 <li><p>Guardá el contenido en un archivo llamado <code class="docutils literal notranslate"><span class="pre">personas_mod.json</span></code>.</p></li>
 </ol>
-<p><strong>Ejercicio 11.</strong> Ejemplo CSV.</p>
+<p><strong>Ejercicio 12.</strong> Ejemplo CSV.</p>
 <ol class="arabic simple">
-<li><p>Bajar con el  módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code> el archivo https://github.com/tirabo/Algoritmos-y-Programacion/blob/main/2024/python/documentos_de_prueba/Notas_LCC_COM1_anonimizados.csv</p></li>
+<li><p>Bajar con el  módulo <code class="docutils literal notranslate"><span class="pre">requests</span></code> el archivo <a class="reference external" href="https://tirabo.github.io/files_ayp/Notas_LCC_COM1_anonimizados.csv">https://tirabo.github.io/files_ayp/Notas_LCC_COM1_anonimizados.csv</a></p></li>
 </ol>
 <p>El archivo contiene un listado de alumnos (anonimizado)  y  las notas de 3 parciales. Hacer lo siguiente:</p>
 <ol class="arabic simple" start="2">
@@ -643,38 +1393,39 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Ejercicio 12.</strong> Uso de la biblioteca <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p>
-<p>1.Hacé un archivo llamado peliculas.json con el siguiente contenido:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   {
-    &quot;Pelicula&quot; : [
-      {
-        &quot;Título&quot;: &quot;Titanic&quot;,
-        &quot;Diractor&quot;: &quot;James Cameron&quot;,
-        &quot;Año&quot;: 1997,
-      },
-      {
-        &quot;Título&quot;: &quot;Gladiador&quot;,
-        &quot;Director&quot;: &quot;Ridley Scott&quot;,
-        &quot;Año&quot;: 2000,
-      },
-      {
-        &quot;Título&quot;: &quot;Bird Box: a ciegas&quot;,
-        &quot;Autor&quot;: &quot;Susanne Bier&quot;,
-        &quot;Año&quot;: 2018,
-      }
-    ]
-  }
+<p><strong>Ejercicio 13.</strong></p>
+<p>1.Hacé un archivo llamado <code class="docutils literal notranslate"><span class="pre">peliculas.json</span></code> con el siguiente contenido:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Pelicula&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;Título&quot;</span><span class="p">:</span> <span class="s2">&quot;Titanic&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Director&quot;</span><span class="p">:</span> <span class="s2">&quot;James Cameron&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Año&quot;</span><span class="p">:</span> <span class="mi">1997</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;Título&quot;</span><span class="p">:</span> <span class="s2">&quot;Gladiador&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Director&quot;</span><span class="p">:</span> <span class="s2">&quot;Ridley Scott&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Año&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;Título&quot;</span><span class="p">:</span> <span class="s2">&quot;Bird Box: a ciegas&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Director&quot;</span><span class="p">:</span> <span class="s2">&quot;Susanne Bier&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Año&quot;</span><span class="p">:</span> <span class="mi">2018</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Subí el archivo a <code class="docutils literal notranslate"><span class="pre">./sample_data</span></code> del Colab.</p></li>
-<li><p>Lee el archivo con Python,  transformá el contenido en un diccionario y cambiá  la segundo pelicula por:</p></li>
-</ol>
-<p>Título: It.</p>
-<p>Director: Andrés Muschietti.</p>
-<p>Año: 2017.</p>
-<ol class="arabic simple" start="5">
-<li><p>Guardá el contenido en el directorio <code class="docutils literal notranslate"><span class="pre">./sample_data</span></code> en un archivo llamado <code class="docutils literal notranslate"><span class="pre">peliculas_mod.json</span></code>.</p></li>
+<p>y guardalo en un sub directorio llamado <code class="docutils literal notranslate"><span class="pre">data</span></code></p>
+<ol class="arabic" start="2">
+<li><p>Lee el archivo con Python,  transformá el contenido en un diccionario y cambiá la segundo pelicula por:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Título</span><span class="p">:</span> <span class="n">It</span><span class="o">.</span>
+<span class="n">Director</span><span class="p">:</span> <span class="n">Andrés</span> <span class="n">Muschietti</span><span class="o">.</span>
+<span class="n">Año</span><span class="p">:</span> <span class="mf">2017.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Guardá el contenido en el directorio <code class="docutils literal notranslate"><span class="pre">data</span></code> en un archivo llamado <code class="docutils literal notranslate"><span class="pre">peliculas_mod.json</span></code>.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -683,7 +1434,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>Ejercicio 13.</strong></p>
+<p><strong>Ejercicio 14.</strong></p>
 <ol class="arabic simple">
 <li><p>Escribir una función <code class="docutils literal notranslate"><span class="pre">cargar_datos_1()</span></code> que reciba un diccionario, formado por los primeros 6 meses del año como claves y la duración de los mismos en días como valores, considerar un año no bisiesto. Y devuelva un archivo, “meses_del_año.txt” en donde cada renglón del mismo son las claves y los valores del diccionario.</p></li>
 <li><p>Escribir una función <code class="docutils literal notranslate"><span class="pre">cargar_datos_2()</span></code> que reciba como entrada el archivo “meses_del_año.txt” y agregue al mismo archivo los meses y días correspondientes que faltan.</p></li>
@@ -715,7 +1466,7 @@ document.write(`
 <p>Octubre, 31 días</p>
 <p>Noviembre, 30 días</p>
 <p>Diciembre, 31 días</p>
-<p><strong>Ejercicio 14.</strong> Manejo de APIs y json.</p>
+<p><strong>Ejercicio 15.</strong> Manejo de APIs y json.</p>
 <p><strong>Introducción</strong></p>
 <p>La Oficina Nacional de Administración Oceánica y Atmosférica (National Oceanic and Atmospheric Administration, NOAA) es una agencia científica del Departamento de Comercio de los Estados Unidos cuyas actividades se centran en monitorear las condiciones de los océanos y la atmósfera.</p>
 <p>El NOAA ofrece distintos <em>datasets</em> (conjuntos de datos estructurados) sin limitaciones. Los datos puedes ser bajados directamente del sitio web https://www.noaa.gov/ o, alternativamente, accedidos por API.</p>
