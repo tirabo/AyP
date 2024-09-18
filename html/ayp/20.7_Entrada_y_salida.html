@@ -676,7 +676,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;glaoe&#39;: &#39;8477115825&#39;, &#39;wkcnf&#39;: &#39;5514776252&#39;, &#39;dsdwa&#39;: &#39;7719507786&#39;, &#39;dpwob&#39;: &#39;0102753843&#39;, &#39;qxmga&#39;: &#39;6517393063&#39;, &#39;egplu&#39;: &#39;1781524687&#39;, &#39;bbsbv&#39;: &#39;6376053959&#39;, &#39;ityzh&#39;: &#39;3537154637&#39;, &#39;exqif&#39;: &#39;0994144159&#39;, &#39;acaal&#39;: &#39;5988037901&#39;, &#39;fngyn&#39;: &#39;0484507717&#39;, &#39;osaaq&#39;: &#39;4597467934&#39;, &#39;wpukr&#39;: &#39;6004827257&#39;, &#39;weoqa&#39;: &#39;5921950170&#39;, &#39;hqjhu&#39;: &#39;7842700844&#39;, &#39;rwmst&#39;: &#39;5200651551&#39;, &#39;luxio&#39;: &#39;0388753773&#39;, &#39;hsmva&#39;: &#39;9278588905&#39;, &#39;fjzww&#39;: &#39;5275880607&#39;, &#39;pcfmt&#39;: &#39;4454270840&#39;, &#39;wtkvb&#39;: &#39;1991252877&#39;, &#39;efgmt&#39;: &#39;100795
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;hllso&#39;: &#39;7623042607&#39;, &#39;jhnkp&#39;: &#39;1830283928&#39;, &#39;cylkg&#39;: &#39;8196987462&#39;, &#39;dgjzt&#39;: &#39;4446090722&#39;, &#39;fwmpb&#39;: &#39;6173637003&#39;, &#39;arnjl&#39;: &#39;7790049659&#39;, &#39;tynfs&#39;: &#39;6944792666&#39;, &#39;dcznf&#39;: &#39;1657782848&#39;, &#39;foxuw&#39;: &#39;7028653172&#39;, &#39;otaux&#39;: &#39;6204007554&#39;, &#39;ddlby&#39;: &#39;2885765629&#39;, &#39;wmtzo&#39;: &#39;3171628916&#39;, &#39;hlanx&#39;: &#39;4375366075&#39;, &#39;fktfx&#39;: &#39;1770090039&#39;, &#39;qdbnu&#39;: &#39;3372007980&#39;, &#39;hhyki&#39;: &#39;2386700074&#39;, &#39;ulzej&#39;: &#39;8236357175&#39;, &#39;dmmjv&#39;: &#39;8544945113&#39;, &#39;rhozc&#39;: &#39;8179711111&#39;, &#39;pdozk&#39;: &#39;9315169924&#39;, &#39;soxgi&#39;: &#39;1360212532&#39;, &#39;ritqz&#39;: &#39;340849
 </pre></div>
 </div>
 </div>
@@ -1280,57 +1280,15 @@ Disallow: /wiki/Wikipedia%3ACambiar_el_nombre_de_usuario/
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">cadena_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
 <span class="n">objeto_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
 <span class="c1"># Escritura a archivo local</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;docu.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">cadena_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">objeto_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cadena_json</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="nb">print</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">detect_encoding</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="s1">&#39;surrogatepass&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="bp">cls</span> <span class="o">=</span> <span class="n">JSONDecoder</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">_w</span><span class="o">=</span><span class="n">WHITESPACE</span><span class="o">.</span><span class="n">match</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd">     containing a JSON document).</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span>     <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span>     <span class="k">if</span> <span class="n">end</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\json\decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_once</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">objeto_json</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Observar que el archivo <code class="docutils literal notranslate"><span class="pre">./sample_data/docu.json</span></code> tiene contenido similar (aunque no el mismo formato) que el archivo <code class="docutils literal notranslate"><span class="pre">./sample_data/anscombe.json</span></code>.</p>
-<p><em>Importante.</em> Los archivos creados por nosotros y  guardados en Colab (por ejemplo, <code class="docutils literal notranslate"><span class="pre">./sample_data/docu.json</span></code>) son borrados al poco tiempo.</p>
+<p>Observar que el archivo <code class="docutils literal notranslate"><span class="pre">docu.json</span></code> tiene contenido similar (aunque no el mismo formato) que el archivo <code class="docutils literal notranslate"><span class="pre">https://tirabo.github.io/files_ayp/archivo_ejemplo.json</span></code>.</p>
 <p>En este ejercicio:</p>
 <ol class="arabic">
 <li><p>Hacé un archivo llamado <code class="docutils literal notranslate"><span class="pre">personas.json</span></code> con el siguiente contenido:</p>
@@ -1548,6 +1506,96 @@ resultados = respuesta[&#39;results&#39;]
 <span class="c1"># Observación 1. Cuidado: no necesariamente todos los día tienen todos los datos.</span>
 <span class="c1"># Observación 2. Por defecto la API  recupera 25 registros por llamada. En la llamada anterior pusimos &#39;limit=1000&#39;</span>
 <span class="c1">#                para recuperar hasta 1000 registros por llamada. La API no permite más.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;date&#39;: &#39;2010-05-01T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 19.2}
+{&#39;date&#39;: &#39;2010-05-01T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 11.1}
+{&#39;date&#39;: &#39;2010-05-02T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 17.2}
+{&#39;date&#39;: &#39;2010-05-02T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 28.9}
+{&#39;date&#39;: &#39;2010-05-02T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 13.5}
+{&#39;date&#39;: &#39;2010-05-03T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 19.1}
+{&#39;date&#39;: &#39;2010-05-03T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 17.9}
+{&#39;date&#39;: &#39;2010-05-03T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 14.3}
+{&#39;date&#39;: &#39;2010-05-04T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-04T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 17.2}
+{&#39;date&#39;: &#39;2010-05-04T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 10.6}
+{&#39;date&#39;: &#39;2010-05-05T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 19.4}
+{&#39;date&#39;: &#39;2010-05-05T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 12.2}
+{&#39;date&#39;: &#39;2010-05-06T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 16.1}
+{&#39;date&#39;: &#39;2010-05-06T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 27.4}
+{&#39;date&#39;: &#39;2010-05-07T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-07T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 11.8}
+{&#39;date&#39;: &#39;2010-05-07T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 18.3}
+{&#39;date&#39;: &#39;2010-05-07T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 7.5}
+{&#39;date&#39;: &#39;2010-05-08T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-08T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.0}
+{&#39;date&#39;: &#39;2010-05-08T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 4.3}
+{&#39;date&#39;: &#39;2010-05-09T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 11.9}
+{&#39;date&#39;: &#39;2010-05-09T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 20.2}
+{&#39;date&#39;: &#39;2010-05-09T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 4.5}
+{&#39;date&#39;: &#39;2010-05-10T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.2}
+{&#39;date&#39;: &#39;2010-05-10T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 20.7}
+{&#39;date&#39;: &#39;2010-05-10T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 5.6}
+{&#39;date&#39;: &#39;2010-05-11T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 11.3}
+{&#39;date&#39;: &#39;2010-05-11T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 20.4}
+{&#39;date&#39;: &#39;2010-05-11T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 3.3}
+{&#39;date&#39;: &#39;2010-05-12T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.8}
+{&#39;date&#39;: &#39;2010-05-12T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 6.8}
+{&#39;date&#39;: &#39;2010-05-13T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 15.3}
+{&#39;date&#39;: &#39;2010-05-13T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 9.8}
+{&#39;date&#39;: &#39;2010-05-14T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 15.0}
+{&#39;date&#39;: &#39;2010-05-14T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 23.2}
+{&#39;date&#39;: &#39;2010-05-14T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 6.7}
+{&#39;date&#39;: &#39;2010-05-15T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 11.9}
+{&#39;date&#39;: &#39;2010-05-15T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 23.2}
+{&#39;date&#39;: &#39;2010-05-15T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 8.7}
+{&#39;date&#39;: &#39;2010-05-16T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 8.1}
+{&#39;date&#39;: &#39;2010-05-16T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 12.3}
+{&#39;date&#39;: &#39;2010-05-16T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 6.4}
+{&#39;date&#39;: &#39;2010-05-17T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 6.1}
+{&#39;date&#39;: &#39;2010-05-17T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 8.8}
+{&#39;date&#39;: &#39;2010-05-17T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 6.6}
+{&#39;date&#39;: &#39;2010-05-18T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-18T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 8.9}
+{&#39;date&#39;: &#39;2010-05-18T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 1.7}
+{&#39;date&#39;: &#39;2010-05-19T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 10.5}
+{&#39;date&#39;: &#39;2010-05-19T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 2.9}
+{&#39;date&#39;: &#39;2010-05-20T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.1}
+{&#39;date&#39;: &#39;2010-05-20T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 20.3}
+{&#39;date&#39;: &#39;2010-05-20T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 5.9}
+{&#39;date&#39;: &#39;2010-05-21T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 14.6}
+{&#39;date&#39;: &#39;2010-05-21T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 8.1}
+{&#39;date&#39;: &#39;2010-05-22T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 14.0}
+{&#39;date&#39;: &#39;2010-05-22T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 19.4}
+{&#39;date&#39;: &#39;2010-05-22T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 8.4}
+{&#39;date&#39;: &#39;2010-05-23T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-23T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 13.7}
+{&#39;date&#39;: &#39;2010-05-23T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 17.4}
+{&#39;date&#39;: &#39;2010-05-24T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 10.3}
+{&#39;date&#39;: &#39;2010-05-24T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 2.7}
+{&#39;date&#39;: &#39;2010-05-25T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.5}
+{&#39;date&#39;: &#39;2010-05-25T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 5.9}
+{&#39;date&#39;: &#39;2010-05-26T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 12.1}
+{&#39;date&#39;: &#39;2010-05-26T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 21.2}
+{&#39;date&#39;: &#39;2010-05-27T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-27T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 13.8}
+{&#39;date&#39;: &#39;2010-05-27T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 18.8}
+{&#39;date&#39;: &#39;2010-05-27T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 8.2}
+{&#39;date&#39;: &#39;2010-05-28T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 14.4}
+{&#39;date&#39;: &#39;2010-05-28T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 18.4}
+{&#39;date&#39;: &#39;2010-05-28T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 10.9}
+{&#39;date&#39;: &#39;2010-05-29T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 7.9}
+{&#39;date&#39;: &#39;2010-05-29T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 13.2}
+{&#39;date&#39;: &#39;2010-05-29T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 18.4}
+{&#39;date&#39;: &#39;2010-05-30T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 5.1}
+{&#39;date&#39;: &#39;2010-05-30T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 11.1}
+{&#39;date&#39;: &#39;2010-05-30T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 3.7}
+{&#39;date&#39;: &#39;2010-05-31T00:00:00&#39;, &#39;datatype&#39;: &#39;PRCP&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 0.0}
+{&#39;date&#39;: &#39;2010-05-31T00:00:00&#39;, &#39;datatype&#39;: &#39;TAVG&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;H,,S,&#39;, &#39;value&#39;: 8.7}
+{&#39;date&#39;: &#39;2010-05-31T00:00:00&#39;, &#39;datatype&#39;: &#39;TMAX&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 19.9}
+{&#39;date&#39;: &#39;2010-05-31T00:00:00&#39;, &#39;datatype&#39;: &#39;TMIN&#39;, &#39;station&#39;: &#39;GHCND:AR000087344&#39;, &#39;attributes&#39;: &#39;,,S,&#39;, &#39;value&#39;: 2.5}
 </pre></div>
 </div>
 </div>
