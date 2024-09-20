@@ -448,11 +448,33 @@ document.write(`
 <section id="parte-numpy">
 <h2>1° Parte. NumPy<a class="headerlink" href="#parte-numpy" title="Link to this heading">#</a></h2>
 <p><strong>Ejercicio 1.</strong></p>
-<p>Escribir un programa que imprima un arreglo numpy de tamaño 1 x 100 de números aleatorios del 0 al 100.</p>
+<p>Escribir un programa que imprima un arreglo numpy de 100 de números aleatorios del 0 al 100.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Generar un arreglo de 100 números aleatorios entre 0 y 100</span>
+<span class="n">arreglo_aleatorio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Imprimir el arreglo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arreglo_aleatorio</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 11  77  35   7   0  97  28  29  27  32  85  53  88  58  75  92  75  70
+   7  89  95  89  28  31  15  53   0  15  57  36  65  32  50  74  92  34
+  59  37  24  48  11  57  94  93  10  96  21  92  65  30  99  44  56  48
+  86  29  68  81  96  85  10  40  80  55 100  31  12  95  96  98  77  24
+  64  48   3  73  65  47  56  58  60  34  78  27   2   9  95  23  64  79
+   8  95  76  15  22  44  88  98  32  60]
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Ejercicio 2.</strong></p>
-<p>Escribir un programa que imprima un arreglo numpy de tamaño 1 x 100 de números aleatorios del 0 al 100. Además, que imprima los índices de los valores mayores a 50.</p>
-<p><strong>Ejercicio 3.</strong></p>
-<p>Escribir un programa que imprima un arreglo numpy de tamaño 1 x 100 de números aleatorios del 0 al 100. Además, que imprima los índices de los elementos distintos de cero del arreglo.</p>
+<p>Escribir un programa que imprima un arreglo numpy de 100 de números aleatorios del 0 al 10. Además, que imprima los índices de los elementos iguales a cero del arreglo.</p>
 <p><em>Ayuda:</em> la función <code class="docutils literal notranslate"><span class="pre">where()</span></code> de NumPy se puede utilizar  para encontrar la solución del ejercicio. La sintaxis es:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;expresión lógica&quot;</span><span class="p">)</span>
 </pre></div>
@@ -462,15 +484,86 @@ document.write(`
 </pre></div>
 </div>
 <p>devuelve los índices de <code class="docutils literal notranslate"><span class="pre">arreglo</span></code> donde está ubicados los números positivos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Generar un arreglo de 100 números aleatorios entre 0 y 100</span>
+<span class="n">arreglo_aleatorio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Imprimir el arreglo</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arreglo de números aleatorios:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arreglo_aleatorio</span><span class="p">)</span>
+
+<span class="c1"># Encontrar los índices de los valores mayores a 50</span>
+<span class="n">indices_iguales_a_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arreglo_aleatorio</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+<span class="c1"># Imprimir los índices</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de los valores iguales a 0:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_iguales_a_0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arreglo de números aleatorios:
+[ 7  4  1  5  2 10  7  9  4  7  9  9  1  9  4  0  8  7  8  7  1  4  2  8
+  7  5  3  8  2  1  8  8  9  5  3  0  9  9  4  5  8  9  9  7  0  0  3  6
+  7  1  3 10 10  7  5  4  7  4  1  2  3  4  5  6  4  4  0  6  8  2  5  0
+  5  8 10  6  1  4  1  2  8  6 10  2  6  5  7  2  4  7  6  6  0  4  4  3
+  6  9  1  7]
+
+Índices de los valores iguales a 0:
+[15 35 44 45 66 71 92]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Ejercicio 3.</strong></p>
+<p>Escribir un programa que imprima un arreglo numpy de 100 de números aleatorios del 0 al 100. Además, que imprima los índices de los valores mayores a 50.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Generar un arreglo de 100 números aleatorios entre 0 y 100</span>
+<span class="n">arreglo_aleatorio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Imprimir el arreglo</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arreglo de números aleatorios:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arreglo_aleatorio</span><span class="p">)</span>
+
+<span class="c1"># Encontrar los índices de los valores mayores a 50</span>
+<span class="n">indices_mayores_a_50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arreglo_aleatorio</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> 
+<span class="c1"># Imprimir los índices</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de los valores mayores a 50:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_mayores_a_50</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arreglo de números aleatorios:
+[ 97  99  50  47  57   2  67   2  52  30  92 100  54  96  52  39  18  56
+  81  90  26  41  80  30  10  95  22  22  12  54  98  24  73  57  76  41
+  54  58  26   2  10  38  24  37  32  17  14   5  16  10  68  39  79   3
+  43  17  84   2  68  11  15   7  59  58  99  30  42  15  50  10  79  97
+  26  81  48  82  67   2  75  92   2 100   4  90  65  41  23  40  53  89
+  60  94  10  60  44  34  44  66  82  94]
+
+Índices de los valores mayores a 50:
+[ 0  1  4  6  8 10 11 12 13 14 17 18 19 22 25 29 30 32 33 34 36 37 50 52
+ 56 58 62 63 64 70 71 73 75 76 78 79 81 83 84 88 89 90 91 93 97 98 99]
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Ejercicio 4.</strong></p>
 <p>Crear las matrices:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-69a6a061-5c1c-4d08-afbf-5c630b806428">
-<span class="eqno">(8)<a class="headerlink" href="#equation-69a6a061-5c1c-4d08-afbf-5c630b806428" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9322640b-1a80-4192-9e56-21ee199bb9e7">
+<span class="eqno">(8)<a class="headerlink" href="#equation-9322640b-1a80-4192-9e56-21ee199bb9e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{bmatrix}
 6 &amp; 8 &amp; 1\\
 2 &amp; 9 &amp; 3\\
 4 &amp; 5 &amp; 1
 \end{bmatrix}
+\quad \text{ y } \quad
 \begin{bmatrix}
 7 &amp; 1 &amp; -4\\
 -2 &amp; 0 &amp; -6\\
@@ -478,43 +571,182 @@ document.write(`
 \end{bmatrix}
 \end{equation}\]</div>
 <p>y calcular el producto de las mismas componente a componente.</p>
-<p><strong>Ejercicio 5.</strong></p>
-<p>Crear un array de 100 números enteros aleatorios con valores de -100 a +100. Usando arrays de booleanos crear otros arrays que contengan los índices de: los números positivos, los números negativos, los números pares y los números impares del array original.</p>
-<p><strong>Ejercicio 7</strong></p>
-<p>Crea un array bidimensional 5x5 con todos los valores cero. Usando el indexado de arrays, asigna 1 a todos los elementos de la diagonal, para obtener la matiz identidad 5x5. Finalmente, asigna el valor 5 a todos los elementos de las subarrays 2x2 inferior izquierda y superior derecha de la matriz de 5x5.</p>
-<p>Se muestran soluciones parciales:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arreglo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">arreglo</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Definir las matrices</span>
+<span class="n">matriz_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">matriz_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">],</span>
+                     <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">],</span>
+                     <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># Calcular el producto componente a componente</span>
+<span class="n">producto_cc</span> <span class="o">=</span> <span class="n">matriz_a</span> <span class="o">*</span> <span class="n">matriz_b</span>
+
+<span class="c1"># Imprimir las matrices y el resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matriz_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriz B:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matriz_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Producto componente a componente:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">producto_cc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">arreglo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">arreglo</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz A:
+[[6 8 1]
+ [2 9 3]
+ [4 5 1]]
 
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+Matriz B:
+[[ 7  1 -4]
+ [-2  0 -6]
+ [-1  1 -1]]
+
+Producto componente a componente:
+[[ 42   8  -4]
+ [ -4   0 -18]
+ [ -4   5  -1]]
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Ejercicio 5.</strong></p>
+<p>Crear un array de 100 números enteros aleatorios con valores de -100 a +100. Usando arrays de booleanos crear otros arrays que contengan los índices de: los números positivos, los números negativos, los números pares y los números impares del array original.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arreglo</span><span class="p">)):</span>
-    <span class="n">arreglo</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Crear un arreglo de 100 números enteros aleatorios entre -100 y +100</span>
+<span class="n">arreglo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Imprimir el arreglo original</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Arreglo original:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">arreglo</span><span class="p">)</span>
+
+<span class="c1"># Crear arreglos booleanos para las condiciones</span>
+<span class="n">positivos</span> <span class="o">=</span> <span class="n">arreglo</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">negativos</span> <span class="o">=</span> <span class="n">arreglo</span> <span class="o">&lt;</span> <span class="mi">0</span>
+<span class="n">pares</span> <span class="o">=</span> <span class="p">(</span><span class="n">arreglo</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">impares</span> <span class="o">=</span> <span class="p">(</span><span class="n">arreglo</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Obtener los índices de los números que cumplen las condiciones</span>
+<span class="n">indices_positivos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">positivos</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">indices_negativos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">negativos</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">indices_pares</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pares</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">indices_impares</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">impares</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Imprimir los resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de números positivos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_positivos</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de números negativos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_negativos</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de números pares:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_pares</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Índices de números impares:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices_impares</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arreglo original:
+[ -58   82   29   64  -74   48   38  -48   98   99  -14   21   39  -38
+  -43  -37    9   12  -55   61   -8  -92   37   61   -2  -20   74   84
+   63  -42  -76   50  -20   47  -11   43   30   81   83   51   32  -57
+  -45   44  -99 -100    8  -80  -17   61   97   91  -65   24  -82  -92
+   82   36  -22   88   91   61   95  -88   44   36  -83   92   23   16
+  -57  -95   25  -57  -92  -29   77   -5  -70   23   49  -57  -83   57
+  -91   29  -40   99  -65  -46    5  -44  -61   35  -24   51    1  -68
+   -1   45]
+
+Índices de números positivos:
+[ 1  2  3  5  6  8  9 11 12 16 17 19 22 23 26 27 28 31 33 35 36 37 38 39
+ 40 43 46 49 50 51 53 56 57 59 60 61 62 64 65 67 68 69 72 76 79 80 83 85
+ 87 90 93 95 96 99]
+
+Índices de números negativos:
+[ 0  4  7 10 13 14 15 18 20 21 24 25 29 30 32 34 41 42 44 45 47 48 52 54
+ 55 58 63 66 70 71 73 74 75 77 78 81 82 84 86 88 89 91 92 94 97 98]
+
+Índices de números pares:
+[ 0  1  3  4  5  6  7  8 10 13 17 20 21 24 25 26 27 29 30 31 32 36 40 43
+ 45 46 47 53 54 55 56 57 58 59 63 64 65 67 69 74 78 86 89 91 94 97]
+
+Índices de números impares:
+[ 2  9 11 12 14 15 16 18 19 22 23 28 33 34 35 37 38 39 41 42 44 48 49 50
+ 51 52 60 61 62 66 68 70 71 72 73 75 76 77 79 80 81 82 83 84 85 87 88 90
+ 92 93 95 96 98 99]
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Ejercicio 7</strong></p>
+<p>Crea un array bidimensional 5x5 con todos los valores cero. Usando el indexado de arrays, asigna 1 a todos los elementos de la diagonal, para obtener la matiz identidad 5x5. Finalmente, asigna el valor 5 a todos los elementos de las subarrays 2x2 inferior izquierda y superior derecha de la matriz de 5x5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arreglo</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">arreglo</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solución</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Crear un array 5x5 lleno de ceros</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz 5x5 de 0s:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="p">)</span>
+
+<span class="c1"># Asignar 1 a todos los elementos de la diagonal</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">matriz</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriz con 1s en la diagonal:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="p">)</span>
+
+<span class="c1"># Asignar el valor 5 a la submatriz 2x2 inferior izquierda</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriz con 5s agregados en la submatriz 2x2 inferior izquierda:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="p">)</span>
+
+<span class="c1"># Asignar el valor 5 a la submatriz 2x2 superior derecha</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriz con 5s agregados en la submatriz 2x2 superior derecha:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">matriz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz 5x5 de 0s:
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+Matriz con 1s en la diagonal:
+ [[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]
+
+Matriz con 5s agregados en la submatriz 2x2 inferior izquierda:
+ [[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [5. 5. 0. 1. 0.]
+ [5. 5. 0. 0. 1.]]
+
+Matriz con 5s agregados en la submatriz 2x2 superior derecha:
+ [[1. 0. 0. 5. 5.]
+ [0. 1. 0. 5. 5.]
+ [0. 0. 1. 0. 0.]
+ [5. 5. 0. 1. 0.]
+ [5. 5. 0. 0. 1.]]
 </pre></div>
 </div>
 </div>
@@ -522,8 +754,8 @@ document.write(`
 <p><strong>Ejercicio 8</strong></p>
 <p>Los diámetros de las esporas del lycopodium pueden medirse por métodos interferométricos. Los resultados de uno de estos experimentos son los siguientes:
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b1e11e0-a472-4e9f-aec4-db2b50319459">
-<span class="eqno">(9)<a class="headerlink" href="#equation-7b1e11e0-a472-4e9f-aec4-db2b50319459" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-8edc89f9-f2c6-413a-a73d-74858ff4b516">
+<span class="eqno">(9)<a class="headerlink" href="#equation-8edc89f9-f2c6-413a-a73d-74858ff4b516" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 \text{k * diametro (cm)} &amp; 14 &amp; 15 &amp; 16 &amp; 17 &amp; 18 &amp; 19 &amp; 20 &amp; 21 &amp; 22 &amp; 23\\
 \hline
 \text{número de esporas} &amp; 1 &amp; 1 &amp; 8 &amp; 24 &amp; 48 &amp; 58 &amp; 35 &amp; 16 &amp; 8 &amp; 1 \\
