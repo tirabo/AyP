@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>7. Lectura y escritura de archivos &#8212; Algoritmos y Programación</title>
   
@@ -28,35 +28,33 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '20.7_Entrada_y_salida';</script>
@@ -225,7 +223,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Apéndices</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="20.0_Ejercicios_resueltos.html">Ejercicios resueltos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="20.0_Ejercicios_resueltos.html">Ejercicios resueltos</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="20.1_Python_turtle.html">1. Dibujando con la tortuga</a></li>
 <li class="toctree-l2"><a class="reference internal" href="20.2_Expresiones_funciones_condicionales.html">2. Expresiones, funciones y condicionales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="20.3_Ciclos_fechas.html">3. Ciclos, tratamiento de fechas</a></li>
@@ -234,7 +232,7 @@
 <li class="toctree-l2"><a class="reference internal" href="20.6_Clases_objetos.html">6. Tipos abstractos de datos (clases)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7. Lectura y escritura de archivos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="20.8_Numpy_y_pyplot.html">8. NumPy y PyPlot</a></li>
-</ul>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
 
@@ -434,7 +432,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="lectura-y-escritura-de-archivos">
-<h1>7. Lectura y escritura de archivos<a class="headerlink" href="#lectura-y-escritura-de-archivos" title="Link to this heading">#</a></h1>
+<h1>7. Lectura y escritura de archivos<a class="headerlink" href="#lectura-y-escritura-de-archivos" title="Permalink to this heading">#</a></h1>
 <p><strong>Ejercicio 1.</strong> Escribir una función, llamada <code class="docutils literal notranslate"><span class="pre">head()</span></code> que reciba el nombre de un archivo y un número <span class="math notranslate nohighlight">\(n\)</span> e imprima las primeras <span class="math notranslate nohighlight">\(n\)</span> líneas del archivo. Para probar la función utilice un archivo de texto de su computadora.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,7 +680,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;tbyxz&#39;: &#39;4335478819&#39;, &#39;ixuys&#39;: &#39;0157177178&#39;, &#39;xggcu&#39;: &#39;3214205558&#39;, &#39;whygs&#39;: &#39;2509990736&#39;, &#39;defgw&#39;: &#39;6785140355&#39;, &#39;hipuo&#39;: &#39;7475743036&#39;, &#39;dbvrj&#39;: &#39;4584622736&#39;, &#39;hweod&#39;: &#39;7239921319&#39;, &#39;jupxg&#39;: &#39;4594740361&#39;, &#39;sxccj&#39;: &#39;1865197197&#39;, &#39;lqhhs&#39;: &#39;6865260114&#39;, &#39;afsqq&#39;: &#39;6122100771&#39;, &#39;sirpc&#39;: &#39;7532226251&#39;, &#39;jmnzh&#39;: &#39;1212773151&#39;, &#39;lmegt&#39;: &#39;0382895283&#39;, &#39;mvxtq&#39;: &#39;9303814233&#39;, &#39;ssttj&#39;: &#39;0877572205&#39;, &#39;zvcef&#39;: &#39;4786903884&#39;, &#39;qnsju&#39;: &#39;8854594182&#39;, &#39;dyesq&#39;: &#39;4730149249&#39;, &#39;hpnpv&#39;: &#39;8172076304&#39;, &#39;cswer&#39;: &#39;878591
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;xlxuq&#39;: &#39;3684639605&#39;, &#39;qkngo&#39;: &#39;4937919510&#39;, &#39;prbyr&#39;: &#39;9376950445&#39;, &#39;fpmgy&#39;: &#39;8842008002&#39;, &#39;jxyye&#39;: &#39;5754945418&#39;, &#39;qchrp&#39;: &#39;1570130527&#39;, &#39;yrwvp&#39;: &#39;6900038296&#39;, &#39;stoga&#39;: &#39;1864792195&#39;, &#39;wjkyz&#39;: &#39;3349378449&#39;, &#39;ovsxk&#39;: &#39;0352565905&#39;, &#39;satvf&#39;: &#39;8808888770&#39;, &#39;tfidt&#39;: &#39;4733159707&#39;, &#39;xvgnh&#39;: &#39;0597496493&#39;, &#39;lkwns&#39;: &#39;9396290829&#39;, &#39;vbzla&#39;: &#39;9701786277&#39;, &#39;gtfxa&#39;: &#39;6145491552&#39;, &#39;qsdcl&#39;: &#39;6564312199&#39;, &#39;frqpn&#39;: &#39;9192463758&#39;, &#39;tuiet&#39;: &#39;3239406698&#39;, &#39;siynh&#39;: &#39;7482649049&#39;, &#39;xomwd&#39;: &#39;7117190614&#39;, &#39;xbudh&#39;: &#39;520981
 </pre></div>
 </div>
 </div>
